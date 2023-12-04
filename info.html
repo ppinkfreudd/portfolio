@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Rishit Das's Portfolio</title>
+        <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="style.css">
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@400;700&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap" rel="stylesheet">
+    </head>
+<body>
+    <header>
+        <div class="interactive-image" id="interactiveImage">
+            <img src="frame1.svg" alt="Running animation" id="animationFrame">
+        </div>
+        
+        <div class="header-content">
+            <div class="name-container">
+                <div class="name-and-icons">
+                    rishit das
+                    <a href="https://www.linkedin.com/in/rishitdas/" target="_blank"><i class="fab fa-linkedin"></i></a>
+                    <a href="mailto:rdas@ucdavis.edu"><i class="fas fa-envelope"></i></a>
+                </div>
+                <p class="summary">Hello! I'm Rishit, a Cognitive Science student and aspiring researcher. <br> I'm passionate about uniting human cognition with technology. <br> Based in Davis, CA.</p>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#info"> Info</a></li>
+                    <li><a href="#blog"> Blog</a></li>
+                    <li><a href="#selected-works"> Selected Works</a></li>
+                    <li><a href="#misc"> Misc</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <section id="blog-links" style="position: absolute; right: 10px; top: 50%; transform: translateY(-50%);">
+        <h2>Blog Posts</h2>
+        <ul>
+            <li>
+                <a href="blog1.html">Thoughts on Dall-E</a>
+                <span class="tooltip">Short preview or description of Blog Post 1</span>
+                <br>
+                <br>
+                <img src="painting_blog.gif" alt="Description of GIF" style="width: 400px; height: auto; margin-left: 100px">
+            </li>
+            <li>
+                <a href="Things I find interesting">Blog Post 2</a>
+                <span class="tooltip">Short preview or description of Blog Post 2</span>
+            </li>
+              
+            <!-- More blog links can be added here -->
+        </ul>
+    </section>
+    <div class="info-section">
+        <div class="info-content">
+            <div class="info-description">
+                <p class="intro-text">
+                    <b>
+                        <p class="intro-text">
+                            <b>
+                            Hi! <br><br> Passionate about enhancing human life and culture through technology, I delved into the intersection of human cognition and tech during my studies at Stanford Online High School during a class on the Philosophy of Science in Grade 10. <br><br> Currently, I'm exploring Virtual Reality as a research assistant at UC Davis's Center for Mind and Brain, pursuing degrees in Computational Cognitive Science and Applied Statistics. <br><br> My diverse upbringing in Delhi, Hong Kong, Abu Dhabi, and Melbourne fuels my drive to blend multicultural insights into innovative product development.
+                            </b>
+                        </p>
+                        
+                    </b>
+                </p>
+                <img src="path_to_your_photo.jpg" alt="Rishit Das" class="info-photo">
+            </div>
+            <div class="info-details">
+                <div class="column">
+                    <h3><span class="highlight">Education</span></h3>
+                    <p> <b> University of California, Davis</b> <br> 09.22-Present <br> B.S. Computational Cognitive Science <br> B.S. Applied Statistics <br> Full Courselist</p>
+                    <p> <b>Stanford Online High School</b> <br> 09.18-06.22 <br> Took post-AP Math, Neuroscience, & English coursework. <br> Full Courselist</p>
+                    <h3><span class="highlight">Experience</span></h3>
+                    <p><b>Integrated Attention Lab <br> Research Assistant </b></p>
+                    <p> - Working in a VR and memory research team. Using NumPy, Pandas, Seaborn, & Matplotlib. Running weekly VR experiments.</p>
+                    <p><b>nrture<br> Intern </b></p>
+                    <p> - Full-stack intern at a travel tech startup. Designed frontend UI for an AI Chatbot and handled SSO for Google Looker Dashboards. </p>
+                    <p><b>Kogiito <br> Founder </b></p>
+                    <p> - Created a website that allowed 150+ high-schoolers worldwide to do brain-science research. Presented at gloabl cognitive science conferences </p>
+                </div>
+                <div class="column">
+                    <h3><span class="highlight">Awards</span></h3> 
+                    <p> - Amy Lee Memorial Essay Prize for my essay "The Decomposition of the Narratological Framework in Pedro Páramo" <br> - Finalist in EBSA Spring Quarter '23 Case Competition with River City Bank</p>
+                    <h3><span class="highlight">Projects</span></h3>
+                    <p> - Rhythmoji: an avatar based on your Spotify listening <br> - Data Analysis on Neural Correlates of Schizophrenia <br> - The Relationship Between Subliminal Stimuli and Emotion <br> - A Kantian Model of Happiness</p>
+                    <h3><span class="highlight">Expertise</span></h3>
+                    <p> Fluent in: Python, C++, C, Java, HTML/CSS, React</p>
+                    <p> Kinda understand: R, Node.js, Ruby</p>
+                    <p> Languages: English, Hindi, and Arabic</p>
+                
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let currentFrame = 1;
+        const totalFrames = 3;
+        let animationInterval;
+      
+        const interactiveImage = document.getElementById('interactiveImage');
+        const animationFrame = document.getElementById('animationFrame');
+      
+        interactiveImage.addEventListener('mouseenter', function() {
+            animationInterval = setInterval(function() {
+                animationFrame.src = `frame${currentFrame}.svg`;
+                currentFrame = currentFrame < totalFrames ? currentFrame + 1 : 1;
+            }, 150);
+        });
+      
+        interactiveImage.addEventListener('mouseleave', function() {
+            clearInterval(animationInterval);
+        });
+    </script>
+</body>
+</html>
+
+
+
+
+
