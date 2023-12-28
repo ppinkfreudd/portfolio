@@ -214,10 +214,9 @@ p, .selected-works-section ul li {
 
 /* Styles for the projects section */
 #projects {
-  margin-top: 20px; /* Reduce or increase this value to move the section up or down */
+  margin-top: -500px; /* Reduce or increase this value to move the section up or down */
   width: auto; /* Adjust the width as needed */
-  margin-left: 100px; /* Center the content */
-  margin-right: 100px; /* Center the content */
+  margin-left: 700px; /* Center the content */
   width:50%;
 }
 
