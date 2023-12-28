@@ -261,13 +261,14 @@ p, .selected-works-section ul li {
 /* Info Page Styles */
 .info-section {
   /* Adjusted margin-top to move up the section */
-  margin-top: 20px; /* Adjust this value to position the info section as needed */
+  
   display: flex;
   justify-content: center;
   padding: 20px;
   /* Removed the fixed margin-left to center the content */
-  margin-left: auto;
+  margin-left: 500px;
   margin-right: auto;
+  margin-top: -500px;
 }
 
 .info-content {
