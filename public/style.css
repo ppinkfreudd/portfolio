@@ -537,5 +537,32 @@ main {
   display: block; /* Ensures the elements are block-level */
 }
 
+/* Blog Styles */
+.blog-content h1, .blog-content h2, .blog-content h3, .blog-content h4, .blog-content h5, .blog-content h6 {
+  font-family: 'Press Start 2P', cursive;
+  color: #333; /* Or any other color you use for titles */
+}
+
+.blog-content p, .blog-content li, .blog-content blockquote, .blog-content figure, .blog-content figcaption {
+  font-family: 'Roboto', sans-serif;
+  color: #333; /* Or any other color you use for text */
+  line-height: 1.6;
+  letter-spacing: normal; /* Reset to default if you've changed it elsewhere */
+}
+
+/* You might also want to reset list styles for consistency */
+.blog-content ul, .blog-content ol {
+  padding-left: 20px; /* Or whatever value matches your design */
+  list-style-position: inside; /* If you want the bullets/numbers to be within the content flow */
+}
+
+/* Ensure images in the blog content fit well */
+.blog-content img {
+  max-width: 100%;
+  height: auto;
+  display: block; /* To remove any inline styles that may affect the image */
+  margin: 20px 0; /* Adjust the margin as per your design */
+}
+
 
 
