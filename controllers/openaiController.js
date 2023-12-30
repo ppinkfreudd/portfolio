@@ -8,7 +8,7 @@ const openai = new OpenAI({
 const generateAnswer = async (req, res) => {
     const { question } = req.body
   try {
-    let prompt = `Here is a question about Rishit's resume: "${question}" Focus on the specific project/experience and provide a short summary. Here is the relevant excerpt from the resume:
+    let prompt = `Here is a question about Rishit's resume: "${question}" Focus on the specific project/experience and provide a short summary. Make sure to use paragraphs and be straight to the point. Here is the relevant excerpt from the resume:
     
     
     Rishit Das
