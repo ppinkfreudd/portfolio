@@ -210,15 +210,17 @@ p, .selected-works-section ul li {
   display: flex;
   justify-content: center;
   padding: 20px;
-  margin-left: 500px;
-  margin-right: auto;
-  margin-top: -500px;
+  /* Add enough top margin to create space between the sections */
+  margin-top: -550px; /* Adjust this value as needed to create space */
+  margin-left:500px;
 }
 
 .info-content {
   display: flex;
   flex-direction: row;
   max-width: 1200px;
+  margin: 0 auto;
+  gap: 30px;
 }
 
 .info-description {
@@ -503,6 +505,14 @@ main {
 
   .chatbot {
     width: 200%; /* Slightly less than full width for some padding */
+  }
+  .info-section {
+    display: flex;
+    justify-content: right;
+    padding: 20px;
+    /* Add enough top margin to create space between the sections */
+    margin-top:100px;
+    margin-right:-100px
   }
   
 }
