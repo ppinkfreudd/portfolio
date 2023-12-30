@@ -1,4 +1,3 @@
-/* Basic reset, box-sizing, and base font size */
 * {
   margin: 0;
   padding: 0;
@@ -22,9 +21,10 @@ body {
 
 
 .dall-e-image {
-  max-width: 30%; /* This will make the image expand to fill the container */
+  max-width: 100%; /* Changed to 100% to be responsive */
   height: auto; /* Maintain aspect ratio */
-  margin-left:900px;
+  margin-left: auto; /* Center align image */
+  margin-right: auto; /* Center align image */
 }
 
 
@@ -39,7 +39,7 @@ header {
   display: flex;
   align-items: center;
   justify-content: flex-start;
-  padding-left: 60px;
+  padding-left: 50px;
 }
 
 .interactive-image {
@@ -51,6 +51,7 @@ header {
   height: 130px;
   margin-left: -10px;
   margin-top: 50px;
+  
 }
 
 /* Ensure the image inside the container fits properly */
@@ -162,33 +163,42 @@ p, .selected-works-section ul li {
 }
 
 @media (max-width: 600px) {
+  html {
+    font-size: 14px; /* Smaller base font size on smaller screens */
+  }
+  main {
+    padding-bottom: 60px; /* Reduced padding */
+  }
+
   body {
     margin-top: 80px;
   }
 
-  header {
-    height: 80px;
-    padding-left: 60px;
-  }
+ /* Adjusting header for mobile screens */
+ header {
+  height: 60px; /* Reduced height */
+  padding-left: 15px; /* Reduced padding */
+}
 
   .header-content {
     margin-left: 10px;
   }
 
+  /* Adjusting navigation for smaller screens */
   nav ul {
-    flex-direction: column;
+    padding-left: 0; /* Remove padding */
   }
 
   nav li {
-    margin: 3px 0;
+    font-size: 0.8rem; /* Smaller font size for list items */
   }
 
 
+  /* Adjustments for interactive images */
   .interactive-image {
-    width: 40px;
-    height: 40px;
-    top: 20px;
-    left: -50px;
+    width: 50px; /* Smaller size */
+    height: 50px; /* Smaller size */
+    margin-top: 5px; /* Reduced margin top */
   }
 
   nav {
@@ -198,9 +208,11 @@ p, .selected-works-section ul li {
   nav li {
     margin: 0 5px;
   }
+  /* Responsively aligning header content */
   .header-content {
-    margin: auto; /* Center on smaller screens */
-}
+    margin-left: 5px; /* Reduced margin */
+    margin-top: 20px; /* Reduced margin top */
+  }
   /* Adjustments for smaller screens */
   #blog-links {
     padding-left: 10px;
@@ -210,6 +222,29 @@ p, .selected-works-section ul li {
     width: 80px; /* Smaller images on smaller screens */
   }
 
+  .dall-e-image {
+    margin-left: auto; /* Ensure margin is auto for centering */
+    margin-right: auto; /* Ensure margin is auto for centering */
+  }
+
+  .column {
+    padding: 0 5px; /* Smaller padding */
+  }
+    /* Ensure blog links and images are responsive */
+    #blog-links {
+      padding-left: 10px; /* Adjust padding for smaller screens */
+    }
+  
+    .blog-image {
+      width: 50px; /* Smaller images on smaller screens */
+    }
+  
+    /* Responsive adjustments for project section */
+    #projects {
+      margin-top: 0; /* Adjusted margin-top */
+      width: 100%; /* Full width */
+      margin-left: 15px; /* Adjusted margin-left */
+    }
 }
 
 /* Styles for the projects section */
@@ -333,6 +368,11 @@ body {
 }
 
 @media (max-width: 800px) {
+    /* Adjust padding and margins for mobile screens */
+    main {
+      padding-bottom: 60px; /* Reduced padding */
+    }
+
   .info-content {
       flex-direction: column;
   }
