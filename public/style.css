@@ -12,12 +12,7 @@ html {
   display: flex;
   flex-direction: column;
 }
-  .chatbot, .response {
-    position: relative; /* Use static positioning within the flow of the document */
-    margin-top: 20px;
-    right: auto;
-    bottom: auto;
-  }
+
 
 main {
   position: relative;
@@ -356,90 +351,54 @@ body {
   opacity: 1;
 }
 
+/* Chatbot Container Styles */
+.chatbot-container {
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 20px;
+  text-align: center; /* Center-align the contents */
+}
+
+/* Chatbot Form Styles */
 .chatbot {
-  position: absolute;
-  bottom: 140px;
-  right: 10px;
-  background-color: #ffffff;
-  color: #7FFFD4;
-  padding: 15px;
-  font-family: 'Roboto', sans-serif;
-  font-size: 1em;
-  border: 4px solid #ffffff;
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Center-align the flex items */
 }
 
 .chatbot h2 {
-  color: #990000 !important;
-  text-align: center;
-  border-bottom: 1px solid #FFD700;
-  padding-bottom: 8px;
-  margin-bottom: 20px;
+  margin-bottom: 1rem; /* Space below the heading */
 }
 
-.chatbot label span {
-  color: #990000;
-  font-family: 'Press Start 2P', cursive;
-  display: block;
-  text-align: center;
-  margin-bottom: 8px;
+.chatbot label {
+  margin-bottom: 0.5rem; /* Space below the label */
 }
 
 .chatbot input[type="text"] {
-  width: calc(100% - 20px);
-  padding: 10px;
-  font-family: 'Press Start 2P', cursive;
-  font-size: 1em;
-  background-color: #f8f8f8;
-  color: #333;
-  border: 2px solid #000000;
-  border-radius: 5px;
-  margin-bottom: 10px;
+  width: 100%; /* Full width of the container */
+  padding: 0.5rem; /* Padding inside the text box */
+  margin-bottom: 0.5rem; /* Space below the input field */
+  font-size: 1rem; /* A readable font size */
+  border: 2px solid #000; /* Border for the input */
+  border-radius: 0.25rem; /* Slightly rounded corners */
 }
 
 .chatbot button {
-  width: 97%;
-  background-color: #990000;
-  color: #FFF;
-  padding: 10px;
-  border: none;
-  cursor: pointer;
-  font-family: 'Press Start 2P', cursive;
-  font-size: 1em;
+  width: 100%; /* Full width of the container */
+  padding: 0.5rem; /* Padding inside the button */
+  font-size: 1rem; /* Matching font size with the input field */
+  color: white; /* Text color for the button */
+  background-color: #990000; /* Background color for the button */
+  border: none; /* No border for the button */
+  border-radius: 0.25rem; /* Slightly rounded corners */
+  cursor: pointer; /* Pointer cursor on hover */
 }
-
-.response {
-  position: absolute;
-  bottom: 20px;
-  right: 10px;
-  background-color: #f0f0f0;
-  color: #333;
-  padding: 20px;
-  font-family: Arial, sans-serif;
-  font-size: 1em;
-  border: 2px solid #333;
-  box-shadow: 3px 3px 0px #333;
-}
-
-.response p {
-  color: #333;
-  margin-bottom: 10px;
-  line-height: 1.6;
-  font-family: Arial, sans-serif;
-}
-
 main {
   position: relative;
   padding-bottom: 100px;
 }
 
-.chatbot,
-.response {
-  position: static;
-  right: auto;
-  bottom: auto;
-  margin: 0 auto;
-  display: block;
-}
+
 
 .blog-content h1, .blog-content h2, .blog-content h3, .blog-content h4, .blog-content h5, .blog-content h6 {
   font-family: 'Press Start 2P', cursive;
@@ -537,23 +496,14 @@ main {
     clear: both;
   }
 
-  /* The chatbot should follow the projects section */
   .chatbot-container {
-    width: 100%;
-    margin-top: 20px; /* Add space between the projects section and chatbot */
-    padding: 0 20px; /* Add padding to match the projects section if desired */
+    width: 100%; /* Full width on smaller screens */
+    padding: 10px; /* Adjusted padding on smaller screens */
   }
 
-  /* Ensure the chatbot is no longer absolutely positioned on smaller screens */
   .chatbot {
-    position: static;
+    width: 200%; /* Slightly less than full width for some padding */
   }
-
-  .response {
-    position: static;
-  }
-
-
-
   
 }
+
