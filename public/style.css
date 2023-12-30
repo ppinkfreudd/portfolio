@@ -8,9 +8,20 @@ html {
   font-size: 16px;
 }
 
+.content-wrapper {
+  display: flex;
+  flex-direction: column;
+}
+  .chatbot, .response {
+    position: relative; /* Use static positioning within the flow of the document */
+    margin-top: 20px;
+    right: auto;
+    bottom: auto;
+  }
+
 main {
   position: relative;
-  padding-bottom: 100px; /* Add padding to the bottom to account for the chatbot */
+  padding-bottom: 100px;
 }
 
 body {
@@ -19,18 +30,15 @@ body {
   color: #333;
 }
 
-
 .dall-e-image {
-  max-width: 100%; /* Changed to 100% to be responsive */
-  height: auto; /* Maintain aspect ratio */
-  margin-left: auto; /* Center align image */
-  margin-right: auto; /* Center align image */
+  max-width: 100%;
+  height: auto;
+  margin-left: auto;
+  margin-right: auto;
 }
 
-
-/* Header styling */
 header {
-  position: relative; /* Changed from 'fixed' to 'relative' */
+  position: relative;
   top: 0;
   left: 0;
   width: 100%;
@@ -43,32 +51,28 @@ header {
 }
 
 .interactive-image {
-  position: relative; /* Changed from 'absolute' if you want it to move with the scroll */
-  top: 0; /* Adjusted from '50%' */
+  position: relative;
+  top: 0;
   left: 10px;
-  transform: none; /* Removed translateY(-50%) as it's no longer needed */
+  transform: none;
   width: 130px;
   height: 130px;
   margin-left: -10px;
   margin-top: 50px;
-  
 }
 
-/* Ensure the image inside the container fits properly */
 #animationFrame {
   width: 100%;
   height: auto;
 }
 
 .highlight {
-  background-color: red; /* Background color for the oval */
-  color: white; /* Text color, assuming you want contrast */
-  padding: 5px 10px; /* Adjust padding as needed */
-  border-radius: 15px; /* This makes the edges rounded */
-  /* Other properties as needed */
+  background-color: red;
+  color: white;
+  padding: 5px 10px;
+  border-radius: 15px;
 }
 
-/* Header content styling */
 .header-content {
   display: flex;
   flex-direction: column;
@@ -86,33 +90,33 @@ header {
 .info-content {
   display: flex;
   flex-direction: row;
-  max-width: 1200px; /* Increase max-width as needed */
-  margin: 0 auto; /* Centers the content */
-  gap: 30px; /* Adds space between columns */
+  max-width: 1200px;
+  margin: 0 auto;
+  gap: 30px;
 }
 
 .column {
-  flex: 1; /* Each column takes equal width */
-  padding: 0 15px; /* Increase padding for more space */
+  flex: 1;
+  padding: 0 15px;
 }
 
 .name-and-icons {
   display: flex;
   align-items: center;
-  font-size: 1.4rem; /* Adjust the font size as needed */
+  font-size: 1.4rem;
   font-weight: bold;
   text-transform: uppercase;
 }
 
 .name-container a {
-  color: #333; /* Icon color, adjust as needed */
-  margin-left: 10px; /* Spacing between name and icon */
-  font-size: 1.2rem; /* Icon size, adjust as needed */
-  text-decoration: none; /* Removes underline from icons */
+  color: #333;
+  margin-left: 10px;
+  font-size: 1.2rem;
+  text-decoration: none;
 }
 
 .name-container a:hover {
-  color: #0077b5; /* Change color on hover, for LinkedIn icon */
+  color: #0077b5;
 }
 
 .summary {
@@ -120,35 +124,32 @@ header {
   margin-top: 5px;
   color: #666;
   font-family: 'Lato', sans-serif;
-  /* other styling as needed */
 }
 
-/* Navigation menu */
 nav ul {
-  list-style-type: none; /* Removes default bullets */
+  list-style-type: none;
   margin-top:10px;
 }
 
 nav li::before {
-  content: '🔗'; /* Replace with a default emoji */
+  content: '🔗';
   margin-right: 5px;
 }
 
-/* Now we will target each link individually by their href attribute to set different emojis */
 nav li a[href="#info"]::before {
-  content: 'ℹ️'; /* Information emoji */
+  content: 'ℹ️';
 }
 
 nav li a[href="#blog"]::before {
-  content: '📝'; /* Writing hand emoji */
+  content: '📝';
 }
 
 nav li a[href="#selected-works"]::before {
-  content: '🎨'; /* Artist palette emoji */
+  content: '🎨';
 }
 
 nav li a[href="#misc"]::before {
-  content: '🔍'; /* Magnifying glass emoji */
+  content: '🔍';
 }
 
 h2 {
@@ -162,145 +163,76 @@ p, .selected-works-section ul li {
   color: #333;
 }
 
-@media (max-width: 600px) {
-  html {
-    font-size: 14px; /* Smaller base font size on smaller screens */
+@media (min-width: 800px) {
+  .content-wrapper {
+    display: flex;
+    flex-direction: column;
   }
-  main {
-    padding-bottom: 60px; /* Reduced padding */
+  
+  #projects {
+    width: 50%; /* Set a fixed width or percentage as required */
+    margin-left: auto; /* Align to the right */
+    position: relative;
   }
 
-  body {
-    margin-top: 80px;
+  /* The chatbot should be positioned absolutely in relation to its container */
+  .chatbot {
+    position: relative;
+    bottom: 0;
+    right: 0;
   }
-
- /* Adjusting header for mobile screens */
- header {
-  height: 60px; /* Reduced height */
-  padding-left: 15px; /* Reduced padding */
 }
 
-  .header-content {
-    margin-left: 10px;
-  }
-
-  /* Adjusting navigation for smaller screens */
-  nav ul {
-    padding-left: 0; /* Remove padding */
-  }
-
-  nav li {
-    font-size: 0.8rem; /* Smaller font size for list items */
-  }
-
-
-  /* Adjustments for interactive images */
-  .interactive-image {
-    width: 50px; /* Smaller size */
-    height: 50px; /* Smaller size */
-    margin-top: 5px; /* Reduced margin top */
-  }
-
-  nav {
-    margin-left: 10px;
-  }
-
-  nav li {
-    margin: 0 5px;
-  }
-  /* Responsively aligning header content */
-  .header-content {
-    margin-left: 5px; /* Reduced margin */
-    margin-top: 20px; /* Reduced margin top */
-  }
-  /* Adjustments for smaller screens */
-  #blog-links {
-    padding-left: 10px;
-  }
-
-  .blog-image {
-    width: 80px; /* Smaller images on smaller screens */
-  }
-
-  .dall-e-image {
-    margin-left: auto; /* Ensure margin is auto for centering */
-    margin-right: auto; /* Ensure margin is auto for centering */
-  }
-
-  .column {
-    padding: 0 5px; /* Smaller padding */
-  }
-    /* Ensure blog links and images are responsive */
-    #blog-links {
-      padding-left: 10px; /* Adjust padding for smaller screens */
-    }
-  
-    .blog-image {
-      width: 50px; /* Smaller images on smaller screens */
-    }
-  
-    /* Responsive adjustments for project section */
-    #projects {
-      margin-top: 0; /* Adjusted margin-top */
-      width: 100%; /* Full width */
-      margin-left: 15px; /* Adjusted margin-left */
-    }
-}
-
-/* Styles for the projects section */
 #projects {
-  margin-top: -545px; /* Reduce or increase this value to move the section up or down */
-  width: auto; /* Adjust the width as needed */
-  margin-left: 700px; /* Center the content */
+  margin-top: -545px;
+  width: auto;
+  margin-left: 700px;
   width:50%;
 }
 
 #projects h2 {
-  font-size: 1rem; /* Smaller font size for the header */
-  color: #333; /* Darker color for the header */
+  font-size: 1rem;
+  color: #333;
   padding-bottom: 10px;
   margin-top: 10px;
-  text-align: left; /* Align text to the left */
-  font-weight: 600; /* Bolder for headers */
+  text-align: left;
+  font-weight: 600;
   color: #333;
   font-size: 1.4rem;
 }
 
 #projects a {
-  color: #007bff; /* Primary link color */
-  text-decoration: none; /* Removes underline */
-  transition: color 0.3s ease-in-out, text-decoration 0.3s ease-in-out; /* Smooth transition for hover effect */
+  color: #007bff;
+  text-decoration: none;
+  transition: color 0.3s ease-in-out, text-decoration 0.3s ease-in-out;
 }
+
 #projects a:hover {
-  color: #0056b3; /* Darker shade on hover */
-  text-decoration: underline; /* Underline on hover */
+  color: #0056b3;
+  text-decoration: underline;
 }
 
 #projects table {
   width: 100%;
-  border-collapse: separate; /* Separate the borders for spacing */
-  border-spacing: 0 15px; /* Add space between rows */
+  border-collapse: separate;
+  border-spacing: 0 15px;
 }
 
 #projects th, #projects td {
   text-align: left;
   padding: 8px;
-  border-bottom: 2px solid #333; /* More prominent grid lines */
+  border-bottom: 2px solid #333;
 }
 
 #projects th {
-  border-top: 2px solid #333; /* Top border for header cells */
+  border-top: 2px solid #333;
   width: 0%;
 }
 
-/* Info Page Styles */
 .info-section {
-  /* Adjusted margin-top to move up the section */
-  
   display: flex;
   justify-content: center;
   padding: 20px;
-  /* Removed the fixed margin-left to center the content */
   margin-left: 500px;
   margin-right: auto;
   margin-top: -500px;
@@ -309,21 +241,19 @@ p, .selected-works-section ul li {
 .info-content {
   display: flex;
   flex-direction: row;
-  max-width: 1200px; /* Adjust as needed */
-  font-family: 'Courier New', Courier, monospace;
+  max-width: 1200px;
 }
 
 .info-description {
   flex: 1;
   padding-right: 40px;
-  margin-left: 100px; /* Increase the left margin for more width */
-  font-family: 'Courier New', Courier, monospace;
+  margin-left: 100px;
 }
 
 .intro-text {
   font-family: 'Courier New', monospace;
-  width: 80%; /* Set the desired width for the intro-text */
-  margin: 0 auto; /* Center the content within the column */
+  width: 80%;
+  margin: 0 auto;
   margin-left:120px;
   margin-top: 50px;
 }
@@ -331,23 +261,22 @@ p, .selected-works-section ul li {
 .info-photo {
   max-width: 100%;
   height: auto;
-  border-radius: 8px; /* Optional: for rounded corners */
+  border-radius: 8px;
   margin-top: 20px;
 }
 
 .info-details {
   display: flex;
   flex: 1;
-  border-left: 2px solid #ccc; /* Separator line */
+  border-left: 2px solid #ccc;
   padding-left: 20px;
-  font-family: 'Courier New', Courier, monospace;
 }
 
 body {
   font-family: 'Press Start 2P', cursive;
   background-color: #fff;
   color: #333;
-  margin-top: 0; /* Changed from 100px to 0 as the header is now part of the document flow */
+  margin-top: 0;
 }
 
 .column {
@@ -367,66 +296,23 @@ body {
   margin-bottom: 20px;
 }
 
-@media (max-width: 800px) {
-    /* Adjust padding and margins for mobile screens */
-    main {
-      padding-bottom: 60px; /* Reduced padding */
-    }
 
-  .info-content {
-      flex-direction: column;
-  }
-
-  .info-details {
-      flex-direction: column;
-      border-left: none;
-      padding-left: 0;
-  }
-
-  .column {
-      padding-right: 0;
-  }
-
-  .top-content {
-    display: flex;
-    justify-content: space-between; /* This will place content on left and right */
-    align-items: flex-start; /* Align the content to the top */
-    margin-top: 20px; /* Adjust this value as needed to create space below the header */
-  }
-  
-  #projects {
-    width: 60%; /* Full width on smaller screens */
-    margin-left: auto;
-    margin-right: auto;
-    float: none; /* Disable floating on smaller screens */
-  }
-
-.header-content {
-    margin: auto; /* Center on smaller screens */
-    display: flex;
-    justify-content: space-between;
-    flex-wrap:wrap;
-}
-}
 
 #back-button img, #forward-button img, #search-button img {
-  width: 50px; /* Adjust the width as needed */
-  height: 50px; /* Adjust the height as needed */
+  width: 50px;
+  height: 50px;
 }
 
-
-/* Blog Links Section Styles */
 #blog-links {
-  display: flex; /* Enable flex container */
-  flex-direction: column; /* Stack children vertically */
-  align-items: flex-start; /* Align children to the start of the flex container */
-  padding-left: 20px; /* Adjust padding for alignment */
-  width: 100%; /* Full width of the parent */
-
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding-left: 20px;
+  width: 100%;
 }
 
 #blog-links h2 {
-  color: #990000; /* A bright, slightly orange-toned red */
+  color: #990000;
   text-shadow: 0 0 10px rgba(255, 77, 77, 0.8);
   margin-bottom: 15px;
   text-align: center;
@@ -441,12 +327,11 @@ body {
 }
 
 #blog-links ul li {
-  display: flex; /* Enables flexbox for list items */
-  flex-direction: column; /* Aligns items vertically */
-  align-items: flex-start; /* Aligns items to the start, ensuring they are all left-aligned */
-  margin-bottom: 20px; /* Space between blog posts */
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-bottom: 20px;
 }
-
 
 #blog-links ul li a {
   color: #000000;
@@ -461,16 +346,15 @@ body {
 }
 
 .blog-image {
-  width: 100px; /* Adjust as needed */
-  height: auto; /* Maintain aspect ratio */
-  margin-left: 20px; /* Space between text and image */
+  width: 100px;
+  height: auto;
+  margin-left: 20px;
 }
 
-/* Tooltip Styling - Tooltip always visible */
 #blog-links ul li .tooltip {
-  display: block; /* Now always visible */
+  display: block;
   position: absolute;
-  left: 110%; /* Positioning right of the link */
+  left: 110%;
   top: 50%;
   transform: translateY(-50%);
   background-color: #fff;
@@ -480,61 +364,59 @@ body {
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
   font-size: 0.8rem;
   z-index: 10;
-  visibility: hidden; /* Hidden by default */
+  visibility: hidden;
   opacity: 0;
   transition: visibility 0s, opacity 0.5s linear;
 }
 
 #blog-links ul li:hover .tooltip {
-  visibility: visible; /* Shows on hover */
+  visibility: visible;
   opacity: 1;
 }
 
-/* Retro Chatbot Styles */
-/* Enhanced chatbot styles for better clarity */
 .chatbot {
-  position: absolute; /* Change to absolute positioning */
-  bottom: 140px; /* Adjusted bottom position to lift it above the response box */
+  position: absolute;
+  bottom: 140px;
   right: 10px;
   background-color: #ffffff;
-  color: #7FFFD4; /* Aquamarine color for text */
+  color: #7FFFD4;
   padding: 15px;
   font-family: 'Roboto', sans-serif;
   font-size: 1em;
-  border: 4px solid #ffffff; /* Green border */
+  border: 4px solid #ffffff;
 }
+
 .chatbot h2 {
-  color: #990000 !important; /* Gold color for headings */
+  color: #990000 !important;
   text-align: center;
-  border-bottom: 1px solid #FFD700; /* Border color for separation */
+  border-bottom: 1px solid #FFD700;
   padding-bottom: 8px;
   margin-bottom: 20px;
 }
 
 .chatbot label span {
-  color: #990000; /* Aquamarine color for labels */
+  color: #990000;
   font-family: 'Press Start 2P', cursive;
-  display: block; /* Block display for full width */
+  display: block;
   text-align: center;
   margin-bottom: 8px;
 }
 
-/* Updated input field for better visibility and usability */
 .chatbot input[type="text"] {
   width: calc(100% - 20px);
   padding: 10px;
   font-family: 'Press Start 2P', cursive;
   font-size: 1em;
-  background-color: #f8f8f8; /* Light background for visibility */
-  color: #333; /* Dark text for contrast */
-  border: 2px solid #000000; /* Styled border for visibility */
-  border-radius: 5px; /* Rounded corners */
+  background-color: #f8f8f8;
+  color: #333;
+  border: 2px solid #000000;
+  border-radius: 5px;
   margin-bottom: 10px;
 }
 
 .chatbot button {
   width: 97%;
-  background-color: #990000; /* Green background for buttons */
+  background-color: #990000;
   color: #FFF;
   padding: 10px;
   border: none;
@@ -543,69 +425,59 @@ body {
   font-size: 1em;
 }
 
-
 .response {
-  position: absolute; /* Keep as absolute positioning */
-  bottom: 20px; /* Adjust if necessary to keep it within the viewable area */
+  position: absolute;
+  bottom: 20px;
   right: 10px;
-  background-color: #f0f0f0; /* Lighter background for better readability */
-  color: #333; /* Darker text for better contrast and readability */
-  padding: 20px; /* Adjusted padding for better spacing */
-  font-family: Arial, sans-serif; /* Changed to a more readable font */
-  font-size: 1em; /* Adjusted font size for better readability */
-  border: 2px solid #333; /* Subtler border */
-  box-shadow: 3px 3px 0px #333; /* Kept shadow for depth */
+  background-color: #f0f0f0;
+  color: #333;
+  padding: 20px;
+  font-family: Arial, sans-serif;
+  font-size: 1em;
+  border: 2px solid #333;
+  box-shadow: 3px 3px 0px #333;
 }
 
 .response p {
-  color: #333; /* Ensured text color is readable */
-  margin-bottom: 10px; /* Added bottom margin for spacing between paragraphs */
-  line-height: 1.6; /* Increased line height for better readability */
-  font-family: Arial, sans-serif; /* Ensures font consistency */
+  color: #333;
+  margin-bottom: 10px;
+  line-height: 1.6;
+  font-family: Arial, sans-serif;
 }
 
-/* Add a main container that wraps around your content */
 main {
   position: relative;
-  padding-bottom: 100px; /* Add padding to the bottom to account for the chatbot */
+  padding-bottom: 100px;
 }
 
-/* ... existing styles ... */
-
-/* Update the chatbot and response styles to be positioned absolutely within the main container */
-/* Remove the positioning styles from the .chatbot and .response classes */
 .chatbot,
 .response {
-  position: static; /* Resets to default positioning */
+  position: static;
   right: auto;
   bottom: auto;
-  margin: 0 auto; /* Centers the sections */
-  display: block; /* Ensures the elements are block-level */
+  margin: 0 auto;
+  display: block;
 }
 
-/* Blog Styles */
 .blog-content h1, .blog-content h2, .blog-content h3, .blog-content h4, .blog-content h5, .blog-content h6 {
   font-family: 'Press Start 2P', cursive;
-  color: #333; /* Or any other color you use for titles */
+  color: #333;
 }
 
 .blog-content p, .blog-content li, .blog-content blockquote, .blog-content figure, .blog-content figcaption {
   font-family: 'Roboto', sans-serif;
-  color: #333; /* Or any other color you use for text */
+  color: #333;
   line-height: 1.6;
-  letter-spacing: normal; /* Reset to default if you've changed it elsewhere */
 }
 
-/* You might also want to reset list styles for consistency */
 .blog-content ul, .blog-content ol {
-  padding-left: 20px; /* Or whatever value matches your design */
-  list-style-position: inside; /* If you want the bullets/numbers to be within the content flow */
+  padding-left: 20px;
+  list-style-position: inside;
 }
 
-/* Ensure images in the blog content fit well */
 .blog-content img {
   max-width: 100%;
   height: auto;
-  display: block; /* To remove any inline styles that may affect the image */
-  margin: 20px 0; /* Adjust the margin as per your design */
+  display: block;
+  margin: 20px 0;
 }
