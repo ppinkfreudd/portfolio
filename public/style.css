@@ -163,25 +163,7 @@ p, .selected-works-section ul li {
   color: #333;
 }
 
-@media (min-width: 800px) {
-  .content-wrapper {
-    display: flex;
-    flex-direction: column;
-  }
-  
-  #projects {
-    width: 50%; /* Set a fixed width or percentage as required */
-    margin-left: auto; /* Align to the right */
-    position: relative;
-  }
 
-  /* The chatbot should be positioned absolutely in relation to its container */
-  .chatbot {
-    position: relative;
-    bottom: 0;
-    right: 0;
-  }
-}
 
 #projects {
   margin-top: -545px;
@@ -480,4 +462,37 @@ main {
   height: auto;
   display: block;
   margin: 20px 0;
+}
+
+@media (max-width: 768px) {
+  /* Stack the blog links and projects sections vertically on smaller screens */
+  #blog-links,
+  #projects {
+    width: 100%;
+    margin-top: 20px;
+    margin-left: 0;
+    margin-right: 0;
+    padding: 0 20px; /* Add padding if needed for better spacing */
+  }
+
+  /* Ensure the projects section clears any floated elements */
+  #projects {
+    clear: both;
+  }
+
+  /* The chatbot should follow the projects section */
+  .chatbot-container {
+    width: 100%;
+    margin-top: 20px; /* Add space between the projects section and chatbot */
+    padding: 0 20px; /* Add padding to match the projects section if desired */
+  }
+
+  /* Ensure the chatbot is no longer absolutely positioned on smaller screens */
+  .chatbot {
+    position: static;
+  }
+
+  .response {
+    position: static;
+  }
 }
