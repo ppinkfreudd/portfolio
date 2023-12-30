@@ -1,4 +1,3 @@
-// Wait for the DOM to load before running the script
 document.addEventListener('DOMContentLoaded', (event) => {
     // forms
     const responseForm = document.querySelector('.chatbot'); // Targeting form with class 'chatbot'
@@ -8,33 +7,31 @@ document.addEventListener('DOMContentLoaded', (event) => {
 
     // description and tags
     responseForm.addEventListener('submit', async (e) => {
-      e.preventDefault();
+        e.preventDefault();
 
-      try {
-        const res = await fetch('/openai/response', {
-          headers: {'Content-Type': 'application/json'},
-          method: 'POST',
-          body: JSON.stringify({ question: responseForm.question.value }) // Assuming 'question' is the field to be sent
-        });
-        const data = await res.json();
+        try {
+            const res = await fetch('/openai/response', {
+                headers: {'Content-Type': 'application/json'},
+                method: 'POST',
+                body: JSON.stringify({ question: responseForm.question.value }) // Assuming 'question' is the field to be sent
+            });
+            const data = await res.json();
 
-        console.log(data);
+            console.log(data);
 
-        // Update responseOutput with the formatted response from your data
-        if (data && data.response) {
-          // Format the response to convert newlines to paragraph tags
-          const formattedResponse = data.response.split('\n')
-            .map(paragraph => paragraph.trim().length > 0 ? `<p>${paragraph}</p>` : '')
-            .join('');
-          responseOutput.innerHTML = formattedResponse; // Use innerHTML to parse the HTML tags
-        } else {
-          // Handle cases where the expected content isn't present
-          console.error("Unexpected response structure:", data);
-          responseOutput.innerHTML = "There was an error processing your request."; // Use innerHTML to parse the HTML tags
+            // Update responseOutput with the formatted response from your data
+            if (data && data.response) {
+                // Replace newlines with HTML line breaks for display
+                const formattedResponse = data.response.replace(/\n/g, '<br>');
+                responseOutput.innerHTML = formattedResponse; // Use innerHTML to parse the HTML tags
+            } else {
+                // Handle cases where the expected content isn't present
+                console.error("Unexpected response structure:", data);
+                responseOutput.innerHTML = "There was an error processing your request.";
+            }
+        } catch (error) {
+            console.error("Failed to fetch response:", error);
+            responseOutput.innerHTML = "Failed to send question. Please try again.";
         }
-      } catch (error) {
-        console.error("Failed to fetch response:", error);
-        responseOutput.innerHTML = "Failed to send question. Please try again."; // Use innerHTML to parse the HTML tags
-      }
     });
-  });
+});
