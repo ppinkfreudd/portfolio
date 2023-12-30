@@ -51,7 +51,7 @@ header {
 }
 
 .interactive-image {
-  position: relative;
+  position: static;
   top: 0;
   left: 10px;
   transform: none;
@@ -78,7 +78,7 @@ header {
   flex-direction: column;
   align-items: flex-start;
   margin-left: 10px;
-  margin-top: 240px;
+  margin-top: 200px;
 }
 
 .name-container {
@@ -465,10 +465,67 @@ main {
 }
 
 @media (max-width: 768px) {
+    /* Target the list item that contains the 'Applying Dall-E' text */
+    #blog-links li {
+      /* Prevent the text from wrapping onto the next line */
+      white-space: nowrap;
+      text-align: left; /* Align to the left */
+      padding-left: 0; /* Adjust if there is any default padding */
+      margin-left: -100px; /* Adjust if there is any default margin */
+  
+      /* Center the list item text */
+    }
+    #blog-links li a {
+      /* Ensure the link doesn't break into multiple lines */
+      display: inline-block; /* This makes white-space: nowrap work */
+      font-size: /* Adjust the font size to ensure it fits on one line */;
+    }
+    #blog-links img {
+      /* Ensure the image aligns with the text */
+      display: block; /* This will take the full width available */
+      margin: 0 auto; /* This will center it within the available space */
+      padding: 0;
+    }
+  /* This ensures that the 'Blog Posts' heading doesn't break into two lines */
+  #blog-links h2 {
+    white-space: nowrap; /* Prevent wrapping to a new line */
+    overflow: hidden; /* Hide overflow */
+    text-overflow: ellipsis; /* Add an ellipsis if the text is too long */
+    min-width: 0; /* Allow the heading to shrink to the min content size */
+    font-size: /* adjust this value as needed to fit the screen width */;
+    margin-left: 0; /* Adjust as necessary */
+    padding-left: 0; /* Adjust as necessary */
+    text-align: left; /* Align to the left */
+  }
+  
+  /* Adjust the blog section to ensure it's aligned with the menu */
+  #blog-links {
+    /* Reset any specific left or right padding/margins if needed */
+    padding-left: /* adjust this value */;
+    padding-right: /* adjust this value */;
+    margin: 0 auto; /* Center the blog links section */
+  }
+  
+  /* Adjust the image width to maintain aspect ratio and fit within the container */
+  #blog-links img {
+    max-width: 100%; /* Adjust the image to a max-width of 100% of its container */
+    height: auto; /* Keep the aspect ratio */
+  }
+  
+  /* Align items inside the list to match the alignment of the menu */
+  #blog-links ul {
+    padding: 0; /* Remove padding */
+    margin: 0; /* Remove margin */
+  }
+
+  #blog-links ul li {
+    /* Center the list items */
+    text-align: center;
+  }
   /* Stack the blog links and projects sections vertically on smaller screens */
   #blog-links,
   #projects {
-    width: 100%;
+    width: 50%;
     margin-top: 20px;
     margin-left: 0;
     margin-right: 0;
@@ -495,4 +552,8 @@ main {
   .response {
     position: static;
   }
+
+
+
+  
 }
