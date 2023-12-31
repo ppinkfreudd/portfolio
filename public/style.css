@@ -377,6 +377,15 @@ body {
   margin-bottom: 0.5rem; /* Space below the label */
 }
 
+.response {
+  border: 2px solid #990000; /* Border style and color */
+  padding: 10px; /* Padding inside the box */
+  margin-top: 20px; /* Adjust the top margin for spacing */
+  background-color: #fff; /* Background color of the box */
+  border-radius: 8px; /* Rounded corners */
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2); /* Add a subtle shadow */
+}
+
 .chatbot input[type="text"] {
   width: 100%; /* Full width of the container */
   padding: 0.5rem; /* Padding inside the text box */
