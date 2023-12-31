@@ -212,7 +212,7 @@ p, .selected-works-section ul li {
   padding: 20px;
   /* Add enough top margin to create space between the sections */
   margin-top: -550px; /* Adjust this value as needed to create space */
-  margin-left:500px;
+  margin-left:400px;
 }
 
 .info-content {
@@ -242,6 +242,7 @@ p, .selected-works-section ul li {
   height: auto;
   border-radius: 8px;
   margin-top: 20px;
+  margin-left:200px;
 }
 
 .info-details {
@@ -512,7 +513,8 @@ main {
     padding: 20px;
     /* Add enough top margin to create space between the sections */
     margin-top:100px;
-    margin-right:-100px
+    margin-right: -150px;
+    max-width: 100%;
   }
   
 }
