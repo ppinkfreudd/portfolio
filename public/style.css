@@ -403,28 +403,7 @@ main {
 
 
 
-.blog-content h1, .blog-content h2, .blog-content h3, .blog-content h4, .blog-content h5, .blog-content h6 {
-  font-family: 'Press Start 2P', cursive;
-  color: #333;
-}
 
-.blog-content p, .blog-content li, .blog-content blockquote, .blog-content figure, .blog-content figcaption {
-  font-family: 'Roboto', sans-serif;
-  color: #333;
-  line-height: 1.6;
-}
-
-.blog-content ul, .blog-content ol {
-  padding-left: 20px;
-  list-style-position: inside;
-}
-
-.blog-content img {
-  max-width: 100%;
-  height: auto;
-  display: block;
-  margin: 20px 0;
-}
 
 @media (max-width: 768px) {
     /* Target the list item that contains the 'Applying Dall-E' text */
