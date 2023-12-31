@@ -379,6 +379,7 @@ body {
 
 .response {
   border: 2px solid #990000; /* Border style and color */
+  width:100%;
   padding: 10px; /* Padding inside the box */
   margin-top: 20px; /* Adjust the top margin for spacing */
   background-color: #fff; /* Background color of the box */
@@ -494,6 +495,9 @@ main {
 
   .chatbot {
     width: 200%; /* Slightly less than full width for some padding */
+  }
+  .response {
+    width: 200%;
   }
   .info-section {
     display: flex;
