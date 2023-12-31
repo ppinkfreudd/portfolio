@@ -482,30 +482,32 @@ main {
     margin-right: 0;
     padding: 0 20px; /* Add padding if needed for better spacing */
   }
+    .chatbot-container {
+      width: 100%; /* Full width on smaller screens */
+      padding: 10px; /* Adjusted padding on smaller screens */
+    }
+  
+    .chatbot {
+      width: 200%; /* Slightly less than full width for some padding */
+    }
+    .response {
+      width: 200%;
+    }
+    .info-section {
+      display: flex;
+  
+      padding: 20px;
+      /* Add enough top margin to create space between the sections */
+      margin-top:100px;
+    }
+  }
 
   /* Ensure the projects section clears any floated elements */
   #projects {
     clear: both;
   }
 
-  .chatbot-container {
-    width: 100%; /* Full width on smaller screens */
-    padding: 10px; /* Adjusted padding on smaller screens */
-  }
 
-  .chatbot {
-    width: 200%; /* Slightly less than full width for some padding */
-  }
-  .response {
-    width: 200%;
-  }
-  .info-section {
-    display: flex;
-
-    padding: 20px;
-    /* Add enough top margin to create space between the sections */
-    margin-top:100px;
-  }
   
 }
 
