@@ -509,12 +509,10 @@ main {
   }
   .info-section {
     display: flex;
-    justify-content: right;
+
     padding: 20px;
     /* Add enough top margin to create space between the sections */
     margin-top:100px;
-    margin-right: -150px;
-    max-width: 100%;
   }
   
 }
