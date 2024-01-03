@@ -419,95 +419,62 @@ main {
 
 @media (max-width: 768px) {
 	header {
-		height: 4rem; /* Adjusted height */
-		padding-left: 1rem; /* Adjusted padding */
-	}
-	.interactive-image {
-		width: 5rem; /* Adjusted width */
-		height: 5rem; /* Adjusted height */
-		margin-top: 1rem; /* Adjusted margin */
-	}
-
-	#blog-links h2 {
-		white-space: nowrap; 
-		overflow: hidden;
-		text-overflow: ellipsis;
-		font-size: 1.5rem; /* Adjusted font size */
-		margin-left: 0;
-		padding-left: 0;
-		text-align: left;
-	}
-	#blog-links {
-		padding-left: 1rem; /* Adjusted padding */
-		padding-right: 1rem; /* Adjusted padding */
-	}
-
-	#blog-links img {
-		max-width: 100%;
-		height: auto;
-	}
-
-	#blog-links ul {
-	 	padding: 0;
-		margin: 0;
-	}
-
-	#blog-links ul li {
-		text-align: center;
-	  }
-
-	#blog-links ul li a {
-		display: inline-block;
-		font-size: 1rem; /* Adjusted font size */
-	}
-
-	
-    /* Target the list item that contains the 'Applying Dall-E' text */
-    #blog-links li {
-      /* Prevent the text from wrapping onto the next line */
-      white-space: nowrap;
-      text-align: left; /* Align to the left */
-      padding-left: 0; /* Adjust if there is any default padding */
-      margin-left: -100px; /* Adjust if there is any default margin */
-  
-      /* Center the list item text */
+        height: 4rem;
+        padding-left: 1rem;
     }
-    #blog-links li a {
-      /* Ensure the link doesn't break into multiple lines */
-      display: inline-block; /* This makes white-space: nowrap work */
-      font-size: /* Adjust the font size to ensure it fits on one line */;
+    .interactive-image {
+        width: 5rem;
+        height: 5rem;
+        margin-top: 1rem;
     }
-
-  
-  
-  
-
-  /* Stack the blog links and projects sections vertically on smaller screens */
-  #blog-links,
-  #projects {
-    width: 100%; /* Full width */
-    margin-top: 20px;
-    margin-left: 0;
-    margin-right: 0;
-    padding: 0 20px;
-  }
-  .chatbot-container,
-  .chatbot,
-  .response {
-    width: 100%; /* Full width */
-    padding: 10px;
-  }
-  
-  .info-section {
-    display: flex;
-    padding: 20px;
-    margin-top: 100px; /* Adjusted margin */
-  }
-
-  #projects {
-    clear: both;
-    margin-top: 0; /* Reset or adjust the margin */
-    margin-left: 0; /* Reset or adjust the margin */
-  }
+    #blog-links h2 {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        font-size: 1.5rem;
+        margin-left: 0;
+        padding-left: 0;
+        text-align: left;
+    }
+    #blog-links {
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+    #blog-links img {
+        max-width: 100%;
+        height: auto;
+    }
+    #blog-links ul {
+        padding: 0;
+        margin: 0;
+    }
+    #blog-links ul li {
+        text-align: center;
+    }
+    #blog-links ul li a {
+        display: inline-block;
+        font-size: 1rem;
+    }
+    #blog-links,
+    #projects {
+        width: 100%;
+        margin-top: 20px;
+        padding: 0 20px;
+    }
+    .chatbot-container,
+    .chatbot,
+    .response {
+        width: 100%;
+        padding: 10px;
+    }
+    .info-section {
+        padding: 20px;
+        margin-top: 100px;
+    }
+    #projects {
+        clear: both;
+        margin-top: 0;
+        margin-left: 0;
+    }
 }
 
