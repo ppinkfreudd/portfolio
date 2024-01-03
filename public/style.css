@@ -2,10 +2,20 @@
 	margin: 0;
 	padding: 0;
 	box-sizing: border-box;
+	border: 1px solid red;
 }
   
 html {
 	font-size: 100%; /* 16px */
+}
+
+html,body
+{
+    width: 100%;
+    height: 100%;
+    margin: 0px;
+    padding: 0px;
+    overflow-x: hidden; 
 }
 
 /* Layout containers */
@@ -162,12 +172,14 @@ p, .selected-works-section ul li {
 
 
 
+/* Adjusting the projects section to be more responsive */
 #projects {
-  margin-top: -545px;
-  width: auto;
-  margin-left: 700px;
-  width:50%;
-}
+	margin-top: -34.0625rem; /* Converted to rem */
+	margin-left: 750px; /* Center the content */
+	margin-right: auto; /* Center the content */
+	max-width: 50%; /* Use max-width for better control */
+	width: auto; /* Allows the table to scale down */
+  }
 
 #projects h2 {
   font-size: 1rem;
@@ -191,12 +203,12 @@ p, .selected-works-section ul li {
   text-decoration: underline;
 }
 
+/* Ensure the table does not cause overflow */
 #projects table {
-  width: 100%;
-  border-collapse: separate;
-  border-spacing: 0 15px;
-}
-
+	width: 100%; /* Adjust the table width to be within its container */
+	border-collapse: separate;
+	border-spacing: 0 0.9375rem; /* Converted to rem */
+  }
 #projects th, #projects td {
   text-align: left;
   padding: 8px;
@@ -328,10 +340,10 @@ body {
 }
 
 .blog-image {
-  width: 100px;
-  height: auto;
-  margin-left: 20px;
-}
+	max-width: 30%; /* allows the image to scale down */
+	height: auto;
+	margin-left: 6rem; /* example relative unit */
+  }
 
 #blog-links ul li .tooltip {
   display: block;

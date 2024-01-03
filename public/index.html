@@ -1,130 +1,134 @@
 <!DOCTYPE html>
 <html lang="en">
-   <head>
-      <meta charset="UTF-8">
-      <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <title>Rishit Das's Portfolio</title>
-      <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
-      <link rel="stylesheet" href="style.css">
-      <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
-      <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@400;700&display=swap" rel="stylesheet">
-      <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap" rel="stylesheet">
-      <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
-      <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@700&display=swap" rel="stylesheet">
-   </head>
-   <body>
-      <header>
-         <div class="interactive-image" id="interactiveImage">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rishit Das's Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <div class="interactive-image" id="interactiveImage">
             <img src="frame1.svg" alt="Running animation" id="animationFrame">
-         </div>
-         <div class="header-content">
+        </div>
+        
+        <div class="header-content">
             <div class="name-container">
-               <div class="name-and-icons">
-                  rishit das
-                  <a href="https://www.linkedin.com/in/rishitdas/" target="_blank"><i class="fab fa-linkedin"></i></a>
-                  <a href="mailto:rdas@ucdavis.edu"><i class="fas fa-envelope"></i></a>
-               </div>
-               <p class="summary">Hello! I'm Rishit, a Cognitive Science student and aspiring researcher. <br> I'm passionate about uniting human cognition with technology. <br> Based in Davis, CA. From 🇮🇳, lived in 🇦🇺, 🇭🇰, and 🇦🇪.</p>
+                <div class="name-and-icons">
+                    rishit das
+                    <a href="https://www.linkedin.com/in/rishitdas/" target="_blank"><i class="fab fa-linkedin"></i></a>
+                    <a href="mailto:rdas@ucdavis.edu"><i class="fas fa-envelope"></i></a>
+                </div>
+                <p class="summary">Hello! I'm Rishit, a Cognitive Science student and aspiring researcher. <br> I'm passionate about uniting human cognition with technology. <br> Based in Davis, CA. From 🇮🇳, lived in 🇦🇺, 🇭🇰, and 🇦🇪.</p>
             </div>
             <nav>
-               <ul>
-                  <li><a href="index.html">Home</a></li>
-                  <li><a href="info.html">Info</a></li>
-                  <li><a href="blogs.html">Blog</a></li>
-                  <!--<li><a href="misc.html">Misc</a></li>-->
-               </ul>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="info.html">Info</a></li>
+                    <li><a href="blogs.html">Blog</a></li>
+                    <!--<li><a href="misc.html">Misc</a></li>-->
+                </ul>
             </nav>
-         </div>
-      </header>
-      <main>
-         <div class="content-wrapper">
-            <section id="blog-links">
-               <h2>Blog Posts</h2>
-               <ul>
-                  <li>
-                     <a href="blogs.html">Applying Dall-E</a>
-                     <span class="tooltip">How to interweave Dall-E into your workflow</span>
-                     <br>
-                     <br>
-                     <img src="painting_blog.gif" alt="Description of GIF" style="width: 400px; height: auto; margin-left: 100px">
-                  </li>
-                  <!-- More blog links can be added here -->
-               </ul>
-            </section>
-            <script>
-               let currentFrame = 1;
-               const totalFrames = 3;
-               let animationInterval;
-               
-               const interactiveImage = document.getElementById('interactiveImage');
-               const animationFrame = document.getElementById('animationFrame');
-               
-               interactiveImage.addEventListener('mouseenter', function() {
-                   animationInterval = setInterval(function() {
-                       animationFrame.src = `frame${currentFrame}.svg`;
-                       currentFrame = currentFrame < totalFrames ? currentFrame + 1 : 1;
-                   }, 150);
-               });
-               
-               interactiveImage.addEventListener('mouseleave', function() {
-                   clearInterval(animationInterval);
-               });
-            </script>
-            <section id="projects">
-               <h2>Experience</h2>
-               <table>
-                  <tr>
-                     <th>Year</th>
-                     <th>Project Name</th>
-                     <th>Tools</th>
-                  </tr>
-                  <!-- Repeat the following block for each project -->
-                  <tr>
-                     <td>2023</td>
-                     <td><a href="https://github.com/nmaffly/rhythmoji" target="_blank">Rhythmoji</a></td>
-                     <td>[CS][Spotipy API][Python]</td>
-                  </tr>
-                  <tr>
-                     <td>2023</td>
-                     <td><a href="https://www.nrture.ai/" target ="_blank">nrture</a></td>
-                     <td>[HTML][CSS][React][Ruby][Looker API]</td>
-                  </tr>
-                  <tr>
-                     <td>2021-2022</td>
-                     <td>Neural Correlates of Schizophrenia</td>
-                     <td>[Python][R][FreeSurfer]</td>
-                  </tr>
-                  <tr>
-                     <td>2023</td>
-                     <td><a href="https://comco2021.uni-osnabrueck.de/#call-for-abstracts" target="_blank">Modelling Happiness using Markov Chains</a><br><a href = "https://comco2021.uni-osnabrueck.de/abstracts/day2_poster_das" target = "_blank">[Abstract]</a> </td>
-                     <td>[Python][NLTK][Applied Math]</td>
-                  </tr>
-                  <tr>
-                     <td>2020</td>
-                     <td><a href="https://eagle.sbs.arizona.edu/sc/abs_report_bysession.php?p=C" target="_blank">The Relationship Between Subliminal Stimuli and Emotion </a><br> <a href = "https://docs.google.com/presentation/d/1655vKhDV8q9rW7lUARALkM5B4Pt4qRkn/edit?usp=sharing&ouid=110984532206922745519&rtpof=true&sd=true" target = "_blank">[Presentation]</a></td>
-                     <td>[Eye-tracking][NLTK]</td>
-                  </tr>
-                  <tr>
-                     <td>2019-2022</td>
-                     <td><a href="https://www.kogiito.org/" target="_blank">Kogiito</a></td>
-                     <td>[HTML][CSS][React][Figma]</td>
-                  </tr>
-                  <!-- ... -->
-               </table>
-               <div class="chatbot-container">
-                  <form class="chatbot">
-                     <h2>Rishit's ResumeBot</h2>
-                     <label for="question">Question?</label>
-                     <input type="text" name="question" id="question" placeholder="Type your question here...">
-                     <button type="submit">Generate Response</button>
-                  </form>
-               </div>
-               <div class="response">
-                  <p></p>
-               </div>
-            </section>
-         </div>
-      </main>
-      <script type: "module" src="index.js"></script>
-   </body>
+            
+        </div>
+    </header>
+    <main>
+        <div class="content-wrapper">
+        <section id="blog-links">
+            <h2>Blog Posts</h2>
+            <ul>
+                <li>
+                    <a href="blogs.html">Applying Dall-E</a>
+                    <span class="tooltip">How to interweave Dall-E into your workflow</span>
+                    <br>
+                    <br>
+                    <img src="painting_blog.gif" alt="Description of GIF" class="blog-image">
+                </li>
+                <!-- More blog links can be added here -->
+            </ul>
+        </section>
+
+    <script>
+        let currentFrame = 1;
+        const totalFrames = 3;
+        let animationInterval;
+      
+        const interactiveImage = document.getElementById('interactiveImage');
+        const animationFrame = document.getElementById('animationFrame');
+      
+        interactiveImage.addEventListener('mouseenter', function() {
+            animationInterval = setInterval(function() {
+                animationFrame.src = `frame${currentFrame}.svg`;
+                currentFrame = currentFrame < totalFrames ? currentFrame + 1 : 1;
+            }, 150);
+        });
+      
+        interactiveImage.addEventListener('mouseleave', function() {
+            clearInterval(animationInterval);
+        });
+    </script>
+
+  <section id="projects">
+    <h2>Experience</h2>
+    <table>
+        <tr>
+            <th>Year</th>
+            <th>Project Name</th>
+            <th>Tools</th>
+        </tr>
+        <!-- Repeat the following block for each project -->
+        <tr>
+            <td>2023</td>
+            <td><a href="https://github.com/nmaffly/rhythmoji" target="_blank">Rhythmoji</a></td>
+            <td>[CS][Spotipy API][Python]</td>
+        </tr>
+        <tr>
+            <td>2023</td>
+            <td><a href="https://www.nrture.ai/" target ="_blank">nrture</a></td>
+            <td>[HTML][CSS][React][Ruby][Looker API]</td>
+        </tr>
+        <tr>
+            <td>2021-2022</td>
+            <td>Neural Correlates of Schizophrenia</td>
+            <td>[Python][R][FreeSurfer]</td>
+        </tr>
+        <tr>
+            <td>2023</td>
+            <td><a href="https://comco2021.uni-osnabrueck.de/#call-for-abstracts" target="_blank">Modelling Happiness using Markov Chains</a><br><a href = "https://comco2021.uni-osnabrueck.de/abstracts/day2_poster_das" target = "_blank">[Abstract]</a> </td>
+            <td>[Python][NLTK][Applied Math]</td>
+        </tr>
+        <tr>
+            <td>2020</td>
+            <td><a href="https://eagle.sbs.arizona.edu/sc/abs_report_bysession.php?p=C" target="_blank">The Relationship Between Subliminal Stimuli and Emotion </a><br> <a href = "https://docs.google.com/presentation/d/1655vKhDV8q9rW7lUARALkM5B4Pt4qRkn/edit?usp=sharing&ouid=110984532206922745519&rtpof=true&sd=true" target = "_blank">[Presentation]</a></td>
+            <td>[Eye-tracking][NLTK]</td>
+        </tr>
+        <tr>
+            <td>2019-2022</td>
+            <td><a href="https://www.kogiito.org/" target="_blank">Kogiito</a></td>
+            <td>[HTML][CSS][React][Figma]</td>
+        </tr>
+        <!-- ... -->
+    </table>
+    <div class="chatbot-container">
+        <form class="chatbot">
+            <h2>Rishit's ResumeBot</h2>
+            <label for="question">Question?</label>
+            <input type="text" name="question" id="question" placeholder="Type your question here...">
+            <button type="submit">Generate Response</button>
+        </form>
+    </div>
+        
+    <div class="response"><p></p></div>
+</section>
+</div>
+</main>
+    <script type: "module" src="index.js"></script>
+</body>
 </html>
+
