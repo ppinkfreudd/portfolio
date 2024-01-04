@@ -250,11 +250,11 @@ p, .selected-works-section ul li {
 }
 
 .info-photo {
-  max-width: 100%;
+  max-width: 70%;
   height: auto;
   border-radius: 8px;
   margin-top: 20px;
-  margin-left:200px;
+  margin-left:150px;
 }
 
 .info-details {
@@ -299,8 +299,9 @@ body {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  padding-left: 20px;
+  padding-left: 0;
   width: 100%;
+  margin-left:0;
 }
 
 #blog-links h2 {
@@ -309,13 +310,13 @@ body {
   margin-bottom: 15px;
   text-align: center;
   margin-top:250px;
-  margin-left: 165px;
+  margin-left: 3rem;
 }
 
 #blog-links ul {
   list-style: none;
   padding: 0;
-  margin-left: 57px;
+  margin-left: 3 rem;
 }
 
 #blog-links ul li {
@@ -327,7 +328,7 @@ body {
 
 #blog-links ul li a {
   color: #000000;
-  margin-left: 105px;
+  margin-left: 3rem;
   text-decoration: none;
   transition: color 0.3s ease;
 }
@@ -340,38 +341,15 @@ body {
 .blog-image {
 	max-width: 30%; /* allows the image to scale down */
 	height: auto;
-	margin-left: 6rem; /* example relative unit */
+	margin-left: 3rem; /* example relative unit */
   }
-
-#blog-links ul li .tooltip {
-  display: block;
-  position: absolute;
-  left: 110%;
-  top: 50%;
-  transform: translateY(-50%);
-  background-color: #fff;
-  color: #333;
-  padding: 5px 10px;
-  border-radius: 5px;
-  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
-  font-size: 0.8rem;
-  z-index: 10;
-  visibility: hidden;
-  opacity: 0;
-  transition: visibility 0s, opacity 0.5s linear;
-}
-
-#blog-links ul li:hover .tooltip {
-  visibility: visible;
-  opacity: 1;
-}
 
 /* Chatbot Container Styles */
 .chatbot-container {
   max-width: 100%;
-  margin: 0 auto;
-  padding: 20px;
+  margin: 0 ;
   text-align: center; /* Center-align the contents */
+  justify-content: center;
 }
 
 /* Chatbot Form Styles */
@@ -379,6 +357,7 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center; /* Center-align the flex items */
+  text-align: center;
 }
 
 .chatbot h2 {
@@ -429,6 +408,25 @@ main {
 
 @media (max-width: 768px) {
 
+    .interactive-image {
+        width: 6rem;
+        height: 5rem;
+        margin-bottom: -50px;
+	}
+
+	.summary {
+		font-size: 0.8rem;
+		margin-top: 0px;
+		color: #666;
+		font-family: 'Lato', sans-serif;
+	}
+
+	.blog-image {
+		width: 70%; /* allows the image to scale down */
+		height: auto;
+		margin-left: 0rem; /* example relative unit */
+	  }
+
 	html,body
 	{
 		width: 100%;
@@ -454,6 +452,8 @@ main {
         margin-left: 0;
         padding-left: 0;
         text-align: left;
+		margin-right:5000px;
+		margin-top: 150px;
     }
     #blog-links {
         padding-left: 1rem;
@@ -470,30 +470,59 @@ main {
     #blog-links ul li {
         text-align: center;
     }
-    #blog-links ul li a {
-        display: inline-block;
-        font-size: 1rem;
-    }
+	#blog-links ul li a {
+		color: #000000;
+		margin-left: 0rem;
+		text-decoration: none;
+		transition: color 0.3s ease;
+	  }
     #blog-links,
     #projects {
         width: 100%;
         margin-top: 20px;
         padding: 0 20px;
     }
-    .chatbot-container,
-    .chatbot,
-    .response {
-        width: 200%;
-        padding: 10px;
+
+	#projects {
+        width: 20%;
+		font-size: 8.5px;
+        margin-top: 20px;
+        padding: 0 20px;
     }
+
+    .chatbot-container,
+    .chatbot {
+        width: 200%;
+		display: flex;
+		text-align: center;
+		margin-left: 5rem;
+        justify-content: center;
+    }
+	.response {
+		margin-left: 7rem;
+	}
+	.intro-text {
+		margin-right: 50px;
+	}
     .info-section {
         padding: 20px;
-        margin-top: 100px;
+        margin-top: 20px;
+		margin-left: 50px;
+		font-size: 12px;
     }
     #projects {
         clear: both;
         margin-top: 0;
         margin-left: 0;
     }
+
+	.info-photo {
+		max-width: 70%;
+		height: auto;
+		border-radius: 8px;
+		margin-top: 20px;
+		margin-left:130px;
+	}
 }
+
 
