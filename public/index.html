@@ -12,6 +12,56 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@700&display=swap" rel="stylesheet">
 </head>
+<style>
+    .message {
+        padding: 10px;
+        margin: 5px 0;
+        border-radius: 10px;
+        background-color: #328920; 
+        color: white;
+        display: flex;
+        max-width: 80%;
+        word-wrap: break-word;
+    }
+    
+    .user-message {
+        padding: 10px;
+        margin: 5px 0;
+        border-radius: 10px;
+        max-width: 40%;
+        display: flex;
+        justify-content: flex-end; 
+        order: 1; 
+        word-wrap: break-word;
+        display: none;
+    }
+
+    .profile-photo {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-right: 10px; /* Adjust spacing as needed */
+    order: 2;
+    }
+    
+    .ai-container {
+        display: flex;
+        align-items: center;
+        justify-content: flex-end; 
+    }
+
+    .chat-message {
+        font-size: 0.7em; 
+        display: flex;
+        flex-direction: row-reverse; 
+    }
+
+    .chat-message.ai-message {
+    justify-content: flex-end; 
+    flex-direction: row; 
+    }
+</style>
+
 <body>
     <header>
         <div class="interactive-image" id="interactiveImage">
@@ -31,7 +81,7 @@
                 <ul>
                     <li><a href="index.html">Home</a></li>
                     <li><a href="info.html">Info</a></li>
-                    <li><a href="blogs.html">Blog</a></li>
+                    <!--<li><a href="blogs.html">Blog</a></li>-->
                     <!--<li><a href="misc.html">Misc</a></li>-->
                 </ul>
             </nav>
@@ -41,15 +91,15 @@
     <main>
         <div class="content-wrapper">
         <section id="blog-links">
-            <h2>Blog Posts</h2>
+            <h2>Blog</h2>
             <ul>
                 <li>
-                    <a href="blogs.html">Applying Dall-E</a>
                     <br>
+                    <a>(in the works)</a>
+                    <a></a>
                     <br>
                     <img src="painting_blog.gif" alt="Description of GIF" class="blog-image">
                 </li>
-                <!-- More blog links can be added here -->
             </ul>
         </section>
 
@@ -75,13 +125,13 @@
 
   <section id="projects">
     <h2>Experience</h2>
+    <p>Ask my resume bot below about any of these to learn more!</p>
     <table>
         <tr>
             <th>Year</th>
             <th>Project Name</th>
             <th>Tools</th>
         </tr>
-        <!-- Repeat the following block for each project -->
         <tr>
             <td>2023</td>
             <td><a href="https://github.com/nmaffly/rhythmoji" target="_blank">Rhythmoji</a></td>
@@ -112,22 +162,90 @@
             <td><a href="https://www.kogiito.org/" target="_blank">Kogiito</a></td>
             <td>[HTML][CSS][React][Figma]</td>
         </tr>
-        <!-- ... -->
+
     </table>
+    <h2>ResumeBot</h2>
     <div class="chatbot-container">
+        <div class="chat-history" id="chatHistory">
+            <div class="chat-message ai-message">
+                <div class="ai-container">
+                    <img src="profile-photo.gif" alt="AI Profile" class="profile-photo">
+                    <div class="message">Hi! How can I help you?</div>
+                </div>
+            </div>
+        </div>
         <form class="chatbot">
-            <h2>Rishit's ResumeBot</h2>
-            <label for="question">Question?</label>
-            <input type="text" name="question" id="question" placeholder="Type your question here...">
-            <button type="submit">Generate Response</button>
+            <label for="question">Your Question:</label>
+            <input type="text" name="question" id="question" placeholder="Type here..." autocomplete="off">
+            <button type="submit">Ask</button>
         </form>
     </div>
         
-    <div class="response"><p></p></div>
 </section>
 </div>
 </main>
     <script type: "module" src="index.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', (event) => {
+            const responseForm = document.querySelector('.chatbot');
+            const chatHistory = document.getElementById('chatHistory');
+            const questionInput = document.getElementById('question');
+        
+            responseForm.addEventListener('submit', async (e) => {
+                e.preventDefault();
+                const questionText = questionInput.value;
+                if (questionText.trim() !== '') {
+                    appendMessage(questionText, 'user');
+                    try {
+                        const res = await fetch('/openai/response', {
+                            headers: {'Content-Type': 'application/json'},
+                            method: 'POST',
+                            body: JSON.stringify({ question: questionText })
+                        });
+                        const data = await res.json();
+                        if (data && data.response) {
+                            appendMessage(data.response, 'ai');
+                        } else {
+                            console.error("Unexpected response structure:", data);
+                            appendMessage("There was an error processing your request.", 'ai');
+                        }
+                    } catch (error) {
+                        console.error("Failed to fetch response:", error);
+                        appendMessage("Failed to send question. Please try again.", 'ai');
+                    }
+                    questionInput.value = ''; // Clear the input field after sending the question
+                }
+            });
+        
+            function appendMessage(message, sender) {
+                const messageDiv = document.createElement('div');
+                const textDiv = document.createElement('div');
+        
+                messageDiv.classList.add('chat-message', sender + '-message');
+        
+                if (sender === 'ai') {
+                    const containerDiv = document.createElement('div');
+                    const img = document.createElement('img');
+                    
+                    containerDiv.classList.add('ai-container');
+                    img.src = 'profile-photo.gif'; 
+                    img.alt = 'AI Profile';
+                    img.classList.add('profile-photo');
+                    containerDiv.appendChild(img);
+                    containerDiv.appendChild(textDiv);
+                    messageDiv.appendChild(containerDiv);
+                } else {
+                    messageDiv.appendChild(textDiv);
+                }
+        
+                textDiv.classList.add('message');
+                textDiv.textContent = message;
+                
+                //chatHistory.appendChild(messageDiv);
+                chatHistory.scrollTop = chatHistory.scrollHeight; // Scroll to the bottom of the chat history
+            }
+        });
+        </script>
 </body>
 </html>
 

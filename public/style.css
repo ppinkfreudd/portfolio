@@ -344,59 +344,67 @@ body {
 	margin-left: 3rem; /* example relative unit */
   }
 
-/* Chatbot Container Styles */
+
+
+/* Chatbot styles */
 .chatbot-container {
-  max-width: 100%;
-  margin: 0 ;
-  text-align: center; /* Center-align the contents */
-  justify-content: center;
+  background-color: #f4f7f6;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16);
+  padding: 20px;
+  width: calc(100% - 40px); /* Consider padding in width */
+  max-width: 600px;
+  margin: 20px auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
-/* Chatbot Form Styles */
+.chat-history {
+  border: 1px solid #e0e0e0;
+  height: 300px;
+  overflow-y: auto;
+  background-color: #fff;
+  border-radius: 8px;
+  padding: 10px;
+  margin-bottom: 20px;
+}
+
 .chatbot {
   display: flex;
   flex-direction: column;
-  align-items: center; /* Center-align the flex items */
-  text-align: center;
-}
-
-.chatbot h2 {
-  margin-bottom: 1rem; /* Space below the heading */
+  gap: 10px;
 }
 
 .chatbot label {
-  margin-bottom: 0.5rem; /* Space below the label */
-}
-
-.response {
-  border: 2px solid #990000; /* Border style and color */
-  width: 100%;
-  padding: 10px; /* Padding inside the box */
-  margin-top: 20px; /* Adjust the top margin for spacing */
-  background-color: #fff; /* Background color of the box */
-  border-radius: 8px; /* Rounded corners */
-  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2); /* Add a subtle shadow */
+  font-size: 1rem; /* More suitable for readability */
 }
 
 .chatbot input[type="text"] {
-  width: 100%; /* Full width of the container */
-  padding: 0.5rem; /* Padding inside the text box */
-  margin-bottom: 0.5rem; /* Space below the input field */
-  font-size: 1rem; /* A readable font size */
-  border: 2px solid #000; /* Border for the input */
-  border-radius: 0.25rem; /* Slightly rounded corners */
+  flex-grow: 1;
+  margin-bottom: 10px; /* Spacing between input and button */
+  padding: 10px;
+  font-size: 1rem; /* More suitable for readability */
+  border: 1px solid #ccc;
+  border-radius: 4px;
 }
 
 .chatbot button {
-  width: 100%; /* Full width of the container */
-  padding: 0.5rem; /* Padding inside the button */
-  font-size: 1rem; /* Matching font size with the input field */
-  color: white; /* Text color for the button */
-  background-color: #990000; /* Background color for the button */
-  border: none; /* No border for the button */
-  border-radius: 0.25rem; /* Slightly rounded corners */
-  cursor: pointer; /* Pointer cursor on hover */
+  padding: 10px;
+  font-size: 1rem; /* More suitable for readability */
+  color: white;
+  background-color: #990000;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
 }
+
+.chatbot button:hover {
+  background-color: #cc0000;
+}
+
+
+
 main {
   position: relative;
   padding-bottom: 100px;
@@ -490,14 +498,6 @@ main {
         padding: 0 20px;
     }
 
-    .chatbot-container,
-    .chatbot {
-        width: 200%;
-		display: flex;
-		text-align: center;
-		margin-left: 5rem;
-        justify-content: center;
-    }
 	.response {
 		margin-left: 7rem;
 	}
@@ -523,6 +523,12 @@ main {
 		margin-top: 20px;
 		margin-left:130px;
 	}
+  .chatbot-container {
+    width: 300%; /* Adapt width to screen size minus padding */
+    padding: 10px; /* Adjust padding for smaller screens */
+}
+
+
 }
 
 

@@ -1,37 +1,57 @@
 document.addEventListener('DOMContentLoaded', (event) => {
-    // forms
-    const responseForm = document.querySelector('.chatbot'); // Targeting form with class 'chatbot'
+    const responseForm = document.querySelector('.chatbot');
+    const chatHistory = document.getElementById('chatHistory');
 
-    // output elements
-    const responseOutput = document.querySelector('.response'); // Targeting the 'response' class div
-
-    // description and tags
     responseForm.addEventListener('submit', async (e) => {
         e.preventDefault();
+        const questionText = responseForm.question.value;
+        appendMessage(questionText, 'user');
 
         try {
             const res = await fetch('/openai/response', {
                 headers: {'Content-Type': 'application/json'},
                 method: 'POST',
-                body: JSON.stringify({ question: responseForm.question.value }) // Assuming 'question' is the field to be sent
+                body: JSON.stringify({ question: questionText })
             });
             const data = await res.json();
 
-            console.log(data);
-
-            // Update responseOutput with the formatted response from your data
             if (data && data.response) {
-                // Replace newlines with HTML line breaks for display
-                const formattedResponse = data.response.replace(/\n/g, '<br>');
-                responseOutput.innerHTML = formattedResponse; // Use innerHTML to parse the HTML tags
+                appendMessage(data.response, 'ai');
             } else {
-                // Handle cases where the expected content isn't present
                 console.error("Unexpected response structure:", data);
-                responseOutput.innerHTML = "There was an error processing your request.";
+                appendMessage("There was an error processing your request.", 'ai');
             }
         } catch (error) {
             console.error("Failed to fetch response:", error);
-            responseOutput.innerHTML = "Failed to send question. Please try again.";
+            appendMessage("Failed to send question. Please try again.", 'ai');
         }
+
+        responseForm.question.value = '';
     });
+
+    function appendMessage(message, sender) {
+        const messageDiv = document.createElement('div');
+        const containerDiv = document.createElement('div');
+        const img = document.createElement('img');
+        const textDiv = document.createElement('div');
+
+        containerDiv.classList.add(sender + '-container');
+        messageDiv.classList.add('chat-message', sender + '-message');
+        
+        if (sender === 'ai') {
+            img.src = 'profile-photo.gif'; 
+            img.alt = 'AI Profile';
+            img.classList.add('profile-photo');
+            containerDiv.appendChild(img);
+        }
+
+        textDiv.classList.add('message');
+        textDiv.textContent = message;
+        
+        containerDiv.appendChild(textDiv);
+        messageDiv.appendChild(containerDiv);
+        
+        chatHistory.appendChild(messageDiv);
+        chatHistory.scrollTop = chatHistory.scrollHeight;
+    }
 });
