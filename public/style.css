@@ -362,7 +362,7 @@ body {
 
 .chat-history {
   border: 1px solid #e0e0e0;
-  height: 300px;
+  height: 200px;
   overflow-y: auto;
   background-color: #fff;
   border-radius: 8px;
@@ -416,6 +416,11 @@ main {
 
 @media (max-width: 768px) {
 
+  .chatbot-container {
+    width: 100%; /* Adapt width to screen size */
+    padding: 5px; /* Adjust padding for smaller screens */
+}
+
     .interactive-image {
         width: 6rem;
         height: 5rem;
@@ -461,7 +466,6 @@ main {
         padding-left: 0;
         text-align: left;
 		margin-right:5000px;
-		margin-top: 150px;
     }
     #blog-links {
         padding-left: 1rem;
@@ -492,8 +496,8 @@ main {
     }
 
 	#projects {
-        width: 20%;
-		font-size: 8.5px;
+        width: 100%;
+		    font-size: 8.5px;
         margin-top: 20px;
         padding: 0 20px;
     }
@@ -523,12 +527,6 @@ main {
 		margin-top: 20px;
 		margin-left:130px;
 	}
-  .chatbot-container {
-    width: 300%; /* Adapt width to screen size minus padding */
-    padding: 10px; /* Adjust padding for smaller screens */
-}
-
 
 }
-
 

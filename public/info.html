@@ -11,6 +11,47 @@
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@700&display=swap" rel="stylesheet">
+    <style>
+        /* Add your CSS here */
+        .info-section {
+            position: absolute;
+            margin-left: 50px;
+            width: 100%;
+            bottom: 1400px;
+        }
+
+        .info-description {
+            position: absolute;
+            left: 400px;
+            transform: scale(0.9);
+        }
+
+        .info-photo {
+            transform: scale(0.5);
+            margin-top: -100px;
+        }
+
+        @media (max-width: 768px) {
+            .info-section {
+                position: static;
+                margin: 0;
+                width: auto;
+                bottom: auto;
+                margin-left:-200px;
+            }
+
+            .info-description {
+                position: static;
+                left: auto;
+                transform: scale(1);
+            }
+
+            .info-photo {
+                transform: scale(1);
+                margin-top: 50px;
+            }
+        }
+    </style>
 </head>
 <body>
     <header>
@@ -52,47 +93,43 @@
             </ul>
         </section>
 
-    <div class="info-section">
-        <div class="info-content">
-            <div class="info-description">
-                <p class="intro-text">
-                    <b>
-                        <p class="intro-text">
-                            <b>
-                                Hi! <br><br> I delved into the intersection of human cognition and technology during my studies at Stanford Online High School in a class on the philosophy and history of science in Grade 10. <br><br> Currently, I'm working how memory works in VR, a few AI projects that you can see on the right, and pursuing my degree in CogSci. <br><br> My diverse upbringing in Delhi, Hong Kong, Abu Dhabi, and Melbourne fuels my drive to blend multicultural insights into innovative product development.                            </b>
-                        </p>
-                        
-                    </b>
-                </p>
-                <img src="Rishit Das.png" alt="Rishit Das" class="info-photo">
-            </div>
-            <div class="info-details">
-                <div class="column">
-                    <h3><span class="highlight">Education</span></h3>
-                    <p> <b> University of California, Davis</b> <br> 09.22-Present <br> B.S. Computational Cognitive Science <br> B.S. Applied Statistics <br> Full Courselist</p>
-                    <p> <b>Stanford Online High School</b> <br> 09.18-06.22 <br> Took post-AP Math, Neuroscience, & English coursework. <br> Full Courselist</p>
-                    <h3><span class="highlight">Experience</span></h3>
-                    <p><b>Integrated Attention Lab <br> Research Assistant </b></p>
-                    <p> - Working in a VR and memory research team. Using NumPy, Pandas, Seaborn, & Matplotlib. Running weekly VR experiments.</p>
-                    <p><b>nrture<br> Intern </b></p>
-                    <p> - Full-stack intern at a travel tech startup. Designed frontend UI for an AI Chatbot and handled SSO for Google Looker Dashboards. </p>
-                    <p><b>Kogiito <br> Founder </b></p>
-                    <p> - Created a website that allowed 150+ high-schoolers worldwide to do brain-science research. Presented at gloabl cognitive science conferences </p>
-                </div>
-                <div class="column">
-                    <h3><span class="highlight">Awards</span></h3> 
-                    <p> - Amy Lee Memorial Essay Prize for my essay "The Decomposition of the Narratological Framework in Pedro Páramo" <br> - Finalist in EBSA Spring Quarter '23 Case Competition with River City Bank</p>
-                    <h3><span class="highlight">Projects</span></h3>
-                    <p> - Rhythmoji: an avatar based on your Spotify listening <br> - Data Analysis on Neural Correlates of Schizophrenia <br> - The Relationship Between Subliminal Stimuli and Emotion <br> - A Kantian Model of Happiness</p>
-                    <h3><span class="highlight">Expertise</span></h3>
-                    <p> Fluent in: Python, C++, C, Java, HTML/CSS, Node.js, Flask, Docker, AWS</p>
-                    <p> Kinda understand: R, Ruby</p>
-                    <p> Languages: English, Hindi, and Arabic</p>
-                
+        <div class="info-section">
+            <div class="info-content">
+                <div class="info-description">
+                    <p class="intro-text">
+                        <b>
+                            Hi! <br><br> Currently, I'm working on how memory works in VR, a few AI projects that you can see on the right, and pursuing my degree in CogSci. <br><br> My diverse upbringing in Delhi, Hong Kong, Abu Dhabi, and Melbourne fuels my drive to blend multicultural insights into innovative product development.
+                        </b>
+                    </p>
+                    <img src="Rishit Das.png" alt="Rishit Das" class="info-photo">
                 </div>
             </div>
         </div>
-    </div>
+
+        <div class="info-details" style="margin-top: 50px;">
+            <div class="column">
+                <h3><span class="highlight">Education</span></h3>
+                <p> <b> University of California, Davis</b> <br> 09.22-Present <br> B.S. Computational Cognitive Science <br> Graduation: 06/26 | GPA: 3.6 <br> Full Courselist</p>
+                <p> <b>Stanford Online High School</b> <br> 09.18-06.22 <br> Took post-AP Math, Neuroscience, & English coursework. <br> Full Courselist</p>
+                <h3><span class="highlight">Experience</span></h3>
+                <p><b>Aggie Sports Analytics Club<br>Project Member</b> <br>Developed GARDE, a fencing AI coach. Led the creation of 'Fencer Page' for real-time feedback.</p>
+                <p><b>Integrated Attention VR Lab<br>Research Assistant</b> <br>Developed data pipeline for VR studies. Will conduct VR experiments focusing on ADHD.</p>
+                <p><b>Wavelength<br>Tech Lead</b> <br>Developed a Spotify-based dating app. Overcame API user limits for larger events.</p>
+                <p><b>Kogiito <br> Founder </b></p>
+                <p> - Created a website that allowed 150+ high-schoolers worldwide to do brain-science research. Presented at global cognitive science conferences </p>
+            </div>
+            <div class="column">
+                <h3><span class="highlight">Awards</span></h3> 
+                <p> - Amy Lee Memorial Essay Prize for my essay "The Decomposition of the Narratological Framework in Pedro Páramo" <br> - Finalist in EBSA Spring Quarter '23 Case Competition with River City Bank</p>
+                <h3><span class="highlight">Projects</span></h3>
+                <p> - Rhythmoji: an avatar based on your Spotify listening <br> - Data Analysis on Neural Correlates of Schizophrenia <br> - The Relationship Between Subliminal Stimuli and Emotion <br> - A Kantian Model of Happiness</p>
+                <h3><span class="highlight">Expertise</span></h3>
+                <p> Fluent in: Python, C++, C, Java, HTML/CSS, Node.js, Flask, Docker, AWS</p>
+                <p> Kinda understand: R, Ruby</p>
+                <p> Languages: English, Hindi, and Arabic</p>
+            </div>
+        </div>
+    </main>
 
     <script>
         let currentFrame = 1;
@@ -116,8 +153,3 @@
 
 </body>
 </html>
-
-
-
-
-

@@ -11,63 +11,154 @@
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@700&display=swap" rel="stylesheet">
+    <script type="module" src="https://unpkg.com/@splinetool/viewer@1.7.7/build/spline-viewer.js"></script>
+    <style>
+
+#project-links {
+    margin-right:770px;
+    margin-top:100px;
+    margin-left:0px;
+}
+#project-links h2 {
+  color: #990000;
+  text-shadow: 0 0 10px rgba(255, 77, 77, 0.8);
+  margin-bottom: 15px;
+  text-align: center;
+  margin-top:60px;
+  margin-left: 0rem;
+}
+
+#project-links ul {
+  list-style: none;
+  padding: 0;
+  margin-left: 3 rem;
+}
+
+#project-links ul li {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-bottom: 20px;
+}
+
+#project-links ul li a {
+  color: #000000;
+  margin-left: 0rem;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+#project-links ul li a:hover {
+  color: #812121;
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+}
+        
+        .message {
+            padding: 10px;
+            margin: 5px 0;
+            border-radius: 10px;
+            background-color: #328920;
+            color: white;
+            display: flex;
+            max-width: 80%;
+            word-wrap: break-word;
+        }
+        .user-message {
+            padding: 10px;
+            margin: 5px 0;
+            border-radius: 10px;
+            max-width: 40%;
+            display: flex;
+            justify-content: flex-end;
+            order: 1;
+            word-wrap: break-word;
+        }
+        .profile-photo {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            margin-right: 10px;
+            order: 2;
+        }
+        .ai-container {
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+        }
+        .chat-message {
+            font-size: 0.7em;
+            display: flex;
+            flex-direction: row-reverse;
+        }
+        .chat-message.ai-message {
+            justify-content: flex-end;
+            flex-direction: row;
+        }
+        .spline-container {
+            display: flex;
+            flex-direction: row;
+            justify-content: flex-start;
+            align-items: left;
+            gap: 5px;
+            width: 100%;
+            margin-left: -100px;
+            margin-top:0px;
+        }
+        .spline-container spline-viewer {
+            width: 200px;
+            height: 300px;
+            margin-top: 70px;
+            padding: 0;
+            max-width: 200px;
+            margin-left:-50px
+
+        }
+        .content-wrapper {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        @media (max-width: 600px) {
+            .spline-container {
+                order: 1;
+                margin-bottom: 0px;
+                width: 100%;
+            }
+            .chatbot-container {
+                order: 4;
+                display: block;
+                width: 150%;
+                margin-top: 700px;
+            }
+            #projects {
+                order: 3;
+                margin-top: 0;
+                width: 100%;
+            }
+            #blog-links {
+                order: 2;
+                width: 100%;
+            }
+            #project-links {
+                margin-left:850px;
+            }
+            .spline-container spline-viewer {
+            width: 200px;
+            height: 300px;
+            margin-top: 70px;
+            padding: 0;
+            max-width: 200px;
+            margin-left:-50px;
+            align-items: center;
+        }
+        }
+    </style>
 </head>
-<style>
-    .message {
-        padding: 10px;
-        margin: 5px 0;
-        border-radius: 10px;
-        background-color: #328920; 
-        color: white;
-        display: flex;
-        max-width: 80%;
-        word-wrap: break-word;
-    }
-    
-    .user-message {
-        padding: 10px;
-        margin: 5px 0;
-        border-radius: 10px;
-        max-width: 40%;
-        display: flex;
-        justify-content: flex-end; 
-        order: 1; 
-        word-wrap: break-word;
-        display: none;
-    }
-
-    .profile-photo {
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    margin-right: 10px; /* Adjust spacing as needed */
-    order: 2;
-    }
-    
-    .ai-container {
-        display: flex;
-        align-items: center;
-        justify-content: flex-end; 
-    }
-
-    .chat-message {
-        font-size: 0.7em; 
-        display: flex;
-        flex-direction: row-reverse; 
-    }
-
-    .chat-message.ai-message {
-    justify-content: flex-end; 
-    flex-direction: row; 
-    }
-</style>
-
 <body>
     <header>
         <div class="interactive-image" id="interactiveImage">
             <img src="frame1.svg" alt="Running animation" id="animationFrame">
         </div>
-        
         <div class="header-content">
             <div class="name-container">
                 <div class="name-and-icons">
@@ -75,122 +166,67 @@
                     <a href="https://www.linkedin.com/in/rishitdas/" target="_blank"><i class="fab fa-linkedin"></i></a>
                     <a href="mailto:rdas@ucdavis.edu"><i class="fas fa-envelope"></i></a>
                 </div>
-                <p class="summary">Hello! I'm Rishit, a Cognitive Science student and aspiring researcher. <br> I'm passionate about uniting human cognition with technology. <br> Based in Davis, CA. From 🇮🇳, lived in 🇦🇺, 🇭🇰, and 🇦🇪.</p>
+                <p class="summary">Hey! I'm Rishit, a Cognitive Science student at the University of California, Davis.
+                    <br> I'm passionate about uniting human cognition with technology. <br> Based in Davis, CA. From
+                    🇮🇳, lived in 🇦🇺, 🇭🇰, and 🇦🇪.</p>
             </div>
             <nav>
                 <ul>
                     <li><a href="index.html">Home</a></li>
                     <li><a href="info.html">Info</a></li>
-                    <!--<li><a href="blogs.html">Blog</a></li>-->
-                    <!--<li><a href="misc.html">Misc</a></li>-->
                 </ul>
             </nav>
-            
         </div>
     </header>
     <main>
         <div class="content-wrapper">
-        <section id="blog-links">
-            <h2>Blog</h2>
-            <ul>
-                <li>
-                    <br>
-                    <a>(in the works)</a>
-                    <a></a>
-                    <br>
-                    <img src="painting_blog.gif" alt="Description of GIF" class="blog-image">
-                </li>
-            </ul>
-        </section>
-
-    <script>
-        let currentFrame = 1;
-        const totalFrames = 3;
-        let animationInterval;
-      
-        const interactiveImage = document.getElementById('interactiveImage');
-        const animationFrame = document.getElementById('animationFrame');
-      
-        interactiveImage.addEventListener('mouseenter', function() {
-            animationInterval = setInterval(function() {
-                animationFrame.src = `frame${currentFrame}.svg`;
-                currentFrame = currentFrame < totalFrames ? currentFrame + 1 : 1;
-            }, 150);
-        });
-      
-        interactiveImage.addEventListener('mouseleave', function() {
-            clearInterval(animationInterval);
-        });
-    </script>
-
-  <section id="projects">
-    <h2>Experience</h2>
-    <p>Ask my resume bot below about any of these to learn more!</p>
-    <table>
-        <tr>
-            <th>Year</th>
-            <th>Project Name</th>
-            <th>Tools</th>
-        </tr>
-        <tr>
-            <td>2023</td>
-            <td><a href="https://github.com/nmaffly/rhythmoji" target="_blank">Rhythmoji</a></td>
-            <td>[CS][Spotipy API][Python]</td>
-        </tr>
-        <tr>
-            <td>2023</td>
-            <td><a href="https://www.nrture.ai/" target ="_blank">nrture</a></td>
-            <td>[HTML][CSS][React][Ruby][Looker API]</td>
-        </tr>
-        <tr>
-            <td>2021-2022</td>
-            <td>Neural Correlates of Schizophrenia</td>
-            <td>[Python][R][FreeSurfer]</td>
-        </tr>
-        <tr>
-            <td>2023</td>
-            <td><a href="https://comco2021.uni-osnabrueck.de/#call-for-abstracts" target="_blank">Modelling Happiness using Markov Chains</a><br><a href = "https://comco2021.uni-osnabrueck.de/abstracts/day2_poster_das" target = "_blank">[Abstract]</a> </td>
-            <td>[Python][NLTK][Applied Math]</td>
-        </tr>
-        <tr>
-            <td>2020</td>
-            <td><a href="https://eagle.sbs.arizona.edu/sc/abs_report_bysession.php?p=C" target="_blank">The Relationship Between Subliminal Stimuli and Emotion </a><br> <a href = "https://docs.google.com/presentation/d/1655vKhDV8q9rW7lUARALkM5B4Pt4qRkn/edit?usp=sharing&ouid=110984532206922745519&rtpof=true&sd=true" target = "_blank">[Presentation]</a></td>
-            <td>[Eye-tracking][NLTK]</td>
-        </tr>
-        <tr>
-            <td>2019-2022</td>
-            <td><a href="https://www.kogiito.org/" target="_blank">Kogiito</a></td>
-            <td>[HTML][CSS][React][Figma]</td>
-        </tr>
-
-    </table>
-    <h2>ResumeBot</h2>
-    <div class="chatbot-container">
-        <div class="chat-history" id="chatHistory">
-            <div class="chat-message ai-message">
-                <div class="ai-container">
-                    <img src="profile-photo.gif" alt="AI Profile" class="profile-photo">
-                    <div class="message">Hi! How can I help you?</div>
-                </div>
+        <section id="project-links">
+            <div class="spline-container">
+                <h2>Projects</h2>
+                <spline-viewer url="https://prod.spline.design/E1JXv9nKf45SHVYa/scene.splinecode"></spline-viewer>
+                <br>
+                <spline-viewer url="https://prod.spline.design/xorsZVtT3SSyuK6m/scene.splinecode"></spline-viewer>
             </div>
+        </section>
+            <section id="blog-links" style="margin-top: -300px;">
+                <h2>Blog</h2>
+                <ul>
+                    <li>
+                        <br>
+                        <a>(in the works)</a>
+                        <a></a>
+                        <br>
+                        <img src="painting_blog.gif" alt="Description of GIF" class="blog-image">
+                    </li>
+                </ul>
+            </section>
+            <section id="projects" style="margin-top: -650px; width: 100%">
+                <div class="chatbot-container" style="margin-right: 100px">
+                    <h2>ResumeBot</h2>
+                    <div class="chat-history" id="chatHistory">
+                        <div class="chat-message ai-message">
+                            <div class="ai-container">
+                                <img src="profile-photo.gif" alt="AI Profile" class="profile-photo">
+                                <div class="message">Hi! How can I help you?</div>
+                            </div>
+                        </div>
+                    </div>
+                    <form class="chatbot">
+                        <label for="question">Your Question:</label>
+                        <input type="text" name="question" id="question" placeholder="Type here..." autocomplete="off">
+                        <button type="submit">Ask</button>
+                    </form>
+                </div>
+            </section>
         </div>
-        <form class="chatbot">
-            <label for="question">Your Question:</label>
-            <input type="text" name="question" id="question" placeholder="Type here..." autocomplete="off">
-            <button type="submit">Ask</button>
-        </form>
-    </div>
-        
-</section>
-</div>
-</main>
-    <script type: "module" src="index.js"></script>
+    </main>
+    <script type="module" src="index.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', (event) => {
             const responseForm = document.querySelector('.chatbot');
             const chatHistory = document.getElementById('chatHistory');
             const questionInput = document.getElementById('question');
-        
+
             responseForm.addEventListener('submit', async (e) => {
                 e.preventDefault();
                 const questionText = questionInput.value;
@@ -198,7 +234,7 @@
                     appendMessage(questionText, 'user');
                     try {
                         const res = await fetch('/openai/response', {
-                            headers: {'Content-Type': 'application/json'},
+                            headers: { 'Content-Type': 'application/json' },
                             method: 'POST',
                             body: JSON.stringify({ question: questionText })
                         });
@@ -216,19 +252,20 @@
                     questionInput.value = ''; // Clear the input field after sending the question
                 }
             });
-        
+
+
             function appendMessage(message, sender) {
                 const messageDiv = document.createElement('div');
                 const textDiv = document.createElement('div');
-        
+
                 messageDiv.classList.add('chat-message', sender + '-message');
-        
+
                 if (sender === 'ai') {
                     const containerDiv = document.createElement('div');
                     const img = document.createElement('img');
-                    
+
                     containerDiv.classList.add('ai-container');
-                    img.src = 'profile-photo.gif'; 
+                    img.src = 'profile-photo.gif';
                     img.alt = 'AI Profile';
                     img.classList.add('profile-photo');
                     containerDiv.appendChild(img);
@@ -237,15 +274,16 @@
                 } else {
                     messageDiv.appendChild(textDiv);
                 }
-        
+
                 textDiv.classList.add('message');
                 textDiv.textContent = message;
-                
-                //chatHistory.appendChild(messageDiv);
+
+                chatHistory.appendChild(messageDiv);
                 chatHistory.scrollTop = chatHistory.scrollHeight; // Scroll to the bottom of the chat history
             }
         });
-        </script>
-</body>
-</html>
+    </script>
 
+
+
+</html>
