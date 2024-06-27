@@ -110,7 +110,7 @@
             margin-top: 70px;
             padding: 0;
             max-width: 200px;
-            margin-left:-50px
+            margin-left:-50px;
 
         }
         .content-wrapper {
@@ -118,11 +118,12 @@
             flex-direction: column;
             align-items: center;
         }
-        @media (max-width: 600px) {
+        @media (max-width: 768px) {
             .spline-container {
                 order: 1;
                 margin-bottom: 0px;
                 width: 100%;
+                margin-right:650px;
             }
             .chatbot-container {
                 order: 4;
@@ -142,17 +143,32 @@
             #project-links {
                 margin-left:850px;
             }
+            
             .spline-container spline-viewer {
             width: 200px;
             height: 300px;
             margin-top: 70px;
             padding: 0;
-            max-width: 200px;
-            margin-left:-50px;
+            max-width: 300px;
             align-items: center;
+            margin-left:-150px;
+            margin-right:100px;
         }
+
+        #project-links h2 {
+            color: #990000;
+            text-shadow: 0 0 10px rgba(255, 77, 77, 0.8);
+            margin-bottom: 15px;
+            text-align: center;
+            margin-top:60px;
+            margin-left:52rem;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            text-align: left;
         }
-    </style>
+
+</style>
 </head>
 <body>
     <header>

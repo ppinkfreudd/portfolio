@@ -17,7 +17,7 @@
             position: absolute;
             margin-left: 50px;
             width: 100%;
-            bottom: 1400px;
+            bottom: 2100px;
         }
 
         .info-description {
@@ -50,6 +50,36 @@
                 transform: scale(1);
                 margin-top: 50px;
             }
+        }
+
+        /* New CSS for rounded rectangles */
+        .highlight-box {
+            display: inline-block;
+            padding: 5px 10px;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+        }
+
+        .blue-box {
+            background-color: lightblue;
+            color: blue;
+        }
+
+        .blue-box:hover {
+            background-color: darkblue;
+            color: white;
+        }
+
+        .green-box {
+            background-color: lightgreen;
+            color: green;
+        }
+
+        .green-box:hover {
+            background-color: darkgreen;
+            color: white;
         }
     </style>
 </head>
@@ -98,7 +128,7 @@
                 <div class="info-description">
                     <p class="intro-text">
                         <b>
-                            Hi! <br><br> Currently, I'm working on how memory works in VR, a few AI projects that you can see on the right, and pursuing my degree in CogSci. <br><br> My diverse upbringing in Delhi, Hong Kong, Abu Dhabi, and Melbourne fuels my drive to blend multicultural insights into innovative product development.
+                            Hi! <br><br> I'm Rishit. Below, you'll find some details about my work and experiences. My journey began in high school with a class that sparked my interest in the topic of consciousness. This passion led me to study and research Cognitive Science at UC Davis.<br><br>Currently, I'm an incoming junior focusing on how memory and navigation work in virtual reality. I'm also involved in various AI and computer vision projects.<br>Having lived in Delhi, Hong Kong, Abu Dhabi, and Melbourne, I am driven to create software that can be used by anyone, anywhere. My diverse background has also fostered a love for teamwork.<br><br>For any opportunities or questions, feel free to contact me: rdas@ucdavis.edu.
                         </b>
                     </p>
                     <img src="Rishit Das.png" alt="Rishit Das" class="info-photo">
@@ -109,27 +139,42 @@
         <div class="info-details" style="margin-top: 50px;">
             <div class="column">
                 <h3><span class="highlight">Education</span></h3>
-                <p> <b> University of California, Davis</b> <br> 09.22-Present <br> B.S. Computational Cognitive Science <br> Graduation: 06/26 | GPA: 3.6 <br> Full Courselist</p>
-                <p> <b>Stanford Online High School</b> <br> 09.18-06.22 <br> Took post-AP Math, Neuroscience, & English coursework. <br> Full Courselist</p>
+                <p><b>University of California, Davis</b><br>09.22-Present<br>B.S. Cognitive Science (Computer Science Track)<br>Graduation: 06/26 | GPA: 3.6<br> <span class="highlight-box blue-box">Transcript</span></p>
+                <p><b>Stanford Online High School</b><br>09.18-06.22<br><span class="highlight-box blue-box">Transcript</span></p>
+                
                 <h3><span class="highlight">Experience</span></h3>
-                <p><b>Aggie Sports Analytics Club<br>Project Member</b> <br>Developed GARDE, a fencing AI coach. Led the creation of 'Fencer Page' for real-time feedback.</p>
-                <p><b>Integrated Attention VR Lab<br>Research Assistant</b> <br>Developed data pipeline for VR studies. Will conduct VR experiments focusing on ADHD.</p>
-                <p><b>Wavelength<br>Tech Lead</b> <br>Developed a Spotify-based dating app. Overcame API user limits for larger events.</p>
-                <p><b>Kogiito <br> Founder </b></p>
-                <p> - Created a website that allowed 150+ high-schoolers worldwide to do brain-science research. Presented at global cognitive science conferences </p>
+                <p><b><a href = "https://aggiesportsanalytics.com/">Aggie Sports Analytics Club</a> \ 03.24-Present <br>Project Member</b><br>Developed GARDE, a fencing AI coach using TensorFlow's Blazepose 3D pose estimation model, React, Plotly.js, Next.js, TailwindCSS, MongoDB, Spline, and React-Speech-kit. Created the 'Fencer Page' for real-time feedback using joint angles, feet distance, and a pose estimation algorithm.</p>
+                <p><b><a href="https://genglab.ucdavis.edu/">Integrated Attention VR Lab</a> \ 09.23-Present<br>Research Assistant</b><br>Developed data pipeline using Pandas, Matplotlib, Seaborn, and NumPy for VR studies involving over 100 participants. Presented research at conferences and will conduct VR experiments focusing on ADHD in children this summer.</p>
+                <p><b><a href="https://thewavelengthapp.com/">Wavelength</a> \ 02.24-Present<br>Tech Lead</b><br>Developed a Spotify-based dating app using Flask, D3.js, Spotipy, MySQL, and HTML/CSS. Created an algorithm to overcome the 25-user limit for the Spotify API, facilitating an event with 50 participants. Won $5000 from the UC Davis Startup accelerator, PLASMA, through the Mentor's Choice Award.</p>
+                <p><b><a href="https://tretaillabs.com/service/nrture">nRture</a> \ 06.23-09.23<br>Intern</b><br>Developed Ruby SSO script for Google Looker API integration. Created comprehensive dashboards integrating an AI chatbot and 17 Looker Dashboards. Refined Jira system by authoring 200 detailed user story tickets based on user feedback.</p>
+                <p><b><a href="https://ebsadavis.com/">Economics and Business Student Association (EBSA)</a> \ 03.23 - 06.23 <br>Member</b><br>Finalist in the EBSA Spring Quarter '23 Case Competition. Conducted risk-analysis and mitigation strategies for River City Bank's portfolio expansion plan.</p>
+                <p><b>Kogiito \ 01.20-09.22 <br>Founder</b> <br>Created a website that allowed 150+ high-schoolers worldwide to conduct brain-science research. Presented at global cognitive science conferences. Onboarded 5 academic advisors and managed a 10-part workshop series for over 50 members.</p>
+                <p><b><a href="https://gdscucdavis.com/">UC Davis Google Developer Student Club</a><br>AggieAssist</b><br>Connected students with mental health support using AI. Created a holistic training dataset with over 150 lexical data points, resulting in a 35% increase in student satisfaction. Implemented a mental health chatbot using GoogleBERT and SimpleTransformers.</p>
+                <p><b>ESPR: European Summer Program on Rationality<br>Student</b><br>Participated in discussions on cognitive science and brain emulation with people like Anders Sandberg, as well as areas like making better predictions and recognizing cognitive biases. This is the EU version of <a href="https://www.sparc.camp/">SPARC.</a></p>
             </div>
             <div class="column">
-                <h3><span class="highlight">Awards</span></h3> 
-                <p> - Amy Lee Memorial Essay Prize for my essay "The Decomposition of the Narratological Framework in Pedro Páramo" <br> - Finalist in EBSA Spring Quarter '23 Case Competition with River City Bank</p>
+                <h3><span class="highlight">Honors</span></h3>
+                <p>- 2023: Amy Lee Memorial Essay Prize for my essay "The Decomposition of the Narratological Framework in Pedro Páramo".<br>- 2023: Finalist in EBSA Spring Quarter '23 Case Competition with River City Bank <br>- 2024: 1st place for Aggie Sports Analytics Case Competition '24 <br>- 2024: $5,000 Mentor's Choice Award (UC Davis Student Startup Center)</p>
+                
                 <h3><span class="highlight">Projects</span></h3>
-                <p> - Rhythmoji: an avatar based on your Spotify listening <br> - Data Analysis on Neural Correlates of Schizophrenia <br> - The Relationship Between Subliminal Stimuli and Emotion <br> - A Kantian Model of Happiness</p>
+                <p><a class="highlight-box green-box">Rhythmoji (01.24-Present)</a> <a href="https://github.com/ppinkfreudd/Rhythmoji_v2">(GitHub)</a><br> - A Lego-like figure generator based on your Spotify listening using dall-e<br>
+                <span class="highlight-box green-box">Data Analysis on Neural Correlates of Schizophrenia (2021) </span> <a href="https://drive.google.com/file/d/1G-lsKpdf6oiYh-Mp7ocRBdfLX7PmfPc7/view?usp=sharing">(Poster)</a><br> - Used r, matplotlib, and FreeSurfer 7.1 to clean and analyze MRI dataset from McLean Hospital, MA to research the inverse relationship between two regions of the brain in individuals with schizophrenia.<br>
+                <span class="highlight-box green-box">A Kantian Model of Happiness (2021) </span> <a href="https://comco2021.uni-osnabrueck.de/abstracts/day2_poster_das">(Abstract)</a><br> - A mathematical model using Python and NumPy to understand how Kant's philosophy can be applied to the modern-day theories of quantifying happiness.<br> - Showcased at the Computational and Cognition Workshop (COMCO) 2021. <br>
+                <span class="highlight-box green-box">The Relationship Between Subliminal Stimuli and Emotion (2020) </span> <a href="https://www.youtube.com/watch?v=y_Ad-VkSJ_M&list=PLl_UXfN1hubUnaozGbluc6l8AXDCj9LBO&index=22">(Presentation)</a><br> - My first ever project, analyzed survey responses using NLTK to understand how subliminal (below 100ms stimuli) affect emotion <br> - Presented poster at The Science of Consciousness Conference 2020 in Tucson, AZ.<br>
+                
+
+                
                 <h3><span class="highlight">Expertise</span></h3>
-                <p> Fluent in: Python, C++, C, Java, HTML/CSS, Node.js, Flask, Docker, AWS</p>
-                <p> Kinda understand: R, Ruby</p>
-                <p> Languages: English, Hindi, and Arabic</p>
+                <p>Fluent in: Python, C++, C, Java, HTML/CSS, Node.js, Flask, Docker, AWS</p>
+                <p>Kinda understand: R, Ruby</p>
+                <p>Languages: English, Hindi, and Odia</p>
+                
+                <h3><span class="highlight">Misc.</span></h3>
+                <p>Jobs (current): On-campus mailroom job (10 hours/week), Research at Center for Mind and Brain (10 hours/week)<br>- Interests: Hiking, cool blogs, Effective Altruism, FIFA 24, and good design.</p>
             </div>
         </div>
-    </main>
+        </main>
+        
 
     <script>
         let currentFrame = 1;
