@@ -152,6 +152,10 @@
       animation: typing 3.5s steps(40, end), blink-caret .75s step-end infinite;
       line-height: 1.5; /* Add line-height for better spacing */
     }
+
+    #resume {
+      padding-top: 80px; /* Add padding to the top of the 'cv' section */
+    }
   </style>
 </head>
 
@@ -202,7 +206,7 @@
             <div class="bg-white overflow-hidden shadow rounded-lg">
               <div class="px-4 py-5 sm:p-6">
                 <h3 class="text-lg font-bold mb-2">
-                  <a href="public/blog1.html" target="_blank" class="text-indigo-600 hover:text-indigo-800">Is AI Eating Its Own Tail? Embracing 'AI Veganism' to Keep AI Healthy</a>
+                  <a href="public/blog1.html" target="_blank" class="text-indigo-600 hover:text-indigo-800">AI and Ouroboros: A case for AI 'Veganism'</a>
                 </h3>
                 <p class="text-base mb-4">People are starting to worry that AI is eating its own tail. As AI learns from more and more AI, are we training future generations of AI to forget the fundamentals of human language?</p>
                 <canvas id="plasmaCanvas" class="w-full h-48 mt-4 rounded-lg"></canvas>
@@ -344,7 +348,7 @@
 
       // Scroll to top when 'cv' section is shown
       if (sectionId === 'resume') {
-        window.scrollTo(0, 0);
+        activeSection.scrollIntoView({ behavior: 'auto', block: 'start' });
       }
     }
 
