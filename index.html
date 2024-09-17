@@ -169,7 +169,7 @@
         <div class="flex-1">
           <div id="home" class="section px-4 py-5 sm:p-6">
             <div class="flex items-center mb-4">
-              <img src="/public/me.jpg" alt="Profile Photo" class="w-25 h-40 rounded-10%">
+              <img src="public/me.jpg" alt="Profile Photo" class="w-25 h-40 rounded-10%">
               <div class="ml-4">
                 <h1 class="text-2xl font-bold text-indigo-600 typewriter">Rishit Das</h1>
                 <div class="flex space-x-4 mt-2">
@@ -202,7 +202,7 @@
             <div class="bg-white overflow-hidden shadow rounded-lg">
               <div class="px-4 py-5 sm:p-6">
                 <h3 class="text-lg font-bold mb-2">
-                  <a href="/public/blog1.html" target="_blank" class="text-indigo-600 hover:text-indigo-800">Is AI Eating Its Own Tail? Embracing 'AI Veganism' to Keep AI Healthy</a>
+                  <a href="public/blog1.html" target="_blank" class="text-indigo-600 hover:text-indigo-800">Is AI Eating Its Own Tail? Embracing 'AI Veganism' to Keep AI Healthy</a>
                 </h3>
                 <p class="text-base mb-4">People are starting to worry that AI is eating its own tail. As AI learns from more and more AI, are we training future generations of AI to forget the fundamentals of human language?</p>
                 <canvas id="plasmaCanvas" class="w-full h-48 mt-4 rounded-lg"></canvas>
@@ -214,20 +214,20 @@
             <!-- Resume content -->
             <main>
             <div class="flex items-center mb-5">
-                <img src="/public/Rishit_Rhythmoji.png" alt="Rhythmoji" class="w-40 h-40 rounded-lg mr-8">
+                <img src="public/Rishit_Rhythmoji.png" alt="Rhythmoji" class="w-40 h-40 rounded-lg mr-8">
                 <p>To the left, is my 'rhythmoji', one of my first projects. It converts Spotify-listening to a lego figure. Below are some highlights from projects I've worked on since Rhythmoji.</p>
                 </div>
                 <div class="grid grid-cols-3 gap-4">
                     <div class="flex flex-col items-center">
-                      <img src="/public/Wavelength.png" alt="Wavelength" class="w-full h-auto rounded-lg">
+                      <img src="public/Wavelength.png" alt="Wavelength" class="w-full h-auto rounded-lg">
                       <p class="mt-2 text-center">Wavelength - a Spotify dating app, which won $5,000 from the UC Davis Startup Center</p>
                     </div>
                     <div class="flex flex-col items-center">
-                      <img src="/public/Garde.png" alt="Garde" class="w-full h-auto rounded-lg">
+                      <img src="public/Garde.png" alt="Garde" class="w-full h-auto rounded-lg">
                       <p class="mt-2 text-center">Garde - a fencing coach using computer vision and a RAG llm, currently patented and working with fencing academies</p>
                     </div>
                     <div class="flex flex-col items-center">
-                      <img src="/public/eyekea.gif" alt="EyeModal" class="w-20% h-auto rounded-lg">
+                      <img src="public/eyekea.gif" alt="EyeModal" class="w-20% h-auto rounded-lg">
                       <p class="mt-2 text-center">EyeModal - a 1-1 human vision model I'm working on at the Geng Lab</p>
                     </div>
                   </div>
@@ -340,6 +340,11 @@
       } else if (sectionId === 'home') {
         resetTypeWriter();
         startTypeWriter();
+      }
+
+      // Scroll to top when 'cv' section is shown
+      if (sectionId === 'resume') {
+        window.scrollTo(0, 0);
       }
     }
 
