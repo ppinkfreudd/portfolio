@@ -116,7 +116,7 @@
         </div>
         <p>This ancient symbol is a fitting metaphor for what might happen if AI starts learning from AI-generated content. The risk is a feedback loop where mistakes and biases get amplified, causing the quality of AI outputs to decline over time. Eventually, the clarity fades.</p>
 
-        <button type="button" class="collapsible">The Mathematical Importance of Diversity and Entropy in Training Data</button>
+        <button type="button" class="collapsible">Information Entropy Matters</button>
         <div class="content">
             <p>Entropy, in simple terms, is a way to measure diversity or unpredictability. High entropy means lots of variety; low entropy means things are more predictable. When AI starts learning from other AI-generated content, the overall entropy of the training data can decrease, leading to less creative and more repetitive outputs. <br> 
             Diversity in training data is crucial for AI models to generalize well and produce innovative outputs. But, though entropy measures the unpredictability of a dataset, it doesn't fully capture the interactions between human-generated and AI-generated content. The entropy of a mixture of two sources isn't simply the weighted sum of their individual entropies.</p>
@@ -130,8 +130,8 @@
             <p>The assumption that the redundancy term D ≈ 0 should also be justified, as AI content may mimic human patterns and affect entropy in complex ways. Using empirical data to estimate the actual entropy of combined datasets would strengthen the argument.</p>
         </div>
 
-        <h2>Modeling the Growth of AI-Generated Content: A Logistic Approach</h2>
-        <p>To assess the risk, we need to model the projected growth of AI-generated content online. Let's consider some data points from <a href="https://originality.ai/ai-content-in-google-search-results">Originality.ai</a>:</p>
+        <h2>Some analyses</h2>
+        <p>What perfect of Google results are AI generated? Let's consider some data points from <a href="https://originality.ai/ai-content-in-google-search-results">Originality.ai</a>:</p>
         <ul>
             <li><strong>2019 (t = 0)</strong>: \(\gamma(0) = 0.023\)</li>
             <li><strong>March 2024 (t = 5.25)</strong>: \(\gamma(5.25) = 0.102\)</li>
@@ -156,7 +156,7 @@
         </ul>
         
         <h2>Fitting the Logistic Model</h2>
-        <p>Using nonlinear regression and tools like Python's SciPy library, we estimate:</p>
+        <p>Using nonlinear regression, we estimate:</p>
         <ul>
             <li><strong>r ≈ 0.8</strong> per year</li>
             <li><strong>t<sub>0</sub> ≈ 6</strong> years (mid-2025)</li>
@@ -218,7 +218,7 @@
 
         <p>The entropy decreases from 10 bits to 8.2 bits as the proportion of AI-generated content increases from 0% to 90%, indicating a reduction in diversity.</p>
 
-        <h2>What if... we made a 'Human-Only' browser</h2>
+        <h2>'Human-Only' browser would be cool + save AI + save humans</h2>
         <p>I've been thinking a lot about this -- imagine browsing the web with the assurance that every article, every blog post, every snippet of text was crafted by a human hand. It would serve AI well, for models like o1 are based on pre-2021 data. But, if the sanity of the data from now till 2028 is, well, garbage, AI could be in trouble. <br> On a more personal and <i>human</i> note, I think it would help creatives as well (artists, writers, etc). AI also has biases, as we know. Letting it train itself on AI-generated content could be harmful. <br> This is why I think a 'Human-Only' browser is a good solution. It would help AI stay healthy, and it would help creators stay healthy. Everyone wins. </p>
         
         <p>Without a sanity check -- without a way to ensure that our future AI systems are grounded in authentic human insight -- we risk drifting into a future where AI learning as well as regular learning is compromised. </p>
