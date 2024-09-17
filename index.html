@@ -14,31 +14,6 @@
       background-color: #e0f7f7;
     }
 
-    .line-numbers {
-      display: flex;
-      flex-direction: column;
-      align-items: flex-end;
-      margin-right: 10px;
-      color: #999;
-      font-size: 14px;
-      line-height: 1.5;
-    }
-
-    .line-numbers span {
-      cursor: pointer;
-      transition: color 0.3s;
-    }
-
-    .line-numbers span:hover {
-      color: #fff;
-      background-color: #999;
-    }
-
-    .line-numbers span.active {
-      color: #fff;
-      background-color: #999;
-    }
-
     .section {
       overflow-wrap: break-word;
       word-wrap: break-word;
@@ -84,7 +59,7 @@
 
     .container {
       max-width: 800px;
-      margin-top: 60px; /* Add margin to prevent content from being hidden behind the fixed menu */
+      margin-top: 60px;
     }
 
     .content {
@@ -110,9 +85,8 @@
       margin: 0 auto;
       letter-spacing: .15em;
       animation: 
-        typing 3.5s steps(40, end),
-        blink-caret .75s step-end infinite;
-      max-width: 100%; /* Add this line to limit the width */
+        typing 3.5s steps(40, end);
+      max-width: 100%;
     }
 
     @keyframes typing {
@@ -120,26 +94,21 @@
       to { width: 100% }
     }
 
-    @keyframes blink-caret {
-      from, to { border-color: transparent }
-      50% { border-color: #7fdbff; }
-    }
-
     .typewriter-container {
       display: flex;
       justify-content: center;
       align-items: center;
       text-align: center;
-      margin-top: 20px; /* Adjust the margin as needed */
-      min-height: 100px; /* Set a minimum height to prevent jumping */
+      margin-top: 20px;
+      min-height: 100px;
     }
 
     .typewriter-box {
       max-width: 80%;
-      padding: 0; /* Remove the padding */
-      background-color: transparent; /* Make the background transparent */
-      border-radius: 0; /* Remove the border radius */
-      box-shadow: none; /* Remove the box shadow */
+      padding: 0;
+      background-color: transparent;
+      border-radius: 0;
+      box-shadow: none;
     }
 
     .typewriter-text {
@@ -148,13 +117,11 @@
       word-wrap: break-word;
       margin: 0 auto;
       letter-spacing: .15em;
-      border-right: .15em solid #7fdbff;
-      animation: typing 3.5s steps(40, end), blink-caret .75s step-end infinite;
-      line-height: 1.5; /* Add line-height for better spacing */
+      line-height: 1.5;
     }
 
     #resume {
-      padding-top: 80px; /* Add padding to the top of the 'cv' section */
+      padding-top: 80px;
     }
   </style>
 </head>
@@ -169,7 +136,6 @@
 
     <div class="sm:rounded-lg">
       <div class="flex">
-        <div class="line-numbers"></div>
         <div class="flex-1">
           <div id="home" class="section px-4 py-5 sm:p-6">
             <div class="flex items-center mb-4">
@@ -346,7 +312,6 @@
         startTypeWriter();
       }
 
-      // Scroll to top when 'cv' section is shown
       if (sectionId === 'resume') {
         activeSection.scrollIntoView({ behavior: 'auto', block: 'start' });
       }
@@ -361,7 +326,7 @@
       if (index < text.length) {
         typewriterText.innerHTML += text.charAt(index);
         index++;
-        setTimeout(typeWriter, 50);
+        setTimeout(typeWriter, 20);
       }
     }
 
@@ -371,10 +336,9 @@
     }
 
     function startTypeWriter() {
-      setTimeout(typeWriter, 1000); // Delay the start of the typewriter effect
+      setTimeout(typeWriter, 1000);
     }
 
-    // Call showSection('home') when the page loads
     window.addEventListener('DOMContentLoaded', () => {
       showSection('home');
     });
@@ -451,8 +415,8 @@
           let rotated = multiplyMatrixVector(rotationX, vertex);
           rotated = multiplyMatrixVector(rotationY, rotated);
           rotated = multiplyMatrixVector(rotationZ, rotated);
-          const scale = 100; // Adjust the scale to make the cube smaller
-          const distance = 5; // Increase the distance to move the cube further away
+          const scale = 100;
+          const distance = 5;
           const projected = [
             rotated[0] * scale / (rotated[2] + distance),
             rotated[1] * scale / (rotated[2] + distance)
