@@ -1,177 +1,343 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
+<html lang="en"><head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Rishit Das's Portfolio</title>
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
   <style>
     body {
       font-family: 'Fira Code', monospace;
-      background-color: #e0f7f7;
-    }
-
-    .line-numbers {
-      display: flex;
-      flex-direction: column;
-      align-items: flex-end;
-      margin-right: 10px;
-      color: #999;
-      font-size: 14px;
-      line-height: 1.5;
-    }
-
-    .line-numbers span {
-      cursor: pointer;
-      transition: color 0.3s;
-    }
-
-    .line-numbers span:hover {
-      color: #fff;
-      background-color: #999;
-    }
-
-    .line-numbers span.active {
-      color: #fff;
-      background-color: #999;
-    }
-
-    .section {
-      overflow-wrap: break-word;
-      word-wrap: break-word;
-      word-break: break-word;
-      max-width: 100%;
-    }
-
-    img {
-      max-width: 100%;
-      height: auto;
-    }
-
-    pre {
-      white-space: pre-wrap;
+      background-color: #ffffff;
     }
 
     nav {
       position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      background-color: #e0f7f7;
-      padding: 10px;
-      z-index: 100;
+      top: 20px;
+      left: 20px;
+      z-index: 1000;
+      transition: top 0.3s;
     }
 
     nav a {
-      background-color: #7fdbff;
-      color: #006666;
-      border: 1px solid #006666;
-      padding: 10px 20px;
-      margin: 0;
-      flex-grow: 1;
-      text-align: left;
-      transition: background-color 0.3s, color 0.3s;
+      color: #333;
+      text-decoration: none;
+      font-size: 1rem;
+      margin: 5px 0;
+      transition: color 0.3s;
+      font-weight: bold;
+      display: block;
     }
 
     nav a:hover,
     nav a.active {
-      background-color: #006666;
-      color: #e0f7f7;
+      color: #ff6f61;
+    }
+
+    nav a::before {
+      content: "> ";
+      color: #ffcc00;
     }
 
     .container {
-      max-width: 800px;
-      margin-top: 60px; /* Add margin to prevent content from being hidden behind the fixed menu */
+      max-width: 1000px;
+      margin-top: 100px;
     }
 
-    .content {
-      color: #006666;
-    }
-
-    canvas {
-      image-rendering: pixelated;
-    }
-
-    .typewriter {
+    .profile-container {
       display: flex;
-      justify-content: center;
       align-items: center;
-      text-align: center;
+      margin-bottom: 20px;
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      background-color: #f9f9f9;
+      position: relative;
     }
 
-    .typewriter h1,
-    .typewriter p {
+    .profile-image {
+      flex-shrink: 0;
+      width: 270px;
+      height: 250px;
+      border-radius: 50%;
+      border: 3px solid #4a90e2;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      transition: all 0.3s ease;
+    }
+
+    .profile-image:hover {
+      content: url('AsciiVersion.png');
+    }
+
+    .profile-details {
+      margin-left: 30px;
+      flex-grow: 1;
+    }
+
+    .bio {
+      margin-top: 10px;
+      max-width: 500px;
+    }
+
+    .expand-button, .chatbot-button {
+      margin-top: 10px;
+      padding: 5px 10px;
+      background-color: #4a90e2;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .expand-button:hover, .chatbot-button:hover {
+      background-color: #357ab8;
+    }
+
+    .expanded-section {
+      display: none;
+      margin-top: 20px;
+      padding: 15px;
+      background-color: #f0f0f0;
+      border-radius: 10px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      font-family: 'Courier New', monospace;
+    }
+
+    .expanded-section h3 {
+      font-size: 1.5rem;
+      margin-bottom: 10px;
+    }
+
+    .expanded-section p {
+      margin-bottom: 10px;
+    }
+
+    .expanded-section ul {
+      list-style-type: none;
+      padding-left: 0;
+    }
+
+    .expanded-section li {
+      margin-bottom: 5px;
+    }
+
+    .expanded-section li::before {
+      content: "— ";
+      color: #4a90e2;
+    }
+
+    .chatbot-container {
+      display: none;
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      width: 300px;
+      max-height: 400px;
+      background-color: #fff;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
       overflow: hidden;
-      border-right: .15em solid #7fdbff;
-      white-space: nowrap;
-      margin: 0 auto;
-      letter-spacing: .15em;
-      animation: 
-        typing 3.5s steps(40, end),
-        blink-caret .75s step-end infinite;
-      max-width: 100%; /* Add this line to limit the width */
+      flex-direction: column;
+      transform: translateY(100%);
+      transition: transform 0.3s ease;
     }
 
-    @keyframes typing {
-      from { width: 0 }
-      to { width: 100% }
-    }
-
-    @keyframes blink-caret {
-      from, to { border-color: transparent }
-      50% { border-color: #7fdbff; }
-    }
-
-    .typewriter-container {
+    .chatbot-container.open {
       display: flex;
-      justify-content: center;
-      align-items: center;
+      transform: translateY(0);
+    }
+
+    .chatbot-header {
+      background-color: #4a90e2;
+      color: #fff;
+      padding: 10px;
       text-align: center;
-      margin-top: 20px; /* Adjust the margin as needed */
-      min-height: 100px; /* Set a minimum height to prevent jumping */
+      font-weight: bold;
+      border-top-left-radius: 10px;
+      border-top-right-radius: 10px;
     }
 
-    .typewriter-box {
-      max-width: 80%;
-      padding: 0; /* Remove the padding */
-      background-color: transparent; /* Make the background transparent */
-      border-radius: 0; /* Remove the border radius */
-      box-shadow: none; /* Remove the box shadow */
+    .chatbot-messages {
+      flex-grow: 1;
+      padding: 10px;
+      overflow-y: auto;
+      background-color: #e0e0e0;
     }
 
-    .typewriter-text {
+    .user-message {
+      background-color: #d1e7dd;
+      padding: 8px;
+      border-radius: 5px;
+      margin-bottom: 5px;
+      align-self: flex-end;
+    }
+
+    .bot-message {
+      background-color: #f8d7da;
+      padding: 8px;
+      border-radius: 5px;
+      margin-bottom: 5px;
+      align-self: flex-start;
+    }
+
+    .chatbot-input {
+      display: flex;
+      border-top: 1px solid #ddd;
+    }
+
+    .chatbot-input input {
+      flex-grow: 1;
+      padding: 10px;
+      border: none;
+      outline: none;
+      background-color: #f7f7f7;
+    }
+
+    .chatbot-input button {
+      padding: 10px;
+      background-color: #4a90e2;
+      color: #fff;
+      border: none;
+      cursor: pointer;
+    }
+
+    .chatbot-input button:hover {
+      background-color: #357ab8;
+    }
+
+    @media (max-width: 768px) {
+      .profile-container {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .profile-image {
+        width: 200px;
+        height: 200px;
+      }
+
+      .profile-details {
+        margin-left: 0;
+        text-align: center;
+      }
+
+      .profile-details .flex {
+        justify-content: center;
+      }
+    }
+
+    .close-button {
+      background: none;
+      border: none;
+      color: #fff;
+      font-size: 16px;
+      cursor: pointer;
+      position: absolute;
+      top: 10px;
+      right: 10px;
+    }
+
+    .slideshow-button {
+      background-color: rgba(0, 0, 0, 0.5);
+      color: #fff;
+      padding: 10px 20px;
+      border-radius: 5px;
+      cursor: pointer;
+      border: none;
+      font-size: 18px;
+      display: inline-block;
+      transition: background-color 0.3s ease;
+    }
+
+    .slideshow-button:hover {
+      background-color: rgba(0, 0, 0, 0.8);
+    }
+
+    #prev-slide {
+      left: 100px;
+    }
+
+    #next-slide {
+      right: 100px;
+    }
+
+    .slideshow-container {
       overflow: hidden;
-      white-space: pre-wrap;
-      word-wrap: break-word;
+      width: 100%;
+      max-width: 600px; /* Set a fixed width for the slideshow */
       margin: 0 auto;
-      letter-spacing: .15em;
-      border-right: .15em solid #7fdbff;
-      animation: typing 3.5s steps(40, end), blink-caret .75s step-end infinite;
-      line-height: 1.5; /* Add line-height for better spacing */
+    }
+
+    .slide {
+      min-width: 100%;
+      box-sizing: border-box;
+    }
+
+    .slideshow-image {
+      width: 100%;
+      height: auto;
+      display: block;
+      max-height: 300px; /* Set a maximum height for the images */
+      object-fit: contain; /* Ensure images fit within the container */
+    }
+
+    .slideshow-button {
+      background-color: rgba(0, 0, 0, 0.5);
+      color: #fff;
+      padding: 10px 20px;
+      border-radius: 5px;
+      cursor: pointer;
+      border: none;
+      font-size: 18px;
+      display: inline-block;
+      transition: background-color 0.3s ease;
+    }
+
+    .slideshow-button:hover {
+      background-color: rgba(0, 0, 0, 0.8);
+    }
+
+    .blog-card {
+      background-color: #fff;
+      overflow: hidden;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      border-radius: 10px;
+      margin: 0 auto;
+      max-width: 100%;
+      width: 100%;
+      box-sizing: border-box;
+      padding: 20px;
+    }
+
+    @media (max-width: 768px) {
+      .blog-card {
+        margin: 0 10px;
+        padding: 15px;
+      }
     }
   </style>
 </head>
 
 <body class="bg-aquamarine text-gray-800 flex justify-center items-center min-h-screen py-10">
   <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-    <nav class="flex mb-8">
-      <a href="#home" onclick="showSection('home')" class="px-4 py-2 text-sm font-medium">home</a>
-      <a href="#blog" onclick="showSection('blog')" class="px-4 py-2 text-sm font-medium">blog</a>
-      <a href="#resume" onclick="showSection('resume')" class="px-4 py-2 text-sm font-medium">cv</a>
+    <nav>
+      <a href="#home" onclick="showSection('home')">Home</a>
+      <a href="#blog" onclick="showSection('blog')">Blog</a>
+      <a href="#resume" onclick="showSection('resume')">CV</a>
     </nav>
 
     <div class="sm:rounded-lg">
       <div class="flex">
-        <div class="line-numbers"></div>
         <div class="flex-1">
           <div id="home" class="section px-4 py-5 sm:p-6">
-            <div class="flex items-center mb-4">
-              <img src="me.jpg" alt="Profile Photo" class="w-25 h-40 rounded-10%">
-              <div class="ml-4">
-                <h1 class="text-2xl font-bold text-indigo-600 typewriter">Rishit Das</h1>
+            <div class="profile-container">
+              <div class="profile-image-wrapper">
+                <img src="RishitDas.jpeg" alt="Profile Photo" class="profile-image">
+                <div class="ascii-overlay"></div>
+              </div>
+              <div class="profile-details">
+                <h1 class="text-2xl font-bold text-indigo-600">Rishit Das</h1>
                 <div class="flex space-x-4 mt-2">
                   <a href="https://www.linkedin.com/in/rishitdas/" target="_blank" class="text-indigo-600 hover:text-indigo-800">
                     <i class="fab fa-linkedin"></i>
@@ -182,59 +348,95 @@
                   <a href="https://github.com/ppinkfreudd" target="_blank" class="text-indigo-600 hover:text-indigo-800">
                     <i class="fab fa-github"></i>
                   </a>
-                  
+                </div>
+                <div class="bio">
+                  <p>Hey, I'm Rishit!</p>
+                  <p class="typewriter-text">I'm a 3rd year at UC Davis 🐄. From Melbourne 🇦🇺, lived in 🇮🇳, 🇭🇰, and 🇦🇪.</p>
+                  <button class="expand-button" onclick="toggleExpand()">Expand Bio</button>
+                  <button class="chatbot-button" onclick="openChatbot()">Open Chatbot</button>
                 </div>
               </div>
             </div>
+
+            <div class="expanded-section" id="expandedSection">
+              <h3>Bio</h3>
+              <p>—</p>
+              <p>I think I'm going to keep this as a most-up-to-date work section.</p>
+              <p>—</p>
+              <p>Nov 30, 2024</p>
+              <p>I started this website about a year back (this is the 3rd iteration). The hope for it was to always serve as some archive of my work, but I also wanted a way to write. So I added a blogs section (in the works) too.</p>
+              <p>Beyond this, my other current projects/startup projects are:</p>
+              <ul>
+                <li><strong><a href="https://gardeai.com/" target="_blank">Garde 🤺</a></strong>: A voice-assisted AI fencing coach, powered with computer vision analysis.</li>
+                <li><strong>Rhythmoji 🎼</strong>: Converts your music listening data into a custom LEGO figure with an animalistic head.</li>
+                <li><strong><a href="https://echocare.club/" target="_blank">Echocare 🎤</a></strong>: A San Francisco food-bank voice assistant project that started at CalHacks 2024.</li>
+              </ul>
+              <p>All of these projects have their own stories and you can talk with my chatbot to learn more. </p>
+            </div>
+
             <div class="flex justify-center">
-              <canvas id="wireframeCubeCanvas" class="w-20 h-20 mt-2 rounded-lg"></canvas>
+              <canvas id="wireframeCubeCanvas" class="w-20 h-20 mt-2 rounded-lg" width="80" height="80"></canvas>
             </div>
-            <div class="typewriter-container">
-              <div class="typewriter-box">
-                <p>Hey, I'm Rishit!</p>
-                <p class="typewriter-text"></p>
-              </div>
+
+            <div class="text-center mt-4">
+              <p>© Rishit Das 2024</p>
+              <p>All Rights Reserved</p>
+            </div>
+
+            <div class="text-center mt-2">
+              <p>Made with HTML, CSS, JavaScript, Node.js, Express, OpenAI, Langchain, and Tailwind CSS</p>
             </div>
           </div>
 
-          <div id="blog" class="section hidden px-4 py-5 sm:p-6">
-            <h2 class="text-3xl font-bold mb-8">Blog</h2>
-            <div class="bg-white overflow-hidden shadow rounded-lg">
+          <div id="blog" class="section px-4 py-5 sm:p-6 hidden">
+            <h2 class="blog-title text-2xl sm:text-3xl font-bold mb-4 text-center">Blog</h2>
+            <div class="blog-card">
               <div class="px-4 py-5 sm:p-6">
-                <h3 class="text-lg font-bold mb-2">
-                  <a href="blog1.html" target="_blank" class="text-indigo-600 hover:text-indigo-800">Is AI Eating Its Own Tail? Embracing 'AI Veganism' to Keep AI Healthy</a>
+                <h3 class="text-lg sm:text-xl font-bold mb-2">
+                  Coming soon!
                 </h3>
-                <p class="text-base mb-4">People are starting to worry that AI is eating its own tail. As AI learns from more and more AI, are we training future generations of AI to forget the fundamentals of human language?</p>
-                <canvas id="plasmaCanvas" class="w-full h-48 mt-4 rounded-lg"></canvas>
+                <p class="text-base mb-4">Had a blog up, didn't like it. Working on something new. Coming soon.</p>
+                <p class="text-base mb-4">If you wanna check out the ASCII art below, peep this website! <a href="https://play.ertdfgcvb.xyz/#/src/contributed/stacked_sin_waves" target="_blank" class="text-indigo-600 hover:text-indigo-800">https://play.ertdfgcvb.xyz/#/src/contributed/stacked_sin_waves</a></p>
+                <canvas id="plasmaCanvas" class="w-full h-48 mt-4 rounded-lg" width="0" height="0"></canvas>
               </div>
             </div>
           </div>
 
-          <div id="resume" class="section px-4 py-5 sm:p-6">
+          <div id="resume" class="section px-4 py-5 sm:p-6 hidden">
             <!-- Resume content -->
             <main>
-            <div class="flex items-center mb-5">
-                <img src="Rishit_Rhythmoji.png" alt="Rhythmoji" class="w-40 h-40 rounded-lg mr-8">
-                <p>To the left, is my 'rhythmoji', one of my first projects. It converts Spotify-listening to a lego figure. Below are some highlights from projects I've worked on since Rhythmoji.</p>
-                </div>
-                <div class="grid grid-cols-3 gap-4">
-                    <div class="flex flex-col items-center">
-                      <img src="Wavelength.png" alt="Wavelength" class="w-full h-auto rounded-lg">
-                      <p class="mt-2 text-center">Wavelength - a Spotify dating app, which won $5,000 from the UC Davis Startup Center</p>
+              <!-- Introductory text -->
+              <div class="flex items-center mb-5">
+                <img src="Rishit_Rhythmoji.png" alt="Rhythmoji" class="w-60 h-40 rounded-lg mr-8">
+                <p>To the left, is my 'Rhythmoji', one of my first projects. It converts Spotify-listening to a lego figure. Below are some highlights from projects I've worked on since Rhythmoji.</p>
+              </div>
+
+              <!-- Project slideshow -->
+              <div class="relative w-full max-w-4xl mx-auto">
+                <div class="slideshow-container">
+                  <div id="slide-container" class="flex transition-transform duration-300">
+                    <div class="slide">
+                      <img src="Wavelength.png" alt="Wavelength" class="slideshow-image">
                     </div>
-                    <div class="flex flex-col items-center">
-                      <img src="Garde.png" alt="Garde" class="w-full h-auto rounded-lg">
-                      <p class="mt-2 text-center">Garde - a fencing coach using computer vision and a RAG llm, currently patented and working with fencing academies</p>
+                    <div class="slide">
+                      <img src="Vizard.png" alt="Vizard" class="slideshow-image">
                     </div>
-                    <div class="flex flex-col items-center">
-                      <img src="eyekea.gif" alt="EyeModal" class="w-20% h-auto rounded-lg">
-                      <p class="mt-2 text-center">EyeModal - a 1-1 human vision model I'm working on at the Geng Lab</p>
+                    <div class="slide">
+                      <img src="Garde.png" alt="Garde" class="slideshow-image">
                     </div>
                   </div>
-                  
+                </div>
 
-              <div class="grid grid-cols-1 gap-8 sm:grid-cols-2">
+                <div class="flex justify-center space-x-4 mt-2">
+                  <button id="prev-slide" class="slideshow-button">&lt;</button>
+                  <button id="next-slide" class="slideshow-button">&gt;</button>
+                </div>
+              </div>
+
+              <!-- Grid layout for content -->
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-8">
                 <div>
+                  <!-- Education and Experience -->
                   <h3 class="text-xl font-bold mb-4"><span class="text-indigo-600">Education</span></h3>
                   <div class="content">
                     <p><b>University of California, Davis</b></p>
@@ -275,7 +477,9 @@
                     <p>Participated in discussions on cognitive science and brain emulation with people like Anders Sandberg, as well as areas like making better predictions and recognizing cognitive biases. This is the EU version of <a href="https://www.sparc.camp/" class="text-indigo-600 hover:text-indigo-800">SPARC.</a></p>
                   </div>
                 </div>
+
                 <div>
+                  <!-- Honors and Projects -->
                   <h3 class="text-xl font-bold mb-4"><span class="text-indigo-600">Honors</span></h3>
                   <div class="content">
                     <p>- 2023: Amy Lee Memorial Essay Prize for my essay "The Decomposition of the Narratological Framework in Pedro Páramo".</p>
@@ -293,11 +497,12 @@
                     <p><span class="text-green-600">A Kantian Model of Happiness (2021)</span> <a href="https://comco2021.uni-osnabrueck.de/abstracts/day2_poster_das" class="text-indigo-600 hover:text-indigo-800">(Abstract)</a></p>
                     <p>- A mathematical model using Python and NumPy to understand how Kant's philosophy can be applied to the modern-day theories of quantifying happiness.</p>
                     <p>- Showcased at the Computational and Cognition Workshop (COMCO) 2021.</p>
-                    <p><span class="text-green-600">The Relationship Between Subliminal Stimuli and Emotion (2020)</span> <a href="https://www.youtube.com/watch?v=y_Ad-VkSJ_M&list=PLl_UXfN1hubUnaozGbluc6l8AXDCj9LBO&index=22" class="text-indigo-600 hover:text-indigo-800">(Presentation)</a></p>
+                    <p><span class="text-green-600">The Relationship Between Subliminal Stimuli and Emotion (2020)</span> <a href="https://www.youtube.com/watch?v=y_Ad-VkSJ_M&amp;list=PLl_UXfN1hubUnaozGbluc6l8AXDCj9LBO&amp;index=22" class="text-indigo-600 hover:text-indigo-800">(Presentation)</a></p>
                     <p>- My first ever project, analyzed survey responses using NLTK to understand how subliminal (below 100ms stimuli) affect emotion</p>
                     <p>- Presented poster at The Science of Consciousness Conference 2020 in Tucson, AZ.</p>
                   </div>
 
+                  <!-- Expertise and Misc -->
                   <h3 class="text-xl font-bold mb-4"><span class="text-indigo-600">Expertise</span></h3>
                   <div class="content">
                     <p>Fluent in: Python, C++, C, Java, HTML/CSS, Node.js, Flask, Docker, AWS</p>
@@ -314,7 +519,23 @@
               </div>
             </main>
           </div>
-
+          
+          <!-- Chatbot Interface -->
+          <div class="chatbot-container">
+            <div class="chatbot-header">
+              DasGPT
+              <button class="close-button" onclick="closeChatbot()">X</button>
+            </div>
+            <div class="chatbot-messages" id="chatbotMessages"></div>
+            <div class="chatbot-input">
+              <input type="text" id="chatbotInput" placeholder="Type a message...">
+              <button onclick="sendMessage()">Send</button>
+            </div>
+            <div class="example-prompts">
+              <button onclick="setExamplePrompt('What\'s Rishit main projects?')">What's Rishit's main projects?</button>
+              <button onclick="setExamplePrompt('What are his strengths and weaknesses?')">What are his strengths and weaknesses?</button>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -328,12 +549,17 @@
       sections.forEach(section => section.classList.add('hidden'));
 
       const activeSection = document.getElementById(sectionId);
-      activeSection.classList.remove('hidden');
+      if (activeSection) {
+        activeSection.classList.remove('hidden');
+      }
 
       const links = document.querySelectorAll('nav a');
       links.forEach(link => link.classList.remove('active'));
 
-      document.querySelector(`nav a[href="#${sectionId}"]`).classList.add('active');
+      const activeLink = document.querySelector(`nav a[href="#${sectionId}"]`);
+      if (activeLink) {
+        activeLink.classList.add('active');
+      }
 
       if (sectionId === 'blog') {
         initPlasmaCanvas();
@@ -341,10 +567,13 @@
         resetTypeWriter();
         startTypeWriter();
       }
+
+      // Scroll to the top of the page
+      window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 
     const typewriterText = document.querySelector('.typewriter-text');
-    const text = "Co-founder at GARDE and a Computational Cognitive Science student at UC Davis 🐄. From Melbourne 🇦🇺, lived in 🇮🇳, 🇭🇰, and 🇦🇪.";
+    const text = "I'm a 3rd year at UC Davis 🐄. From Melbourne 🇦🇺, lived in 🇮🇳, 🇭🇰, and 🇦🇪.";
 
     let index = 0;
 
@@ -352,7 +581,7 @@
       if (index < text.length) {
         typewriterText.innerHTML += text.charAt(index);
         index++;
-        setTimeout(typeWriter, 50);
+        setTimeout(typeWriter, 20);
       }
     }
 
@@ -362,10 +591,9 @@
     }
 
     function startTypeWriter() {
-      setTimeout(typeWriter, 1000); // Delay the start of the typewriter effect
+      setTimeout(typeWriter, 1000);
     }
 
-    // Call showSection('home') when the page loads
     window.addEventListener('DOMContentLoaded', () => {
       showSection('home');
     });
@@ -442,8 +670,8 @@
           let rotated = multiplyMatrixVector(rotationX, vertex);
           rotated = multiplyMatrixVector(rotationY, rotated);
           rotated = multiplyMatrixVector(rotationZ, rotated);
-          const scale = 100; // Adjust the scale to make the cube smaller
-          const distance = 5; // Increase the distance to move the cube further away
+          const scale = 100;
+          const distance = 5;
           const projected = [
             rotated[0] * scale / (rotated[2] + distance),
             rotated[1] * scale / (rotated[2] + distance)
@@ -493,61 +721,188 @@
   </script>
 
   <script>
-    const { sin, cos, floor, sqrt } = Math;
-    const density = ' .:-=+*#%@';
-    let canvas, context;
+    const chars = "█▓▒░ ".split('');
+
+    function wave(t, x, frequency, amplitude) {
+        return Math.sin(t + x * frequency) * amplitude;
+    }
 
     function initPlasmaCanvas() {
-      canvas = document.getElementById('plasmaCanvas');
-      if (canvas) {
-        context = canvas.getContext('2d');
-        resizeCanvas();
-        drawASCIIPlasma();
-      }
+        canvas = document.getElementById('plasmaCanvas');
+        if (canvas) {
+            context = canvas.getContext('2d');
+            resizeCanvas();
+            drawASCIISineWaves();
+        }
     }
 
     function resizeCanvas() {
-      if (canvas) {
-        canvas.width = canvas.clientWidth;
-        canvas.height = canvas.clientHeight;
-      }
+        if (canvas) {
+            canvas.width = canvas.clientWidth;
+            canvas.height = canvas.clientHeight;
+        }
     }
 
     window.addEventListener('resize', resizeCanvas);
     window.addEventListener('DOMContentLoaded', initPlasmaCanvas);
 
-    function drawASCIIPlasma() {
-      const width = canvas.width;
-      const height = canvas.height;
-      const time = performance.now() * 0.003;
+    function drawASCIISineWaves() {
+        const width = canvas.width;
+        const height = canvas.height;
+        const time = performance.now() * 0.002;
 
-      context.clearRect(0, 0, width, height);
-      context.font = "10px 'Courier New', monospace";
-      context.textBaseline = "top";
+        const resolutionX = 8; // Horizontal resolution
+        const resolutionY = 9; // Vertical resolution
+        const fontSize = resolutionY;
 
-      for (let y = 0; y < height; y += 10) {
-        for (let x = 0; x < width; x += 6) {
-          const value =
-            sin(x * 0.05 + time) +
-            sin(y * 0.05 + time) +
-            sin((x + y) * 0.05 + time) +
-            sin(sqrt(x * x + y * y) * 0.05 + time);
+        // Set a white background color
+        context.fillStyle = '#FFF';
+        context.fillRect(0, 0, width, height);
 
-          const normalized = (value + 4) / 8;
-          const charIdx = floor(normalized * (density.length - 1));
-          const char = density[charIdx];
+        context.font = `${fontSize}px 'Courier New', monospace`;
+        context.textBaseline = "top";
 
-          const hue = (normalized * 360 + time * 50) % 360;
-          context.fillStyle = `hsl(${hue}, 100%, 50%)`;
-          context.fillText(char, x, y);
+        for (let x = 0; x < width; x += resolutionX) {
+            const waveHeight = height / 2 + wave(time, x, 0.05, height / 4);
+            for (let y = 0; y < height; y += resolutionY) {
+                const i = Math.abs(y - waveHeight) < resolutionY ? 4 : 0;
+                const char = chars[i];
+
+                // Set rainbow colors for the waves
+                const hue = (x / width) * 360; // Color varies horizontally
+                const lightness = 50 + (i / chars.length) * 20; // Intensity affects brightness
+                context.fillStyle = `hsl(${hue}, 100%, ${lightness}%)`;
+                context.fillText(char, x, y);
+            }
         }
-      }
 
-      requestAnimationFrame(drawASCIIPlasma);
+        requestAnimationFrame(drawASCIISineWaves);
+    }
+  </script>
+
+
+  <script>
+    // JavaScript for slideshow functionality
+    const slideContainer = document.getElementById('slide-container');
+    const prevButton = document.getElementById('prev-slide');
+    const nextButton = document.getElementById('next-slide');
+
+    let currentIndex = 0;
+
+    function updateSlidePosition() {
+      const slideWidth = slideContainer.parentElement.offsetWidth;
+      slideContainer.style.transform = `translateX(-${currentIndex * slideWidth}px)`;
     }
 
-    showSection('home');
-  </script>
-</body>
+    prevButton.addEventListener('click', () => {
+      currentIndex = (currentIndex > 0) ? currentIndex - 1 : slideContainer.children.length - 1;
+      updateSlidePosition();
+    });
 
-</html>
+    nextButton.addEventListener('click', () => {
+      currentIndex = (currentIndex + 1) % slideContainer.children.length;
+      updateSlidePosition();
+    });
+
+    window.addEventListener('resize', updateSlidePosition);
+  </script>
+
+  <script>
+    let lastScrollTop = 0;
+    const nav = document.querySelector('nav');
+
+    window.addEventListener('scroll', function() {
+      const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+      if (scrollTop > lastScrollTop) {
+        // Scroll down
+        nav.style.top = '-100px'; // Adjust this value as needed
+      } else {
+        // Scroll up
+        nav.style.top = '20px'; // Original position
+      }
+      lastScrollTop = scrollTop <= 0 ? 0 : scrollTop; // For Mobile or negative scrolling
+    });
+
+    const links = document.querySelectorAll('nav a');
+    links.forEach(link => {
+      link.addEventListener('click', () => {
+        nav.style.top = '20px'; 
+      });
+    });
+  </script>
+
+  <script>
+    async function sendMessage() {
+      const input = document.getElementById('chatbotInput');
+      const messages = document.getElementById('chatbotMessages');
+      const userMessage = input.value;
+      if (!userMessage) return;
+
+      // Display user message
+      const userMessageElement = document.createElement('div');
+      userMessageElement.className = 'user-message';
+      userMessageElement.textContent = `You: ${userMessage}`;
+      messages.appendChild(userMessageElement);
+
+      try {
+        // Send message to server
+        const response = await fetch('http://localhost:3000/chat', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ query: userMessage })
+        });
+
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+
+        const data = await response.json();
+
+        // Display bot response with a new label
+        const botMessageElement = document.createElement('div');
+        botMessageElement.className = 'bot-message';
+        botMessageElement.textContent = `DasGPT: ${data.response}`;
+        messages.appendChild(botMessageElement);
+      } catch (error) {
+        console.error('Error during fetch:', error);
+        const errorMessageElement = document.createElement('div');
+        errorMessageElement.className = 'bot-message';
+        errorMessageElement.textContent = `Error: ${error.message}`;
+        messages.appendChild(errorMessageElement);
+      }
+
+      // Clear input
+      input.value = '';
+    }
+
+    function setExamplePrompt(prompt) {
+      const input = document.getElementById('chatbotInput');
+      input.value = prompt;
+    }
+
+    function openChatbot() {
+      const chatbot = document.querySelector('.chatbot-container');
+      chatbot.classList.toggle('open');
+      const messages = document.getElementById('chatbotMessages');
+      if (!messages.innerHTML.includes("Hi! This is me as a chatbot.")) {
+        const welcomeMessage = document.createElement('div');
+        welcomeMessage.className = 'bot-message';
+        welcomeMessage.textContent = "Hi! This is me as a chatbot. Feel free to ask anything you want to know about me.";
+        messages.appendChild(welcomeMessage);
+      }
+    }
+
+    function closeChatbot() {
+      const chatbot = document.querySelector('.chatbot-container');
+      chatbot.classList.remove('open');
+    }
+  </script>
+
+  <script>
+    function toggleExpand() {
+      const section = document.getElementById('expandedSection');
+      section.style.display = section.style.display === 'block' ? 'none' : 'block';
+    }
+  </script>
+
+</body></html>
