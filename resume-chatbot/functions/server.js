@@ -31,7 +31,7 @@ const model = new OpenAI({
 // Async function to set up resources
 async function setup() {
   // Load and process the resume PDF
-  const loader = new PDFLoader('resume-chatbot/Resume_Das_2024.pdf');
+  const loader = new PDFLoader('Resume_Das_2024.pdf');
   const docs = await loader.load();
 
   // Create vector store
