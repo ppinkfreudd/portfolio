@@ -1,7 +1,7 @@
 import 'dotenv/config';
 import express from 'express';
 import bodyParser from 'body-parser';
-import { OpenAI } from '@langchain/openai';
+import { OpenAI } from '@langchain/openai/index.js';
 import { RetrievalQAChain } from 'langchain/chains';
 import { HNSWLib } from '@langchain/community/vectorstores/hnswlib';
 import { OpenAIEmbeddings } from '@langchain/openai';
