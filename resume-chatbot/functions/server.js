@@ -53,7 +53,7 @@ const model = new OpenAI({
 // Async function to set up resources
 async function setup() {
   // Use relative path for Netlify serverless environment
-  const resumePath = path.resolve(__dirname, '../../functions/Resume_Das_2024.pdf');
+  const resumePath = path.resolve(__dirname, './Resume_Das_2024.pdf');
 
   // Check if the resume PDF exists
   if (!fs.existsSync(resumePath)) {

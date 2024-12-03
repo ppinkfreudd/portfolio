@@ -5,4 +5,4 @@
 [functions]
   directory = "functions"
   node_bundler = "esbuild"
-  included_files = ["Resume_Das_2024.pdf"]
+  included_files = ["functions/Resume_Das_2024.pdf"]
