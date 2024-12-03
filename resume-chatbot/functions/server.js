@@ -76,7 +76,7 @@ setup()
     console.error('Failed to initialize QA chain:', err);
   });
 
-app.post('/chat', async (req, res) => {
+app.post('/.netlify/functions/server/chat', async (req, res) => {
   const userQuery = req.body.query;
 
   if (!qaChain) {
