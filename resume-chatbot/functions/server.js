@@ -5,12 +5,12 @@ const app = express();
 app.use(express.json()); // Middleware to parse JSON request bodies
 
 // Handle GET requests to the root
-app.get('/', (req, res) => {
+app.get('/.netlify/functions/server', (req, res) => {
   res.send('Server is working!');
 });
 
 // Handle POST requests for the chatbot
-app.post('/', (req, res) => {
+app.post('/.netlify/functions/server', (req, res) => {
   const { query } = req.body;
 
   // Validate the request body
