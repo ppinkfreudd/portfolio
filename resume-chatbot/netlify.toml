@@ -1,6 +1,6 @@
 [build]
   base = "resume-chatbot"
-  command = "npm install --legacy-peer-deps && npm run build"
+  command = "npm install --legacy-peer-deps && npm install -S hnswlib-node --legacy-peer-deps && npm run build"
   functions = "functions"
   
 [build.environment]
