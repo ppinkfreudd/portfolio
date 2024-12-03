@@ -1,5 +1,11 @@
 [build]
-  functions = "resume-chatbot/functions"
+  base = "resume-chatbot"  # Path to the chatbot folder
+  publish = "resume-chatbot/public"  
+  command = "npm install --legacy-peer-deps && npm run build"
 
 [functions]
-  node_bundler = "esbuild"
+  directory = "resume-chatbot/functions"  
+
+
+
+  

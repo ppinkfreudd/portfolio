@@ -7,6 +7,7 @@ import { HNSWLib } from '@langchain/community/vectorstores/hnswlib';
 import { OpenAIEmbeddings } from '@langchain/openai';
 import { PDFLoader } from 'langchain/document_loaders/fs/pdf';
 import cors from 'cors';
+import serverless from 'serverless-http';
 
 const app = express();
 
@@ -111,3 +112,6 @@ const prompt = `
     }
   }
 </script>
+
+// Export the app wrapped in serverless
+module.exports.handler = serverless(app);
