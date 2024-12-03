@@ -32,11 +32,12 @@ const model = new OpenAI({
 
 // Async function to set up resources
 async function setup() {
-  const resumePath = path.resolve(__dirname, './Resume_Das_2024.pdf');
+  const resumePath = path.resolve(__dirname, 'Resume_Das_2024.pdf');
 
   // Check if the resume PDF exists
   if (!fs.existsSync(resumePath)) {
-    throw new Error(`Resume PDF not found at path: ${resumePath}`);
+    console.warn(`Resume PDF not found at path: ${resumePath}. Please ensure the file is present.`);
+    return null;
   }
 
   // Load and process the resume PDF
@@ -58,8 +59,12 @@ let qaChain;
 // Initialize resources
 setup()
   .then((chain) => {
-    qaChain = chain;
-    console.log('QA chain initialized');
+    if (chain) {
+      qaChain = chain;
+      console.log('QA chain initialized');
+    } else {
+      console.error('QA chain could not be initialized due to missing resume PDF.');
+    }
   })
   .catch((err) => {
     console.error('Failed to initialize QA chain:', err);
