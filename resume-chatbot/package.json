@@ -4,7 +4,7 @@
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
-    "build": "echo 'No build step required for backend-only deployment'"
+    "build": "netlify-lambda build functions"
   },
   "keywords": [],
   "author": "",
@@ -26,5 +26,8 @@
   },
   "resolutions": {
     "@browserbasehq/stagehand": "^1.0.0"
+  },
+  "devDependencies": {
+    "netlify-lambda": "^2.0.15"
   }
 }
