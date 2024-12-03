@@ -1,9 +1,16 @@
 [build]
+  base = "resume-chatbot"
+  command = "npm install --legacy-peer-deps && npm run build"
   functions = "functions"
   
 [build.environment]
   NODE_VERSION = "18"
   NPM_FLAGS = "--version"
+
+[functions]
+  directory = "functions"
+  node_bundler = "esbuild"
+  included_files = ["functions/Resume_Das_2024.pdf"]
 
 [[redirects]]
   from = "/api/*"
