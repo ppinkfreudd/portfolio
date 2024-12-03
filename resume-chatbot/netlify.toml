@@ -1,7 +1,9 @@
 [build]
-  base = "resume-chatbot"
-  command = "npm install --legacy-peer-deps && npm run build"
+  command = "npm run build"
+  functions = "functions"
+  publish = "dist"
 
-[functions]
-  directory = "functions"
-  node_bundler = "esbuild"
+[[redirects]]
+  from = "/chat"
+  to = "/.netlify/functions/server"
+  status = 200
