@@ -38,7 +38,9 @@ const model = new OpenAI({
 // Async function to set up resources
 async function setup() {
   // Use relative path for Netlify serverless environment
-  const resumePath = path.resolve(__dirname, './Resume_Das_2024.pdf');
+  // const resumePath = path.resolve(__dirname, './Resume_Das_2024.pdf');
+  const resumePath = path.join(__dirname, 'Resume_Das_2024.pdf');
+
 
   // Check if the resume PDF exists
   if (!fs.existsSync(resumePath)) {
@@ -76,25 +78,25 @@ setup()
     console.error('Failed to initialize QA chain:', err);
   });
 
-app.post('/.netlify/functions/server/chat', async (req, res) => {
-  const userQuery = req.body.query;
-
-  if (!qaChain) {
-    return res.status(500).json({ error: 'QA chain not initialized' });
-  }
-
-  try {
-    // Generate a response using the QA chain
-    const response = await qaChain.call({
-      query: userQuery,
-    });
-
-    res.json({ response: response.text });
-  } catch (error) {
-    console.error('Error generating response:', error);
-    res.status(500).json({ error: 'Failed to generate response' });
-  }
-});
+  app.post('/.netlify/functions/server/chat', async (req, res) => {
+    const userQuery = req.body.query;
+  
+    if (!qaChain) {
+      console.error('QA chain is not initialized');
+      return res.status(500).json({ error: 'QA chain not initialized' });
+    }
+  
+    try {
+      const response = await qaChain.call({ query: userQuery });
+      console.log('QA chain response:', response);
+  
+      res.json({ response: response.text });
+    } catch (error) {
+      console.error('Error generating response:', error);
+      res.status(500).json({ error: 'Failed to generate response' });
+    }
+  });
+  
 
 // Export the serverless handler
 module.exports.handler = serverless(app);
