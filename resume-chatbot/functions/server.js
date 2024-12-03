@@ -8,6 +8,8 @@ import { OpenAIEmbeddings } from '@langchain/openai';
 import { PDFLoader } from 'langchain/document_loaders/fs/pdf';
 import cors from 'cors';
 import serverless from 'serverless-http';
+import path from 'path';
+import fs from 'fs';
 
 const app = express();
 
@@ -30,8 +32,15 @@ const model = new OpenAI({
 
 // Async function to set up resources
 async function setup() {
+  const resumePath = path.resolve(__dirname, './Resume_Das_2024.pdf');
+
+  // Check if the resume PDF exists
+  if (!fs.existsSync(resumePath)) {
+    throw new Error(`Resume PDF not found at path: ${resumePath}`);
+  }
+
   // Load and process the resume PDF
-  const loader = new PDFLoader('./Resume_Das_2024.pdf');
+  const loader = new PDFLoader(resumePath);
   const docs = await loader.load();
 
   // Create vector store
