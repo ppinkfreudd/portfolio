@@ -13,90 +13,162 @@ import fs from 'fs';
 
 const app = express();
 
-// Configure CORS
+// Configure CORS with more restrictive settings
 const corsOptions = {
-  origin: '*',
+  origin: process.env.CORS_ORIGIN || '*',
   methods: ['GET', 'POST'],
-  allowedHeaders: ['Content-Type'],
+  allowedHeaders: ['Content-Type', 'Authorization'],
   credentials: true,
-  optionSuccessStatus: 200,
+  optionsSuccessStatus: 200
 };
 
 app.use(cors(corsOptions));
 app.use(bodyParser.json());
 
-// Handle GET requests to the root
-app.get('/.netlify/functions/server', (req, res) => {
-  res.send('Server is working!');
-});
+// Custom prompt for QA chain
+const CUSTOM_PROMPT = `
+You are an AI assistant specialized in providing information about Rishit Das's professional background.
 
-// Initialize OpenAI
-const model = new OpenAI({
-  openAIApiKey: process.env.OPENAI_API_KEY,
-});
+Guidelines:
+- Use only the provided context to answer questions
+- Keep responses concise (under 200 words)
+- If the answer is not in the context, say "I don't have that information"
+- If the question is unrelated to Rishit Das, explain that you can only discuss his professional profile
 
-// Async function to set up resources
-async function setup() {
-  // Use relative path for Netlify serverless environment
-  // const resumePath = path.resolve(__dirname, './Resume_Das_2024.pdf');
-  const resumePath = path.join(__dirname, 'Resume_Das_2024.pdf');
+Context: {context}
+Question: {question}
 
+Provide a clear, informative response.
+`;
 
-  // Check if the resume PDF exists
-  if (!fs.existsSync(resumePath)) {
-    console.warn(`Resume PDF not found at path: ${resumePath}. Please ensure the file is present.`);
+// Initialize OpenAI model with error handling
+const initializeModel = () => {
+  try {
+    if (!process.env.OPENAI_API_KEY) {
+      throw new Error('OpenAI API key is not set');
+    }
+    return new OpenAI({
+      openAIApiKey: process.env.OPENAI_API_KEY,
+      configuration: {
+        // Add any additional configuration if needed
+        temperature: 0.3, // Lower temperature for more focused responses
+      }
+    });
+  } catch (error) {
+    console.error('Failed to initialize OpenAI model:', error);
     return null;
   }
+};
 
-  // Load and process the resume PDF
-  const loader = new PDFLoader(resumePath);
-  const docs = await loader.load();
+// Setup function with robust error handling
+async function setupQAChain() {
+  try {
+    const model = initializeModel();
+    if (!model) {
+      throw new Error('OpenAI model could not be initialized');
+    }
 
-  // Create vector store
-  const vectorStore = await HNSWLib.fromDocuments(docs, new OpenAIEmbeddings());
+    // Determine resume path with fallback
+    const resumePath = path.resolve(
+      process.env.RESUME_PATH || 
+      path.join(__dirname, './Resume_Das_2024.pdf')
+    );
 
-  // Create QA chain
-  const chain = RetrievalQAChain.fromLLM(model, vectorStore.asRetriever());
+    // Validate resume file exists
+    if (!fs.existsSync(resumePath)) {
+      console.error(`Resume PDF not found at: ${resumePath}`);
+      return null;
+    }
 
-  return chain;
+    // Load PDF documents
+    const loader = new PDFLoader(resumePath);
+    const docs = await loader.load();
+
+    // Create vector store
+    const vectorStore = await HNSWLib.fromDocuments(
+      docs, 
+      new OpenAIEmbeddings({
+        openAIApiKey: process.env.OPENAI_API_KEY
+      })
+    );
+
+    // Create QA chain with custom prompt
+    const chain = RetrievalQAChain.fromLLM(
+      model, 
+      vectorStore.asRetriever(),
+      {
+        returnSourceDocuments: true,
+        inputKey: 'query',
+        // You can add custom prompt here if needed
+      }
+    );
+
+    return chain;
+  } catch (error) {
+    console.error('Complete QA chain setup failed:', error);
+    return null;
+  }
 }
 
-// Create a variable to hold the chain
-let qaChain;
+// Global QA Chain variable
+let qaChain = null;
 
-// Initialize resources
-setup()
-  .then((chain) => {
-    if (chain) {
-      qaChain = chain;
-      console.log('QA chain initialized');
-    } else {
-      console.error('QA chain could not be initialized due to missing resume PDF.');
-    }
-  })
-  .catch((err) => {
-    console.error('Failed to initialize QA chain:', err);
+// Route for health check
+app.get('/.netlify/functions/server', (req, res) => {
+  res.json({ 
+    status: 'running', 
+    qaChainInitialized: !!qaChain 
   });
+});
 
-  app.post('/.netlify/functions/server/chat', async (req, res) => {
-    const userQuery = req.body.query;
-  
+// Chat endpoint
+app.post('/.netlify/functions/server/chat', async (req, res) => {
+  try {
+    // Ensure QA chain is initialized
     if (!qaChain) {
-      console.error('QA chain is not initialized');
-      return res.status(500).json({ error: 'QA chain not initialized' });
+      // Attempt to reinitialize if not already done
+      qaChain = await setupQAChain();
+      
+      if (!qaChain) {
+        return res.status(500).json({ 
+          error: 'QA chain could not be initialized' 
+        });
+      }
     }
-  
-    try {
-      const response = await qaChain.call({ query: userQuery });
-      console.log('QA chain response:', response);
-  
-      res.json({ response: response.text });
-    } catch (error) {
-      console.error('Error generating response:', error);
-      res.status(500).json({ error: 'Failed to generate response' });
-    }
-  });
-  
 
-// Export the serverless handler
-module.exports.handler = serverless(app);
+    const { query } = req.body;
+
+    // Validate query
+    if (!query || typeof query !== 'string') {
+      return res.status(400).json({ 
+        error: 'Invalid query provided' 
+      });
+    }
+
+    // Generate response
+    const response = await qaChain.call({ query });
+
+    res.json({ 
+      response: response.text || 'No response generated',
+      sources: response.sourceDocuments || []
+    });
+
+  } catch (error) {
+    console.error('Chat endpoint error:', error);
+    res.status(500).json({ 
+      error: 'Failed to process chat request', 
+      details: error.message 
+    });
+  }
+});
+
+// Initial setup
+setupQAChain()
+  .then((chain) => {
+    qaChain = chain;
+    console.log('QA Chain Initialization: ' + (chain ? 'Successful' : 'Failed'));
+  })
+  .catch(console.error);
+
+// Export serverless handler
+export const handler = serverless(app);
