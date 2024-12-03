@@ -10,6 +10,7 @@ import cors from 'cors';
 import serverless from 'serverless-http';
 import path from 'path';
 import fs from 'fs';
+import 'web-streams-polyfill/ponyfill';
 
 const app = express();
 
