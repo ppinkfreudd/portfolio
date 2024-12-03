@@ -30,21 +30,6 @@ app.get('/.netlify/functions/server', (req, res) => {
   res.send('Server is working!');
 });
 
-// Handle POST requests for the chatbot
-app.post('/.netlify/functions/server', (req, res) => {
-  const { query } = req.body;
-
-  if (!query) {
-    return res.status(400).json({ error: 'Missing "query" in request body' });
-  }
-
-  const response = {
-    text: `You asked: "${query}"`,
-  };
-
-  res.status(200).json(response);
-});
-
 // Initialize OpenAI
 const model = new OpenAI({
   openAIApiKey: process.env.OPENAI_API_KEY,
