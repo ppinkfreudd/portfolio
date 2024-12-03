@@ -1,11 +1,6 @@
 [build]
   base = "resume-chatbot"
   command = "npm install --legacy-peer-deps && npm run build"
-  publish = "public"
 
 [functions]
   directory = "functions"
-
-
-
-  
