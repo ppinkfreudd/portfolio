@@ -3,7 +3,7 @@ import express from 'express';
 import bodyParser from 'body-parser';
 import { OpenAI } from '@langchain/openai';
 import { RetrievalQAChain } from 'langchain/chains';
-import { FaissStore } from '@langchain/community/vectorstores/faiss';
+import { HNSWLib } from '@langchain/community/vectorstores/hnswlib';
 import { OpenAIEmbeddings } from '@langchain/openai';
 import { PDFLoader } from 'langchain/document_loaders/fs/pdf';
 import cors from 'cors';
@@ -50,6 +50,7 @@ const initializeModel = () => {
     return new OpenAI({
       openAIApiKey: process.env.OPENAI_API_KEY,
       configuration: {
+        // Add any additional configuration if needed
         temperature: 0.3, // Lower temperature for more focused responses
       }
     });
@@ -83,23 +84,22 @@ async function setupQAChain() {
     const loader = new PDFLoader(resumePath);
     const docs = await loader.load();
 
-    // Create vector store using Faiss instead of HNSWLib
-    const embeddings = new OpenAIEmbeddings({
-      openAIApiKey: process.env.OPENAI_API_KEY
-    });
-
-    const vectorStore = await FaissStore.fromDocuments(
+    // Create vector store
+    const vectorStore = await HNSWLib.fromDocuments(
       docs, 
-      embeddings
+      new OpenAIEmbeddings({
+        openAIApiKey: process.env.OPENAI_API_KEY
+      })
     );
 
-    // Create QA chain 
+    // Create QA chain with custom prompt
     const chain = RetrievalQAChain.fromLLM(
       model, 
       vectorStore.asRetriever(),
       {
         returnSourceDocuments: true,
         inputKey: 'query',
+        // You can add custom prompt here if needed
       }
     );
 
