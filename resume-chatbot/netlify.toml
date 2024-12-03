@@ -1,0 +1,5 @@
+[build]
+  functions = "resume-chatbot/functions"
+
+[functions]
+  node_bundler = "esbuild"
