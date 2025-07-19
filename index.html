@@ -8,116 +8,158 @@
   <style>
     body {
       font-family: 'Fira Code', monospace;
-      background-color: #ffffff;
+      background-color: #f8f9fc; /* Soft bluish-white */
+      color: #2d2d2d; /* Dark Gray */
     }
 
     nav {
       position: fixed;
-      top: 20px;
-      left: 20px;
+      top: 30px;
+      left: 30px;
       z-index: 1000;
-      transition: top 0.3s;
+      background-color: rgba(241, 244, 249, 0.75); /* Muted gray-blue, semi-transparent */
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border-radius: 20px;
+      padding: 10px 15px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
     }
 
     nav a {
-      color: #333;
+      color: #2d2d2d;
       text-decoration: none;
       font-size: 1rem;
-      margin: 5px 0;
+      margin: 8px 0;
       transition: color 0.3s;
-      font-weight: bold;
+      font-weight: 500;
       display: block;
     }
 
     nav a:hover,
     nav a.active {
-      color: #ff6f61;
+      color: #e6645a; /* New Accent */
     }
 
     nav a::before {
       content: "> ";
-      color: #ffcc00;
+      color: #e6645a; /* New Accent */
     }
 
     .container {
-      max-width: 1000px;
-      margin-top: 100px;
+      max-width: 900px;
+      margin-top: 50px;
+      transition: margin-top 0.3s ease;
+    }
+
+    .container.full-page {
+      margin-top: 0 !important;
+      transition: margin-top 0.3s ease;
+      align-self: flex-start;
+    }
+
+    .section {
+      transition: all 0.3s ease;
+    }
+
+    .section.full-page-section {
+      min-height: 100vh;
+      padding-top: 20px;
+      box-sizing: border-box;
     }
 
     .profile-container {
       display: flex;
       align-items: center;
       margin-bottom: 20px;
-      padding: 30px;
-      border-radius: 15px;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-      background-color: #f9f9f9;
+      padding: 40px;
+      border-radius: 30px;
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.05);
+      background-color: #ffffff;
       position: relative;
     }
 
     .profile-image {
       flex-shrink: 0;
-      width: 320px;
-      height: 300px;
+      width: 200px; /* Reduced size */
+      height: 200px; /* Reduced size */
       border-radius: 50%;
-      border: 3px solid #4a90e2;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      border: 4px solid #e6645a; /* New Accent */
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
       transition: all 0.3s ease;
       object-fit: cover;
     }
 
     .profile-image-wrapper {
-      width: 320px;
-      height: 300px;
+      width: 200px; /* Reduced size */
+      height: 200px; /* Reduced size */
       position: relative;
     }
-
+    
     .profile-image:hover {
       content: url('public/AsciiVersion.png');
     }
 
     .profile-details {
-      margin-left: 30px;
+      margin-left: 40px;
       flex-grow: 1;
     }
 
+    .profile-details h1 {
+      font-size: 2.5rem; /* Larger Name */
+      font-weight: 700;
+      color: #e6645a; /* New Accent */
+    }
+
     .bio {
-      margin-top: 10px;
+      margin-top: 15px;
       max-width: 500px;
+      font-size: 1.1rem;
+      line-height: 1.6;
+    }
+
+    .typewriter-text {
+      min-height: 3.6rem; /* Reserve space for 2 lines on desktop to prevent layout shift */
     }
 
     .expand-button, .chatbot-button {
-      margin-top: 10px;
-      padding: 5px 10px;
-      background-color: #4a90e2;
+      margin-top: 20px;
+      padding: 12px 25px;
+      background-color: #e6645a; /* New Accent */
       color: #fff;
       border: none;
-      border-radius: 5px;
+      border-radius: 30px; /* Pill-shaped */
       cursor: pointer;
-      transition: background-color 0.3s ease;
+      transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+      font-weight: 600;
+      font-size: 1rem;
+      box-shadow: 0 4px 14px rgba(230, 100, 90, 0.4);
     }
 
     .expand-button:hover, .chatbot-button:hover {
-      background-color: #357ab8;
+      background-color: #d1524a; /* Darker Accent */
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(209, 82, 74, 0.4);
     }
 
     .expanded-section {
       display: none;
-      margin-top: 20px;
-      padding: 15px;
-      background-color: #f0f0f0;
-      border-radius: 10px;
-      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-      font-family: 'Courier New', monospace;
+      margin-top: 30px;
+      padding: 30px;
+      background-color: #fff; /* White background */
+      border-radius: 20px;
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.05);
+      font-family: 'Fira Code', monospace;
     }
 
     .expanded-section h3 {
-      font-size: 1.5rem;
-      margin-bottom: 10px;
+      font-size: 1.8rem;
+      margin-bottom: 20px;
+      color: #e6645a; /* New Accent */
     }
 
     .expanded-section p {
-      margin-bottom: 10px;
+      margin-bottom: 15px;
+      line-height: 1.7;
     }
 
     .expanded-section ul {
@@ -126,12 +168,12 @@
     }
 
     .expanded-section li {
-      margin-bottom: 5px;
+      margin-bottom: 10px;
     }
 
     .expanded-section li::before {
       content: "— ";
-      color: #4a90e2;
+      color: #e6645a; /* New Accent */
     }
 
     .chatbot-container {
@@ -156,7 +198,7 @@
     }
 
     .chatbot-header {
-      background-color: #4a90e2;
+      background-color: #e6645a; /* New Accent */
       color: #fff;
       padding: 10px;
       text-align: center;
@@ -214,49 +256,58 @@
     }
 
     @media (max-width: 768px) {
+      /* Ensure the main content is horizontally centered on mobile */
+      .container {
+        width: 90vw;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
       .profile-container {
         flex-direction: column;
         align-items: center;
-      }
-
-      .profile-image {
-        width: 90vw; 
-        max-width: 320px; 
-        height: auto;
-        border-radius: 50%; 
-        margin: 0 auto; 
-        object-fit: cover; 
+        text-align: center;
+        padding: 25px;
       }
 
       .profile-details {
         margin-left: 0;
-        text-align: center;
+        margin-top: 25px;
       }
 
       .profile-details .flex {
         justify-content: center;
       }
 
-      .blog-card {
-        width: 90vw;
-        max-width: 100%;
-        margin: 0 auto;
-        padding: 15px;
-        box-sizing: border-box;
+      #resume .flex.items-center {
+        flex-direction: column;
+        text-align: center;
+        margin-bottom: 2rem;
       }
 
-      .blog-card .px-4 {
-        padding-left: 0;
-        padding-right: 0;
+      #resume .flex.items-center img {
+        margin-right: 0;
+        margin-bottom: 1.5rem;
       }
 
-      .blog-card .sm\:p-6 {
-        padding: 0;
+      .blog-card, #resume .blog-card {
+        padding: 25px;
       }
 
-      #plasmaCanvas {
-        width: 100%;
-        height: auto;
+      h1, .profile-details h1 {
+        font-size: 2rem;
+      }
+
+      h2, #resume h2 {
+        font-size: 1.5rem;
+      }
+
+      h3 {
+          font-size: 1.25rem;
+      }
+
+      .typewriter-text {
+        min-height: 7.1rem; /* Reserve space for 4 lines on mobile */
       }
     }
 
@@ -332,26 +383,32 @@
     }
 
     .blog-card {
-      background-color: #fff;
+      background-color: #ffffff;
       overflow: hidden;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-      border-radius: 10px;
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.05);
+      border-radius: 30px;
       margin: 0 auto;
       max-width: 100%;
       width: 100%;
       box-sizing: border-box;
-      padding: 20px;
+      padding: 40px;
     }
+
+    elevenlabs-convai {
+      --call-button-background-gradient: linear-gradient(to right, #e6645a, #f08a82);
+      --call-button-background-color: #e6645a;
+    }
+
   </style>
 </head>
 
-<body class="bg-aquamarine text-gray-800 flex justify-center items-center min-h-screen py-10">
+<body class="bg-aquamarine text-gray-800 flex justify-center min-h-screen py-10">
   <div class="container mx-auto px-4 sm:px-6 lg:px-8">
     <nav>
       <a href="#home" onclick="showSection('home')">Home</a>
       <a href="#resume" onclick="showSection('resume')">CV</a>
     </nav>
-
+    
     <div class="sm:rounded-lg">
       <div class="flex">
         <div class="flex-1">
@@ -362,28 +419,33 @@
                 <div class="ascii-overlay"></div>
               </div>
               <div class="profile-details">
-                <h1 class="text-2xl font-bold text-indigo-600">Rishit Das</h1>
+                <h1 class="text-2xl font-bold">Rishit Das</h1>
                 <div class="flex space-x-4 mt-2">
-                  <a href="https://www.linkedin.com/in/rishitdas/" target="_blank" class="text-indigo-600 hover:text-indigo-800">
-                    <i class="fab fa-linkedin"></i>
+                  <a href="https://www.linkedin.com/in/rishitdas/" target="_blank" class="text-gray-600 hover:text-gray-800">
+                    <i class="fab fa-linkedin fa-lg"></i>
                   </a>
-                  <a href="mailto:rdas@ucdavis.edu" class="text-indigo-600 hover:text-indigo-800">
-                    <i class="fas fa-envelope"></i>
+                  <a href="mailto:rdas@ucdavis.edu" class="text-gray-600 hover:text-gray-800">
+                    <i class="fas fa-envelope fa-lg"></i>
                   </a>
-                  <a href="https://github.com/ppinkfreudd" target="_blank" class="text-indigo-600 hover:text-indigo-800">
-                    <i class="fab fa-github"></i>
+                  <a href="https://github.com/ppinkfreudd" target="_blank" class="text-gray-600 hover:text-gray-800">
+                    <i class="fab fa-github fa-lg"></i>
                   </a>
                 </div>
                 <div class="bio">
                   <p>Hey, I'm Rishit!</p>
                   <p class="typewriter-text">I'm a 3rd year at UC Davis 🐄. From Melbourne 🇦🇺, lived in 🇮🇳, 🇭🇰, and 🇦🇪.</p>
-                  <button class="expand-button" onclick="toggleExpand()">Expand Bio</button>
-                  <button class="chatbot-button" onclick="openChatbot()">Open Chatbot</button>
+                  <div class="flex flex-col items-start gap-y-3" style="margin-top: 20px;">
+                    <div class="flex items-center gap-x-4">
+                      <button class="chatbot-button" onclick="openChatbot()" style="margin-top: 0;">Open Chatbot</button>
+                      <p style="color: #3c3c3c; font-size: 0.9rem;">(or speak to me using call button below!)</p>
+                    </div>
+                    <elevenlabs-convai agent-id="agent_01k0fzd175eaftvkk2fkyw9549"></elevenlabs-convai>
+                  </div>
                 </div>
               </div>
             </div>
-
-            <div class="expanded-section" id="expandedSection">
+            
+            <!-- <div class="expanded-section" id="expandedSection">
               <h3>Bio</h3>
               <p>—</p>
               <p>I think I'm going to keep this as a most-up-to-date work section.</p>
@@ -392,19 +454,19 @@
               <p>I started this website about a year back (this is the 3rd iteration). The hope for it was to always serve as some archive of my work, but I also wanted a way to write. So I added a blogs section (in the works) too.</p>
               <p>Beyond this, my other current projects/startup projects are:</p>
               <ul>
-                <li><strong><a href="https://gardeai.com/" target="_blank">Garde 🤺</a></strong>: A voice-assisted AI fencing coach, powered with computer vision analysis.</li>
+                <li><strong><a href="https://gardeai.com/" target="_blank" style="color: #ff6f61;">Garde 🤺</a></strong>: A voice-assisted AI fencing coach, powered with computer vision analysis.</li>
                 <li><strong>Rhythmoji 🎼</strong>: Converts your music listening data into a custom LEGO figure with an animalistic head.</li>
-                <li><strong><a href="https://echocare.club/" target="_blank">Echocare 🎤</a></strong>: A San Francisco food-bank voice assistant project that started at CalHacks 2024.</li>
+                <li><strong><a href="https://echocare.club/" target="_blank" style="color: #ff6f61;">Echocare 🎤</a></strong>: A San Francisco food-bank voice assistant project that started at CalHacks 2024.</li>
               </ul>
               <p>All of these projects have their own stories and you can talk with my chatbot to learn more. </p>
-            </div>
+            </div> -->
 
             <div class="flex justify-center">
               <canvas id="wireframeCubeCanvas" class="w-20 h-20 mt-2 rounded-lg" width="80" height="80"></canvas>
             </div>
 
             <div class="text-center mt-4">
-              <p>© Rishit Das 2024</p>
+              <p>© Rishit Das 2025</p>
               <p>All Rights Reserved</p>
             </div>
 
@@ -412,13 +474,13 @@
               <p>Made with HTML, CSS, JavaScript, Node.js, Express, OpenAI, Langchain, and Tailwind CSS</p>
             </div>
           </div>
-
+          
           <div id="blog" class="section px-4 py-5 sm:p-6 hidden">
-            <h2 class="blog-title text-2xl sm:text-3xl font-bold mb-4 text-center">Blog</h2>
+            <h2 class="blog-title text-2xl sm:text-3xl font-bold mb-4 text-center" style="color: #e6645a;">Blog</h2>
             <div class="blog-card">
               <div class="px-4 py-5 sm:p-6">
                 <h3 class="text-lg sm:text-xl font-bold mb-2">
-                  <a href="blog1.html" class="text-indigo-600 hover:text-indigo-800">Notes On Accessibility, How AI Might Ruin Everything, and Why I'm Starting A Blog</a>
+                  <a href="blog1.html" style="color: #e6645a;">Notes On Accessibility, How AI Might Ruin Everything, and Why I'm Starting A Blog</a>
                 </h3>
                 <p class="text-base mb-4">December 24, 2024</p>
                 <p class="text-base mb-4">This won't be a regular blog. I promise you that. I'm not consistent enough to do that, in the way you think of a blog...</p>
@@ -426,119 +488,105 @@
               </div>
             </div>
           </div>
-
+          
           <div id="resume" class="section px-4 py-5 sm:p-6 hidden">
             <!-- Resume content -->
             <main>
-              <!-- Introductory text -->
-              <div class="flex items-center mb-5">
-                <img src="public/Rishit_Rhythmoji.png" alt="Rhythmoji" class="w-60 h-40 rounded-lg mr-8">
-                <p>To the left, is my 'Rhythmoji', one of my first projects. It converts Spotify-listening to a lego figure. Below are some highlights from projects I've worked on since Rhythmoji.</p>
-              </div>
-
-              <!-- Project slideshow -->
-              <div class="relative w-full max-w-4xl mx-auto">
-                <div class="slideshow-container">
-                  <div id="slide-container" class="flex transition-transform duration-300">
-                    <div class="slide">
-                      <img src="public/Wavelength.png" alt="Wavelength" class="slideshow-image">
-                    </div>
-                    <div class="slide">
-                      <img src="public/Vizard.png" alt="Vizard" class="slideshow-image">
-                    </div>
-                    <div class="slide">
-                      <img src="public/Garde.png" alt="Garde" class="slideshow-image">
-                    </div>
+              <div class="mb-10"> <!-- Removed blog-card styling -->
+                <!-- Introductory text -->
+                <div class="flex items-center mb-10">
+                  <img src="public/Rishit_Rhythmoji.png" alt="Rhythmoji" class="w-40 h-40 rounded-full mr-8 border-4 border-gray-200">
+                  <div>
+                    <h2 class="text-2xl font-bold" style="color: #e6645a;">My Projects Journey</h2>
+                    <p class="mt-2 text-lg">This here is my 'Rhythmoji', one of my first coding projects. It converts Spotify listening data into a unique lego figure using Dall-e. Below are projects I've worked on since Rhythmoji.</p>
                   </div>
                 </div>
 
-                <div class="flex justify-center space-x-4 mt-2">
-                  <button id="prev-slide" class="slideshow-button">&lt;</button>
-                  <button id="next-slide" class="slideshow-button">&gt;</button>
+                <!-- Project slideshow -->
+                <div class="relative w-full max-w-4xl mx-auto">
+                  <div class="slideshow-container">
+                    <div id="slide-container" class="flex transition-transform duration-300">
+                      <div class="slide">
+                        <img src="public/Wavelength.png" alt="Wavelength" class="slideshow-image">
+                      </div>
+                      <div class="slide">
+                        <img src="public/Vizard.png" alt="Vizard" class="slideshow-image">
+                      </div>
+                      <div class="slide">
+                        <img src="public/Garde.png" alt="Garde" class="slideshow-image">
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="flex justify-center space-x-4 mt-4">
+                    <button id="prev-slide" class="slideshow-button">&lt;</button>
+                    <button id="next-slide" class="slideshow-button">&gt;</button>
+                  </div>
                 </div>
               </div>
 
               <!-- Grid layout for content -->
-              <div class="grid grid-cols-1 sm:grid-cols-2 gap-8">
-                <div>
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div> <!-- Removed blog-card styling -->
                   <!-- Education and Experience -->
-                  <h3 class="text-xl font-bold mb-4"><span class="text-indigo-600">Education</span></h3>
-                  <div class="content">
-                    <p><b>University of California, Davis</b></p>
-                    <p>09.22-Present</p>
-                    <p>B.S. Cognitive Science (Computer Science Track)</p>
-                    <p>Graduation: 06/26 | GPA: 3.6</p>
-                    <p><a href="https://drive.google.com/file/d/1uXv6QkvKRHpKz8FxLF9e85pP9-HUsW64/view?usp=sharing" class="text-indigo-600 hover:text-indigo-800">Transcript</a></p>
-                    <p><b>Stanford Online High School</b></p>
-                    <p>09.18-06.22</p>
-                    <p><a href="https://drive.google.com/file/d/1fe9gaYJrIgXKbdYyTrQYjaTatMvwsERt/view?usp=sharing" class="text-indigo-600 hover:text-indigo-800">Transcript</a></p>
+                  <h3 class="text-2xl font-bold mb-6" style="color: #e6645a;">Education</h3>
+                  <div class="content space-y-4">
+                    <div>
+                      <p class="font-bold">University of California, Davis</p>
+                      <p class="text-sm text-gray-600">B.S. Computational Cognitive Science | Graduation: 09/25 | GPA: 3.7</p>
+                    </div>
+                    <div>
+                      <p class="font-bold">Stanford Online High School</p>
+                      <p class="text-sm text-gray-600">09.18-06.22</p>
+                    </div>
                   </div>
 
-                  <h3 class="text-xl font-bold mb-4"><span class="text-indigo-600">Experience</span></h3>
-                  <div class="content">
-                    <p><b><a href="https://aggiesportsanalytics.com/" class="text-indigo-600 hover:text-indigo-800">Aggie Sports Analytics Club</a> \ 03.24-Present</b></p>
-                    <p>Project Member</p>
-                    <p>Developed GARDE, a fencing AI coach using TensorFlow's Blazepose 3D pose estimation model, React, Plotly.js, Next.js, TailwindCSS, MongoDB, Spline, and React-Speech-kit. Created the 'Fencer Page' for real-time feedback using joint angles, feet distance, and a pose estimation algorithm.</p>
-                    <p><b><a href="https://genglab.ucdavis.edu/" class="text-indigo-600 hover:text-indigo-800">Integrated Attention VR Lab</a> \ 09.23-Present</b></p>
-                    <p>Research Assistant</p>
-                    <p>Developed data pipeline using Pandas, Matplotlib, Seaborn, and NumPy for VR studies involving over 100 participants. Presented research at conferences and will conduct VR experiments focusing on ADHD in children this summer.</p>
-                    <p><b><a href="https://thewavelengthapp.com/" class="text-indigo-600 hover:text-indigo-800">Wavelength</a> \ 02.24-Present</b></p>
-                    <p>Tech Lead</p>
-                    <p>Developed a Spotify-based dating app using Flask, D3.js, Spotipy, MySQL, and HTML/CSS. Created an algorithm to overcome the 25-user limit for the Spotify API, facilitating an event with 50 participants. Won $5000 from the UC Davis Startup accelerator, PLASMA, through the Mentor's Choice Award.</p>
-                    <p><b><a href="https://tretaillabs.com/service/nrture" class="text-indigo-600 hover:text-indigo-800">nRture</a> \ 06.23-09.23</b></p>
-                    <p>Intern</p>
-                    <p>Developed Ruby SSO script for Google Looker API integration. Created comprehensive dashboards integrating an AI chatbot and 17 Looker Dashboards. Refined Jira system by authoring 200 detailed user story tickets based on user feedback.</p>
-                    <p><b><a href="https://ebsadavis.com/" class="text-indigo-600 hover:text-indigo-800">Economics and Business Student Association (EBSA)</a> \ 03.23 - 06.23</b></p>
-                    <p>Member</p>
-                    <p>Finalist in the EBSA Spring Quarter '23 Case Competition. Conducted risk-analysis and mitigation strategies for River City Bank's portfolio expansion plan.</p>
-                    <p><b>Kogiito \ 01.20-09.22</b></p>
-                    <p>Founder</p>
-                    <p>Created a website that allowed 150+ high-schoolers worldwide to conduct brain-science research. Presented at global cognitive science conferences. Onboarded 5 academic advisors and managed a 10-part workshop series for over 50 members.</p>
-                    <p><b><a href="https://gdscucdavis.com/" class="text-indigo-600 hover:text-indigo-800">UC Davis Google Developer Student Club</a></b></p>
-                    <p>AggieAssist</p>
-                    <p>Connected students with mental health support using AI. Created a holistic training dataset with over 150 lexical data points, resulting in a 35% increase in student satisfaction. Implemented a mental health chatbot using GoogleBERT and SimpleTransformers.</p>
-                    <p><b>ESPR: European Summer Program on Rationality</b></p>
-                    <p>Student</p>
-                    <p>Participated in discussions on cognitive science and brain emulation with people like Anders Sandberg, as well as areas like making better predictions and recognizing cognitive biases. This is the EU version of <a href="https://www.sparc.camp/" class="text-indigo-600 hover:text-indigo-800">SPARC.</a></p>
+                  <h3 class="text-2xl font-bold my-6" style="color: #e6645a;">Experience</h3>
+                  <div class="content space-y-6">
+                    <div>
+                      <p class="font-bold"><a href="https://gardeai.com/" style="color: #3c3c3c;">GARDE</a> \ Co-founder, CPO \ 03/24–Present</p>
+                      <p class="mt-1">Engineered a fencing AI coach using TensorFlow.js BlazePose and custom React components, delivering a real-time feedback mechanism that enhanced user training sessions for over 120 athletes.</p>
+                    </div>
+                    <div>
+                      <p class="font-bold"><a href="https://genglab.ucdavis.edu/" style="color: #3c3c3c;">Integrated Attention VR Lab</a> \ Research Assistant \ 09/23–Present</p>
+                      <p class="mt-1">Created a data pipeline for a NIMH-grant study on visual attention in VR. Collaborating with University of Adelaide to build a new experiment with React and WebGazer.js.</p>
+                    </div>
+                    <div>
+                      <p class="font-bold"><a href="https://github.com/nmaffly/Wavelength" style="color: #3c3c3c;">Wavelength</a> \ Tech Lead \ 03/24–07/24</p>
+                      <p class="mt-1">Launched a demo of a Spotify dating app using Flask, D3.js, and AWS. Overcame the 25-user Spotify API limit, enabling an event with 70+ participants.</p>
+                    </div>
                   </div>
                 </div>
 
-                <div>
+                <div> <!-- Removed blog-card styling -->
                   <!-- Honors and Projects -->
-                  <h3 class="text-xl font-bold mb-4"><span class="text-indigo-600">Honors</span></h3>
-                  <div class="content">
-                    <p>- 2023: Amy Lee Memorial Essay Prize for my essay "The Decomposition of the Narratological Framework in Pedro Páramo".</p>
-                    <p>- 2023: Finalist in EBSA Spring Quarter '23 Case Competition with River City Bank</p>
-                    <p>- 2024: 1st place for Aggie Sports Analytics Case Competition '24</p>
-                    <p>- 2024: $5,000 Mentor's Choice Award (UC Davis Student Startup Center)</p>
+                  <h3 class="text-2xl font-bold mb-6" style="color: #e6645a;">Honors & Awards</h3>
+                  <div class="content space-y-3">
+                     <p>- 1st Place, UC Davis Sports Analytics Club Competition '24</p>
+                     <p>- $5,000 Mentor's Choice Award, UC Davis PLASMA Accelerator</p>
+                     <p>- $800 Vapi.ai Award for Social Impact, CalHacks 2024</p>
+                     <p>- Amy Lee Memorial Essay Prize for outstanding writing</p>
+                     <p>- Finalist, EBSA Spring '23 Case Competition w/ River City Bank</p>
                   </div>
 
-                  <h3 class="text-xl font-bold mb-4"><span class="text-indigo-600">Projects</span></h3>
-                  <div class="content">
-                    <p><a href="https://github.com/ppinkfreudd/Rhythmoji_v2" class="text-green-600 hover:text-green-800">Rhythmoji (01.24-Present)</a></p>
-                    <p>- A Lego-like figure generator based on your Spotify listening using dall-e</p>
-                    <p><span class="text-green-600">Data Analysis on Neural Correlates of Schizophrenia (2021)</span> <a href="https://drive.google.com/file/d/1G-lsKpdf6oiYh-Mp7ocRBdfLX7PmfPc7/view?usp=sharing" class="text-indigo-600 hover:text-indigo-800">(Poster)</a></p>
-                    <p>- Used r, matplotlib, and FreeSurfer 7.1 to clean and analyze MRI dataset from McLean Hospital, MA to research the inverse relationship between two regions of the brain in individuals with schizophrenia.</p>
-                    <p><span class="text-green-600">A Kantian Model of Happiness (2021)</span> <a href="https://comco2021.uni-osnabrueck.de/abstracts/day2_poster_das" class="text-indigo-600 hover:text-indigo-800">(Abstract)</a></p>
-                    <p>- A mathematical model using Python and NumPy to understand how Kant's philosophy can be applied to the modern-day theories of quantifying happiness.</p>
-                    <p>- Showcased at the Computational and Cognition Workshop (COMCO) 2021.</p>
-                    <p><span class="text-green-600">The Relationship Between Subliminal Stimuli and Emotion (2020)</span> <a href="https://www.youtube.com/watch?v=y_Ad-VkSJ_M&amp;list=PLl_UXfN1hubUnaozGbluc6l8AXDCj9LBO&amp;index=22" class="text-indigo-600 hover:text-indigo-800">(Presentation)</a></p>
-                    <p>- My first ever project, analyzed survey responses using NLTK to understand how subliminal (below 100ms stimuli) affect emotion</p>
-                    <p>- Presented poster at The Science of Consciousness Conference 2020 in Tucson, AZ.</p>
-                  </div>
-
-                  <!-- Expertise and Misc -->
-                  <h3 class="text-xl font-bold mb-4"><span class="text-indigo-600">Expertise</span></h3>
-                  <div class="content">
-                    <p>Fluent in: Python, C++, C, Java, HTML/CSS, Node.js, Flask, Docker, AWS</p>
-                    <p>Kinda understand: R, Ruby</p>
-                    <p>Languages: English, Hindi, and Odia</p>
-                  </div>
-
-                  <h3 class="text-xl font-bold mb-4"><span class="text-indigo-600">Misc.</span></h3>
-                  <div class="content">
-                    <p>Jobs (current): On-campus mailroom job (10 hours/week), Research at Center for Mind and Brain (10 hours/week)</p>
-                    <p>- Interests: Hiking, cool blogs, Effective Altruism, FIFA 24, and good design.</p>
+                  <h3 class="text-2xl font-bold my-6" style="color: #e6645a;">Projects</h3>
+                  <div class="content space-y-4">
+                    <div>
+                      <p class="font-bold"><a href="https://github.com/ppinkfreudd/echocare" style="color: #3c3c3c;">Echocare</a> \ Oct 2024</p>
+                      <p class="mt-1">Designed a platform to aid homelessness in SF with a voice-activated service locator. Built with Next.js, Vapi.ai, and Google Maps API.</p>
+                    </div>
+                    <div>
+                      <p class="font-bold"><a href="https://github.com/ppinkfreudd/Rhythmoji_v2" style="color: #3c3c3c;">Rhythmoji</a> \ Sep 2023–Present</p>
+                      <p class="mt-1">Converts Spotify listening data to a Lego character using Spotipy, OpenAI, and Node.js. Led frontend development and AWS server setup.</p>
+                    </div>
+                    <div>
+                      <p class="font-bold">ML on Schizophrenia Neural Correlates \ 2021–2022</p>
+                      <p class="mt-1">Analyzed neuroimaging data from 59 patients at McLean Hospital. Presented at Harvard Undergraduate Research Opportunities (HUROS).</p>
+                    </div>
+                    <div>
+                        <p class="font-bold">Subliminal Stimuli and Emotion \ 2020</p>
+                        <p class="mt-1">Explored the relationship between subliminal stimuli and emotion using eye-tracking and NLTK. Presented at The Science of Consciousness (TSC 2020).</p>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -556,11 +604,12 @@
               <input type="text" id="chatbotInput" placeholder="Type a message...">
               <button onclick="sendMessage()">Send</button>
             </div>
-            <div class="example-prompts">
-              <button onclick="setExamplePrompt('What\'s Rishit main projects?')">What's Rishit's main projects?</button>
-              <button onclick="setExamplePrompt('What are his strengths and weaknesses?')">What are his strengths and weaknesses?</button>
+            <div class="example-prompts" style="padding: 10px; background-color: #f0f0f0; text-align: center;">
+              <button onclick="setExamplePrompt('What are Rishit\'s main projects?')" style="background: #e0e0e0; border: none; padding: 5px 10px; border-radius: 5px; cursor: pointer; margin: 2px;">What are his main projects?</button>
+              <button onclick="setExamplePrompt('What are his strengths and weaknesses?')" style="background: #e0e0e0; border: none; padding: 5px 10px; border-radius: 5px; cursor: pointer; margin: 2px;">Strengths & Weaknesses?</button>
             </div>
           </div>
+
         </div>
       </div>
     </div>
@@ -571,11 +620,28 @@
 
     function showSection(sectionId) {
       const sections = document.querySelectorAll('.section');
-      sections.forEach(section => section.classList.add('hidden'));
+      const container = document.querySelector('.container');
+
+      // Reset all sections
+      sections.forEach(section => {
+        section.classList.add('hidden');
+        section.classList.remove('full-page-section');
+      });
 
       const activeSection = document.getElementById(sectionId);
       if (activeSection) {
         activeSection.classList.remove('hidden');
+      }
+
+      // Handle full-page sections
+      const fullPageSections = ['resume'];
+      if (fullPageSections.includes(sectionId)) {
+        container.classList.add('full-page');
+        if (activeSection) {
+          activeSection.classList.add('full-page-section');
+        }
+      } else {
+        container.classList.remove('full-page');
       }
 
       const links = document.querySelectorAll('nav a');
@@ -593,8 +659,10 @@
         startTypeWriter();
       }
 
-      // Scroll to the top of the page
-      window.scrollTo({ top: 0, behavior: 'smooth' });
+      // Scroll the active section into view (top of viewport)
+      if (activeSection) {
+        activeSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
     }
 
     const typewriterText = document.querySelector('.typewriter-text');
@@ -627,6 +695,7 @@
   <script>
     function initWireframeCubeCanvas() {
       const canvas = document.getElementById('wireframeCubeCanvas');
+      if (!canvas) return;
       const context = canvas.getContext('2d');
       canvas.width = canvas.clientWidth;
       canvas.height = canvas.clientHeight;
@@ -718,9 +787,9 @@
           const dx = x2 - x1;
           const dy = y2 - y1;
           const distance = Math.sqrt(dx * dx + dy * dy);
-          const angle = Math.atan2(dy, dx);
 
           const steps = Math.floor(distance / 10);
+          if (steps <= 0) return;
           const stepX = dx / steps;
           const stepY = dy / steps;
 
@@ -747,57 +816,56 @@
 
   <script>
     const chars = "█▓▒░ ".split('');
+    let plasmaCanvas, plasmaContext;
 
     function wave(t, x, frequency, amplitude) {
         return Math.sin(t + x * frequency) * amplitude;
     }
 
     function initPlasmaCanvas() {
-        canvas = document.getElementById('plasmaCanvas');
-        if (canvas) {
-            context = canvas.getContext('2d');
-            resizeCanvas();
+        plasmaCanvas = document.getElementById('plasmaCanvas');
+        if (plasmaCanvas) {
+            plasmaContext = plasmaCanvas.getContext('2d');
+            resizePlasmaCanvas();
             drawASCIISineWaves();
         }
     }
 
-    function resizeCanvas() {
-        if (canvas) {
-            canvas.width = canvas.clientWidth;
-            canvas.height = canvas.clientHeight;
+    function resizePlasmaCanvas() {
+        if (plasmaCanvas) {
+            plasmaCanvas.width = plasmaCanvas.clientWidth;
+            plasmaCanvas.height = plasmaCanvas.clientHeight;
         }
     }
 
-    window.addEventListener('resize', resizeCanvas);
+    window.addEventListener('resize', resizePlasmaCanvas);
     window.addEventListener('DOMContentLoaded', initPlasmaCanvas);
 
     function drawASCIISineWaves() {
-        const width = canvas.width;
-        const height = canvas.height;
+        if (!plasmaCanvas) return;
+        const width = plasmaCanvas.width;
+        const height = plasmaCanvas.height;
         const time = performance.now() * 0.002;
 
-        const resolutionX = 8; // Horizontal resolution
-        const resolutionY = 9; // Vertical resolution
+        const resolutionX = 8;
+        const resolutionY = 9;
         const fontSize = resolutionY;
 
-        // Set a white background color
-        context.fillStyle = '#FFF';
-        context.fillRect(0, 0, width, height);
+        plasmaContext.fillStyle = '#FFF';
+        plasmaContext.fillRect(0, 0, width, height);
 
-        context.font = `${fontSize}px 'Courier New', monospace`;
-        context.textBaseline = "top";
+        plasmaContext.font = `${fontSize}px 'Courier New', monospace`;
+        plasmaContext.textBaseline = "top";
 
         for (let x = 0; x < width; x += resolutionX) {
             const waveHeight = height / 2 + wave(time, x, 0.05, height / 4);
             for (let y = 0; y < height; y += resolutionY) {
                 const i = Math.abs(y - waveHeight) < resolutionY ? 4 : 0;
                 const char = chars[i];
-
-                // Set rainbow colors for the waves
-                const hue = (x / width) * 360; // Color varies horizontally
-                const lightness = 50 + (i / chars.length) * 20; // Intensity affects brightness
-                context.fillStyle = `hsl(${hue}, 100%, ${lightness}%)`;
-                context.fillText(char, x, y);
+                const hue = (x / width) * 360;
+                const lightness = 50 + (i / chars.length) * 20;
+                plasmaContext.fillStyle = `hsl(${hue}, 100%, ${lightness}%)`;
+                plasmaContext.fillText(char, x, y);
             }
         }
 
@@ -805,53 +873,41 @@
     }
   </script>
 
-
   <script>
     // JavaScript for slideshow functionality
     const slideContainer = document.getElementById('slide-container');
     const prevButton = document.getElementById('prev-slide');
     const nextButton = document.getElementById('next-slide');
 
-    let currentIndex = 0;
+    if (slideContainer && prevButton && nextButton) {
+      let currentIndex = 0;
 
-    function updateSlidePosition() {
-      const slideWidth = slideContainer.parentElement.offsetWidth;
-      slideContainer.style.transform = `translateX(-${currentIndex * slideWidth}px)`;
+      function updateSlidePosition() {
+        const slideWidth = slideContainer.parentElement.offsetWidth;
+        slideContainer.style.transform = `translateX(-${currentIndex * slideWidth}px)`;
+      }
+
+      prevButton.addEventListener('click', () => {
+        currentIndex = (currentIndex > 0) ? currentIndex - 1 : slideContainer.children.length - 1;
+        updateSlidePosition();
+      });
+
+      nextButton.addEventListener('click', () => {
+        currentIndex = (currentIndex + 1) % slideContainer.children.length;
+        updateSlidePosition();
+      });
+
+      window.addEventListener('resize', updateSlidePosition);
+      window.addEventListener('DOMContentLoaded', updateSlidePosition);
     }
-
-    prevButton.addEventListener('click', () => {
-      currentIndex = (currentIndex > 0) ? currentIndex - 1 : slideContainer.children.length - 1;
-      updateSlidePosition();
-    });
-
-    nextButton.addEventListener('click', () => {
-      currentIndex = (currentIndex + 1) % slideContainer.children.length;
-      updateSlidePosition();
-    });
-
-    window.addEventListener('resize', updateSlidePosition);
   </script>
 
   <script>
-    let lastScrollTop = 0;
-    const nav = document.querySelector('nav');
-
-    window.addEventListener('scroll', function() {
-      const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-      if (scrollTop > lastScrollTop) {
-        // Scroll down
-        nav.style.top = '-100px'; // Adjust this value as needed
-      } else {
-        // Scroll up
-        nav.style.top = '20px'; // Original position
-      }
-      lastScrollTop = scrollTop <= 0 ? 0 : scrollTop; // For Mobile or negative scrolling
-    });
-
-    const links = document.querySelectorAll('nav a');
-    links.forEach(link => {
+    // Navigation link handling
+    const navLinks = document.querySelectorAll('nav a');
+    navLinks.forEach(link => {
       link.addEventListener('click', () => {
-        nav.style.top = '20px'; 
+        document.querySelector('nav').style.top = '30px'; 
       });
     });
   </script>
@@ -860,17 +916,17 @@
     async function sendMessage() {
       const input = document.getElementById('chatbotInput');
       const messages = document.getElementById('chatbotMessages');
+      if (!input || !messages) return;
+      
       const userMessage = input.value;
       if (!userMessage) return;
 
-      // Display user message
       const userMessageElement = document.createElement('div');
       userMessageElement.className = 'user-message';
       userMessageElement.textContent = `You: ${userMessage}`;
       messages.appendChild(userMessageElement);
 
       try {
-        // Send message to server using the new endpoint
         const response = await fetch('https://rishit-resume-bot.netlify.app/.netlify/functions/server/chat', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
@@ -883,7 +939,6 @@
 
         const data = await response.json();
 
-        // Display bot response with a new label
         const botMessageElement = document.createElement('div');
         botMessageElement.className = 'bot-message';
         botMessageElement.textContent = `DasGPT: ${data.response}`;
@@ -896,20 +951,21 @@
         messages.appendChild(errorMessageElement);
       }
 
-      // Clear input
       input.value = '';
+      messages.scrollTop = messages.scrollHeight;
     }
 
     function setExamplePrompt(prompt) {
       const input = document.getElementById('chatbotInput');
-      input.value = prompt;
+      if(input) input.value = prompt;
     }
 
     function openChatbot() {
       const chatbot = document.querySelector('.chatbot-container');
+      if (!chatbot) return;
       chatbot.classList.toggle('open');
       const messages = document.getElementById('chatbotMessages');
-      if (!messages.innerHTML.includes("Hi! This is me as a chatbot.")) {
+      if (messages && !messages.innerHTML.includes("Hi! This is me as a chatbot.")) {
         const welcomeMessage = document.createElement('div');
         welcomeMessage.className = 'bot-message';
         welcomeMessage.textContent = "Hi! This is me as a chatbot. Feel free to ask anything you want to know about me.";
@@ -919,15 +975,28 @@
 
     function closeChatbot() {
       const chatbot = document.querySelector('.chatbot-container');
-      chatbot.classList.remove('open');
+      if (chatbot) chatbot.classList.remove('open');
     }
+
+    // Event listeners for chatbot buttons, if they exist
+    const sendButton = document.querySelector('.chatbot-input button');
+    if(sendButton) sendButton.addEventListener('click', sendMessage);
+    
+    const examplePromptButtons = document.querySelectorAll('.example-prompts button');
+    examplePromptButtons.forEach(button => {
+        button.addEventListener('click', () => setExamplePrompt(button.getAttribute('onclick').match(/'([^']+)'/)[1]));
+    });
+    
   </script>
 
   <script>
-    function toggleExpand() {
+    /* function toggleExpand() {
       const section = document.getElementById('expandedSection');
-      section.style.display = section.style.display === 'block' ? 'none' : 'block';
-    }
+      if(section) {
+        section.style.display = section.style.display === 'block' ? 'none' : 'block';
+      }
+    } */
   </script>
-
-</body></html>
+  <script src="https://unpkg.com/@elevenlabs/convai-widget-embed" async type="text/javascript"></script>
+</body>
+</html>

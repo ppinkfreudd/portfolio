@@ -1,0 +1,44 @@
+Rishit Das
+rishit.info | https://www.linkedin.com/in/rishitdas/| https://github.com/ppinkfreudd | rdas@ucdavis.edu
+Education
+  
+University of California – Davis								                      Davis, CA 
+B.S. Computational Cognitive Science|Graduation: 09/25|GPA: 3.7 
+Experience
+  
+GARDE | https://gardeai.com/									         Davis, CA
+Co-founder, Chief Product Officer 						             	 	             03/24  – Present
+Engineered a fencing AI coach utilizing TensorFlow.js BlazePose and custom React components, delivering a real-time feedback mechanism that enhanced user training sessions for over 120 athletes, optimizing performance tracking.
+Created a video LLM with motion understanding for fencers, acting as a speech-to-speech coach for local training. 
+Presently working with 2 Olympic coaches to better product fit and partnered with Davis Fencing Academy.    
+Awarded 1st place in UC Davis Sports Analytics Club from a panel of Nvidia, EY, and Intel judges out of 14 teams.
+Integrated Attention Virtual Reality Lab | genglab.ucdavis.edu	               Center for Mind and Brain, UC Davis
+Paid Research Assistant 						    		       	 	              09/23 – Present
+Created a data pipeline using Pandas, Matplotlib, Seaborn, and NumPy to handle virtual reality data for over 200 participants in a NIMH-grant study on visual attention and navigation in VR via Vizard/Unity and HP Omnicept.
+Currently in collaboration with University of Adelaide to create JsPsych experiment on GitLab using React and webcam eye-tracking using WebGazer.js, aimed at understanding/modelling human visual and attention properties. 
+Investigated how audiovisual stimuli influence the navigation of participants in VR using positional data; presented as poster at Undergraduate Research and the Psychology Conferences, and received 3rd place for best presentation. 
+Wavelength | https://github.com/nmaffly/Wavelength  			        Student Startup Center, UC Davis Tech Lead 		 							     	                             03/24 – 07/24
+Launched a demo of a Spotify dating app using Flask, D3.js, Spotipy, AWS EC2, Route53, MySQL, and HTML/CSS. 
+Created an algorithm to overcome the 25-user limit for the Spotify API, helping us have an event where 70 people came together to try Wavelength at a local Davis art house, The Secret Spot, helping us gain important user feedback.
+Received $5,000 from the UC Davis Startup accelerator, PLASMA, through the Mentor's Choice Award. 
+Projects 
+  
+Echocare (https://github.com/ppinkfreudd/echocare)				        San Francisco | Oct 2024 
+Designed and developed a platform leveraging AI to aid homelessness and reduce food waste in San Francisco. Built a voice-activated service locator with interactive maps to connect users to nearby care services.
+Received $800 award from vapi.ai at CalHacks 2024 hackathon (DevPost) for Most Socially Beneficial project. 
+GitHub | Tools: Next.js, React, TypeScript, Tailwind CSS, NeonDB, Google Maps API, Vapi.ai, Framer Motion.
+Rhythmoji (rhythmoji.me)					    University of California, Davis | Sep 2023 – Present
+Converts Spotify listening data to a Lego character. In the process of getting access from Spotify for public release. 
+Authored flow of ‘Rhythmoji’ creation, spearheaded AWS EC2 server setup, and led frontend development. 
+GitHub | Tools: Spotipy, OpenAI API, Node.js, Flask, HTML/CSS/JS, Swiper.js, Express, AWS, and Docker.
+Machine Learning on Neural Correlates of Schizophrenia 			   Keshavan Lab | Aug 2021 – Sep 2022
+Analyzed neuroimaging data from 59 schizophrenia patients at McLean Hospital, MA to research the inverse relationship between the lateral ventricles and corpus callosum volumes of the brain and its genetic linkages. 
+Presentation; Harvard Undergraduate Research Opportunities (HUROS)| Tools: Python, R, and Alteryx. 
+The Relationship Between Subliminal Stimuli and Emotion  				  Kogiito | Jun 2020 – Sep 2020 
+Explored relationship between subliminal stimuli (<100ms) and emotion by utilizing eye-tracking, NLTK, and reigning psychological theories of emotion to build more accurate predictions of emotions in real-life conditions.
+Presented at The Science of Consciousness (TSC 2020), where I also led a workshop on unconscious cognition. 
+Presentation | Tools: Python, Pandas, TextBlob, NLTK
+Additional Information 
+AWARDS
+- Amy Lee Memorial Essay Prize for my essay, “The Decomposition of the Narratological Framework in Pedro Páramo”, given to 1 student annually by the UC Davis Comparative Literature department for outstanding writing.
+- Finalist in EBSA Spring Quarter ‘23 Case Competition with River City Bank; presented on investment risks for the bank
