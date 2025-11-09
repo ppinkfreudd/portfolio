@@ -3,12 +3,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Rishit Das's Portfolio</title>
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=DotGothic16&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
   <style>
     body {
-      font-family: 'Fira Code', monospace;
-      background-color: #f8f9fc; /* Soft bluish-white */
+      font-family: 'Iowan Old Style', 'Iowan', 'Hoefler Text', Georgia, serif;
+      background-color: #ffffff;
       color: #2d2d2d; /* Dark Gray */
     }
 
@@ -17,12 +17,7 @@
       top: 30px;
       left: 30px;
       z-index: 1000;
-      background-color: rgba(241, 244, 249, 0.75); /* Muted gray-blue, semi-transparent */
-      backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
-      border-radius: 20px;
-      padding: 10px 15px;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+      padding: 0;
     }
 
     nav a {
@@ -46,8 +41,9 @@
     }
 
     .container {
-      max-width: 900px;
-      margin-top: 50px;
+      max-width: 720px;
+      margin: 60px auto 0;
+      padding: 0 1.5rem;
       transition: margin-top 0.3s ease;
     }
 
@@ -69,57 +65,157 @@
 
     .profile-container {
       display: flex;
-      align-items: center;
+      flex-direction: column;
+      gap: 1.75rem;
       margin-bottom: 20px;
-      padding: 40px;
-      border-radius: 90px;
-      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.05);
-      background-color: #ffffff;
+      padding: 0;
       position: relative;
+    }
+
+    .profile-header {
+      display: flex;
+      align-items: center;
+      gap: 1.75rem;
+      flex-wrap: wrap;
     }
 
     .profile-image {
       flex-shrink: 0;
-      width: 270px; 
-      height: 210px; 
+      width: 160px;
+      height: 160px;
       border-radius: 50%;
-      border: 4px solid #e6645a; /* New Accent */
+      border: 4px solid #111827;
       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
       transition: all 0.3s ease;
       object-fit: cover;
     }
 
     .profile-image-wrapper {
-      width: 240px; 
-      height: 240px; 
+      width: 170px;
+      height: 170px;
       position: relative;
     }
-    
+
     .profile-image:hover {
       content: url('public/AsciiVersion.png');
     }
 
-    .profile-details {
-      margin-left: 40px;
-      flex-grow: 1;
+    .profile-content {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      align-items: flex-start;
     }
 
-    .profile-details h1 {
-      font-size: 2.5rem; /* Larger Name */
+    .profile-content h1 {
+      font-size: 2.65rem;
       font-weight: 700;
-      color: #e6645a; /* New Accent */
+      color: #111827;
+      margin: 0;
+    }
+
+    .profile-links {
+      display: flex;
+      gap: 0.75rem;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .profile-links a {
+      color: #4b5563;
+      font-size: 1.2rem;
+      transition: color 0.2s ease;
+    }
+
+    .profile-links a:hover {
+      color: #111827;
     }
 
     .bio {
-      margin-top: 15px;
-      max-width: 500px;
-      font-size: 1.1rem;
-      line-height: 1.6;
+      max-width: 640px;
+      font-size: 1.05rem;
+      line-height: 1.7;
+      color: #374151;
     }
 
-    .typewriter-text {
-      min-height: 3.6rem; /* Reserve space for 2 lines on desktop to prevent layout shift */
+    .bio p {
+      margin-bottom: 1rem;
+      text-align: justify;
+      text-justify: inter-word;
     }
+
+    .bio p:last-child {
+      margin-bottom: 0;
+    }
+
+    .profile-call {
+      margin-top: 0.5rem;
+    }
+
+    .projects-intro {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      grid-template-areas: "copy image";
+      align-items: start;
+      column-gap: 1rem;
+      margin-bottom: 1rem;
+    }
+
+    #home {
+      padding-bottom: 0.75rem;
+    }
+
+    #resume {
+      padding-top: 0.75rem;
+    }
+
+    .projects-intro img {
+      width: 176px;
+      height: 176px;
+      border-radius: 20px;
+      border: none;
+      object-fit: cover;
+      align-self: start;
+      justify-self: end;
+      grid-area: image;
+    }
+
+    .projects-copy {
+      align-self: start;
+      grid-area: copy;
+    }
+
+    .projects-copy h2 {
+      font-size: 2.25rem;
+      font-weight: 700;
+      color: #111827;
+      margin-bottom: 0.25rem;
+    }
+
+    .projects-copy p {
+      font-size: 0.95rem;
+      line-height: 1.65;
+      color: #374151;
+      margin: 0;
+      max-width: 38ch;
+    }
+
+    .footer-copy {
+      font-family: 'DotGothic16', sans-serif;
+      letter-spacing: 0.05em;
+    }
+
+    .projects-slideshow {
+      margin-top: 2.5rem;
+    }
+
+    .content p,
+    .blog-card p,
+    .expanded-section p {
+      text-align: justify;
+      text-justify: inter-word;
+    }
+
 
     .expand-button, .chatbot-button {
       margin-top: 20px;
@@ -148,7 +244,7 @@
       background-color: #fff; /* White background */
       border-radius: 20px;
       box-shadow: 0 8px 30px rgba(0, 0, 0, 0.05);
-      font-family: 'Fira Code', monospace;
+      font-family: 'Iowan Old Style', 'Iowan', 'Hoefler Text', Georgia, serif;
     }
 
     .expanded-section h3 {
@@ -264,19 +360,8 @@
       }
 
       .profile-container {
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-        padding: 25px;
-      }
-
-      .profile-details {
-        margin-left: 0;
-        margin-top: 25px;
-      }
-
-      .profile-details .flex {
-        justify-content: center;
+        align-items: flex-start;
+        text-align: left;
       }
 
       #resume .flex.items-center {
@@ -290,15 +375,18 @@
         margin-bottom: 1.5rem;
       }
 
-      .blog-card, #resume .blog-card {
+      .blog-card,
+      #resume .blog-card {
         padding: 25px;
       }
 
-      h1, .profile-details h1 {
-        font-size: 2rem;
+      h1,
+      .profile-content h1 {
+        font-size: 2.1rem;
       }
 
-      h2, #resume h2 {
+      h2,
+      #resume h2 {
         font-size: 1.5rem;
       }
 
@@ -306,8 +394,22 @@
           font-size: 1.25rem;
       }
 
-      .typewriter-text {
-        min-height: 7.1rem; /* Reserve space for 4 lines on mobile */
+      .projects-intro {
+        display: block;
+      }
+
+      .projects-intro img {
+        float: right;
+        width: 140px;
+        height: 140px;
+        border-radius: 16px;
+        margin: 0 0 0.75rem 0.75rem;
+      }
+
+      .projects-copy::after {
+        content: "";
+        display: table;
+        clear: both;
       }
     }
 
@@ -402,46 +504,38 @@
   </style>
 </head>
 
-<body class="bg-aquamarine text-gray-800 flex justify-center min-h-screen py-10">
+<body class="text-gray-800 min-h-screen py-10">
   <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-    <nav>
-      <a href="#home" onclick="showSection('home')">Home</a>
-      <a href="#resume" onclick="showSection('resume')">CV</a>
-    </nav>
-    
     <div class="sm:rounded-lg">
       <div class="flex">
         <div class="flex-1">
           <div id="home" class="section px-4 py-5 sm:p-6">
             <div class="profile-container">
-              <div class="profile-image-wrapper">
-                <img src="public/RishitDas.jpeg" alt="Profile Photo" class="profile-image">
-                <div class="ascii-overlay"></div>
-              </div>
-              <div class="profile-details">
-                <h1 class="text-2xl font-bold">Rishit Das</h1>
-                <div class="flex space-x-4 mt-2">
-                  <a href="https://www.linkedin.com/in/rishitdas/" target="_blank" class="text-gray-600 hover:text-gray-800">
-                    <i class="fab fa-linkedin fa-lg"></i>
-                  </a>
-                  <a href="mailto:rdas@ucdavis.edu" class="text-gray-600 hover:text-gray-800">
-                    <i class="fas fa-envelope fa-lg"></i>
-                  </a>
-                  <a href="https://github.com/ppinkfreudd" target="_blank" class="text-gray-600 hover:text-gray-800">
-                    <i class="fab fa-github fa-lg"></i>
-                  </a>
+              <div class="profile-header">
+                <div class="profile-image-wrapper">
+                  <img src="public/RishitDas.jpeg" alt="Profile Photo" class="profile-image">
                 </div>
-                <div class="bio">
-                  <p>Hey, I'm Rishit!</p>
-                  <p class="typewriter-text">I'm a 3rd year at UC Davis 🐄. From Melbourne 🇦🇺, lived in 🇮🇳, 🇭🇰, and 🇦🇪.</p>
-                  <div class="flex flex-col items-start gap-y-3" style="margin-top: 20px;">
-                    <div class="flex items-center gap-x-4">
-                      <button class="chatbot-button" onclick="openChatbot()" style="margin-top: 0;">Open Chatbot</button>
-                      <p style="color: #3c3c3c; font-size: 0.9rem;">(or speak to me using call button below!)</p>
-                    </div>
-                    <elevenlabs-convai agent-id="agent_01k0fzd175eaftvkk2fkyw9549"></elevenlabs-convai>
+                <div class="profile-content">
+                  <h1>Rishit Das</h1>
+                  <div class="profile-links">
+                    <a href="https://www.linkedin.com/in/rishitdas/" target="_blank" aria-label="LinkedIn">
+                      <i class="fab fa-linkedin fa-lg"></i>
+                    </a>
+                    <a href="mailto:rdas@ucdavis.edu" aria-label="Email">
+                      <i class="fas fa-envelope fa-lg"></i>
+                    </a>
+                    <a href="https://github.com/ppinkfreudd" target="_blank" aria-label="GitHub">
+                      <i class="fab fa-github fa-lg"></i>
+                    </a>
                   </div>
                 </div>
+              </div>
+              <div class="bio">
+                <p class="bio-intro">Hey, I'm Rishit. I build voice-driven tools and like to learn about new things. I'm focused on new coding tools, multimodality in LLMs, and cool new papers (about anything!).</p>
+                <p class="bio-intro">Recent UC Davis Cognitive Science grad, based in Melbourne, Australia.</p>
+              </div>
+              <div class="profile-call">
+                <elevenlabs-convai agent-id="agent_01k0fzd175eaftvkk2fkyw9549"></elevenlabs-convai>
               </div>
             </div>
             
@@ -461,18 +555,6 @@
               <p>All of these projects have their own stories and you can talk with my chatbot to learn more. </p>
             </div> -->
 
-            <div class="flex justify-center">
-              <canvas id="wireframeCubeCanvas" class="w-20 h-20 mt-2 rounded-lg" width="80" height="80"></canvas>
-            </div>
-
-            <div class="text-center mt-4">
-              <p>© Rishit Das 2025</p>
-              <p>All Rights Reserved</p>
-            </div>
-
-            <div class="text-center mt-2">
-              <p>Made with HTML, CSS, JavaScript, Node.js, Express, OpenAI, Langchain, and Tailwind CSS</p>
-            </div>
           </div>
           
           <div id="blog" class="section px-4 py-5 sm:p-6 hidden">
@@ -489,31 +571,31 @@
             </div>
           </div>
           
-          <div id="resume" class="section px-4 py-5 sm:p-6 hidden">
+          <div id="resume" class="section px-4 py-5 sm:p-6">
             <!-- Resume content -->
             <main>
               <div class="mb-10"> <!-- Removed blog-card styling -->
                 <!-- Introductory text -->
-                <div class="flex items-center mb-10">
-                  <img src="public/Rishit_Rhythmoji.png" alt="Rhythmoji" class="w-40 h-40 rounded-full mr-8 border-4 border-gray-200">
-                  <div>
-                    <h2 class="text-2xl font-bold" style="color: #e6645a;">My Projects Journey</h2>
-                    <p class="mt-2 text-lg">This here is my 'Rhythmoji', one of my first coding projects. It converts Spotify listening data into a unique lego figure using Dall-e. Below are projects I've worked on since Rhythmoji.</p>
+                <div class="projects-intro">
+                  <img src="public/Rishit_Rhythmoji.png" alt="Rhythmoji">
+                  <div class="projects-copy">
+                    <h2>Projects</h2>
+                    <p>One of my first projects was Rhythmoji (mine’s on the right!), where GPT-3.5 converts your Spotify data into a JSON prompt for DALL·E image generation. Since then, I’ve worked on:</p>
                   </div>
                 </div>
 
                 <!-- Project slideshow -->
-                <div class="relative w-full max-w-4xl mx-auto">
+                <div class="projects-slideshow relative w-full max-w-4xl mx-auto">
                   <div class="slideshow-container">
                     <div id="slide-container" class="flex transition-transform duration-300">
+                      <div class="slide">
+                        <img src="public/Garde.png" alt="Garde" class="slideshow-image">
+                      </div>
                       <div class="slide">
                         <img src="public/Wavelength.png" alt="Wavelength" class="slideshow-image">
                       </div>
                       <div class="slide">
-                        <img src="public/Vizard.png" alt="Vizard" class="slideshow-image">
-                      </div>
-                      <div class="slide">
-                        <img src="public/Garde.png" alt="Garde" class="slideshow-image">
+                        <img src="public/PsychPoster_Das.jpg" alt="Psych Poster" class="slideshow-image">
                       </div>
                     </div>
                   </div>
@@ -529,68 +611,78 @@
               <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
                 <div> <!-- Removed blog-card styling -->
                   <!-- Education and Experience -->
-                  <h3 class="text-2xl font-bold mb-6" style="color: #e6645a;">Education</h3>
+                  <h3 class="text-2xl font-bold mb-6" style="color: #111827;">Education</h3>
                   <div class="content space-y-4">
                     <div>
                       <p class="font-bold">University of California, Davis</p>
-                      <p class="text-sm text-gray-600">B.S. Computational Cognitive Science | Graduation: 09/25 | GPA: 3.7</p>
+                      <p class="text-sm text-gray-600">B.S. Computational Cognitive Science | GPA: 3.7</p>
+                      <p class="text-sm text-gray-600">09/22–09/25</p>
                     </div>
                     <div>
                       <p class="font-bold">Stanford Online High School</p>
-                      <p class="text-sm text-gray-600">09.18-06.22</p>
+                      <p class="text-sm text-gray-600">09/18–06/22</p>
                     </div>
                   </div>
 
-                  <h3 class="text-2xl font-bold my-6" style="color: #e6645a;">Experience</h3>
+                  <h3 class="text-2xl font-bold my-6" style="color: #111827;">Experience</h3>
                   <div class="content space-y-6">
                     <div>
                       <p class="font-bold"><a href="https://gardeai.com/" style="color: #3c3c3c;">GARDE</a> \ Co-founder, CPO \ 03/24–Present</p>
-                      <p class="mt-1">Engineered a fencing AI coach using TensorFlow.js BlazePose and custom React components, delivering a real-time feedback mechanism that enhanced user training sessions for over 120 athletes.</p>
+                      <p class="mt-1">- Engineered a fencing AI coach using TensorFlow.js BlazePose and custom React components, delivering a real-time feedback mechanism that enhanced user training sessions for over 120 athletes.</p>
                     </div>
                     <div>
                       <p class="font-bold"><a href="https://genglab.ucdavis.edu/" style="color: #3c3c3c;">Integrated Attention VR Lab</a> \ Research Assistant \ 09/23–Present</p>
-                      <p class="mt-1">Created a data pipeline for a NIMH-grant study on visual attention in VR. Collaborating with University of Adelaide to build a new experiment with React and WebGazer.js.</p>
+                      <p class="mt-1">- Created a data pipeline for a NIMH-grant study on visual attention in VR. Collaborating with University of Adelaide to build a new experiment with React and WebGazer.js.</p>
                     </div>
                     <div>
                       <p class="font-bold"><a href="https://github.com/nmaffly/Wavelength" style="color: #3c3c3c;">Wavelength</a> \ Tech Lead \ 03/24–07/24</p>
-                      <p class="mt-1">Launched a demo of a Spotify dating app using Flask, D3.js, and AWS. Overcame the 25-user Spotify API limit, enabling an event with 70+ participants.</p>
+                      <p class="mt-1">- Launched a demo of a Spotify dating app using Flask, D3.js, and AWS. Overcame the 25-user Spotify API limit, enabling an event with 70+ participants.</p>
                     </div>
                   </div>
                 </div>
 
                 <div> <!-- Removed blog-card styling -->
                   <!-- Honors and Projects -->
-                  <h3 class="text-2xl font-bold mb-6" style="color: #e6645a;">Honors & Awards</h3>
+                  <h3 class="text-2xl font-bold mb-6" style="color: #111827;">Honors & Awards</h3>
                   <div class="content space-y-3">
                      <p>- 1st Place, UC Davis Sports Analytics Club Competition '24</p>
                      <p>- $5,000 Mentor's Choice Award, UC Davis PLASMA Accelerator</p>
                      <p>- $800 Vapi.ai Award for Social Impact, CalHacks 2024</p>
-                     <p>- Amy Lee Memorial Essay Prize for outstanding writing</p>
+                    <p>- 2022 Amy Lee Memorial Essay Prize for outstanding writing</p>
                      <p>- Finalist, EBSA Spring '23 Case Competition w/ River City Bank</p>
                   </div>
 
-                  <h3 class="text-2xl font-bold my-6" style="color: #e6645a;">Projects</h3>
+                  <h3 class="text-2xl font-bold my-6" style="color: #111827;">Projects</h3>
                   <div class="content space-y-4">
                     <div>
                       <p class="font-bold"><a href="https://github.com/ppinkfreudd/echocare" style="color: #3c3c3c;">Echocare</a> \ Oct 2024</p>
-                      <p class="mt-1">Designed a platform to aid homelessness in SF with a voice-activated service locator. Built with Next.js, Vapi.ai, and Google Maps API.</p>
+                      <p class="mt-1">- Designed a platform to aid homelessness in SF with a voice-activated service locator. Built with Next.js, Vapi.ai, and Google Maps API.</p>
                     </div>
                     <div>
-                      <p class="font-bold"><a href="https://github.com/ppinkfreudd/Rhythmoji_v2" style="color: #3c3c3c;">Rhythmoji</a> \ Sep 2023–Present</p>
-                      <p class="mt-1">Converts Spotify listening data to a Lego character using Spotipy, OpenAI, and Node.js. Led frontend development and AWS server setup.</p>
+                      <p class="font-bold"><a href="https://www.rhythmoji.me/" style="color: #3c3c3c;">Rhythmoji</a> \ Sep 2023–Present</p>
+                      <p class="mt-1">- Converts Spotify listening data to a Lego character using Spotipy, OpenAI, and Node.js. Led frontend development and AWS server setup.</p>
                     </div>
                     <div>
                       <p class="font-bold">ML on Schizophrenia Neural Correlates \ 2021–2022</p>
-                      <p class="mt-1">Analyzed neuroimaging data from 59 patients at McLean Hospital. Presented at Harvard Undergraduate Research Opportunities (HUROS).</p>
+                      <p class="mt-1">- Analyzed neuroimaging data from 59 patients at McLean Hospital. Presented at Harvard Undergraduate Research Opportunities (HUROS).</p>
                     </div>
                     <div>
                         <p class="font-bold">Subliminal Stimuli and Emotion \ 2020</p>
-                        <p class="mt-1">Explored the relationship between subliminal stimuli and emotion using eye-tracking and NLTK. Presented at The Science of Consciousness (TSC 2020).</p>
+                        <p class="mt-1">- Explored the relationship between subliminal stimuli and emotion using eye-tracking and NLTK. Presented at The Science of Consciousness (TSC 2020).</p>
                     </div>
                   </div>
                 </div>
               </div>
             </main>
+
+            <div class="mt-10 flex justify-center">
+              <canvas id="wireframeCubeCanvas" class="w-20 h-20 mt-2 rounded-lg" width="80" height="80"></canvas>
+            </div>
+
+            <div class="mt-6 text-center footer-copy">
+              <p>© Rishit Das 2025</p>
+              <p>All Rights Reserved</p>
+            </div>
           </div>
           
           <!-- Chatbot Interface -->
@@ -616,79 +708,38 @@
   </div>
 
   <script>
-    let typewriterEffectRan = false;
-
-    function showSection(sectionId) {
-      const sections = document.querySelectorAll('.section');
-      const container = document.querySelector('.container');
-
-      // Reset all sections
-      sections.forEach(section => {
-        section.classList.add('hidden');
-        section.classList.remove('full-page-section');
-      });
-
-      const activeSection = document.getElementById(sectionId);
-      if (activeSection) {
-        activeSection.classList.remove('hidden');
+    function showSection(event, sectionId) {
+      if (event) {
+        event.preventDefault();
       }
 
-      // Handle full-page sections
-      const fullPageSections = ['resume'];
-      if (fullPageSections.includes(sectionId)) {
-        container.classList.add('full-page');
-        if (activeSection) {
-          activeSection.classList.add('full-page-section');
-        }
-      } else {
-        container.classList.remove('full-page');
-      }
+      const target = document.getElementById(sectionId);
 
       const links = document.querySelectorAll('nav a');
       links.forEach(link => link.classList.remove('active'));
 
-      const activeLink = document.querySelector(`nav a[href="#${sectionId}"]`);
-      if (activeLink) {
-        activeLink.classList.add('active');
+      if (event && event.currentTarget) {
+        event.currentTarget.classList.add('active');
+      } else {
+        const fallbackLink = document.querySelector(`nav a[href="#${sectionId}"]`);
+        if (fallbackLink) {
+          fallbackLink.classList.add('active');
+        }
       }
 
       if (sectionId === 'blog') {
         initPlasmaCanvas();
-      } else if (sectionId === 'home') {
-        resetTypeWriter();
-        startTypeWriter();
       }
 
-      // Scroll the active section into view (top of viewport)
-      if (activeSection) {
-        activeSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      if (target) {
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
       }
-    }
 
-    const typewriterText = document.querySelector('.typewriter-text');
-    const text = "I'm a 3rd year at UC Davis 🐄. From Melbourne 🇦🇺, lived in 🇮🇳, 🇭🇰, and 🇦🇪.";
-
-    let index = 0;
-
-    function typeWriter() {
-      if (index < text.length) {
-        typewriterText.innerHTML += text.charAt(index);
-        index++;
-        setTimeout(typeWriter, 20);
-      }
-    }
-
-    function resetTypeWriter() {
-      typewriterText.innerHTML = '';
-      index = 0;
-    }
-
-    function startTypeWriter() {
-      setTimeout(typeWriter, 1000);
+      return false;
     }
 
     window.addEventListener('DOMContentLoaded', () => {
-      showSection('home');
+      showSection(null, 'home');
     });
   </script>
 
