@@ -63,18 +63,34 @@
       box-sizing: border-box;
     }
 
+    .section-inner {
+      width: min(640px, 100%);
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 1.75rem;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
     .profile-container {
       display: flex;
       flex-direction: column;
       gap: 1.75rem;
-      margin-bottom: 20px;
+      width: 100%;
+      margin: 0 auto 20px;
       padding: 0;
       position: relative;
     }
 
+    .resume-main {
+      width: 100%;
+      margin: 0;
+    }
+
     .profile-header {
       display: flex;
-      align-items: center;
+      align-items: flex-start;
       gap: 1.75rem;
       flex-wrap: wrap;
     }
@@ -112,6 +128,25 @@
       font-weight: 700;
       color: #111827;
       margin: 0;
+    }
+
+    .profile-title-row {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .bonsai-icon {
+      width: 72px;
+      height: 72px;
+      object-fit: contain;
+    }
+
+    @media (max-width: 640px) {
+      .bonsai-icon {
+        width: 52px;
+        height: 52px;
+      }
     }
 
     .profile-links {
@@ -209,6 +244,9 @@
 
     .projects-slideshow {
       margin-top: 2.5rem;
+      margin-left: 0;
+      margin-right: 0;
+      max-width: 100%;
     }
 
     .content p,
@@ -523,54 +561,59 @@
       <div class="flex">
         <div class="flex-1">
           <div id="home" class="section px-4 py-5 sm:p-6">
-            <div class="profile-container">
-              <div class="profile-header">
-                <div class="profile-image-wrapper">
-                  <img src="public/RishitDas.jpeg" alt="Profile Photo" class="profile-image">
-                </div>
-                <div class="profile-content">
-                  <h1>Rishit Das</h1>
-                  <div class="profile-links">
-                    <a href="https://www.linkedin.com/in/rishitdas/" target="_blank" aria-label="LinkedIn">
-                      <i class="fab fa-linkedin fa-lg"></i>
-                    </a>
-                    <a href="mailto:rdas@ucdavis.edu" aria-label="Email">
-                      <i class="fas fa-envelope fa-lg"></i>
-                    </a>
-                    <a href="https://github.com/ppinkfreudd" target="_blank" aria-label="GitHub">
-                      <i class="fab fa-github fa-lg"></i>
-                    </a>
+            <div class="section-inner">
+              <div class="profile-container">
+                <div class="profile-header">
+                  <div class="profile-image-wrapper">
+                    <img src="public/RishitDas.jpeg" alt="Profile Photo" class="profile-image">
+                  </div>
+                  <div class="profile-content">
+                    <div class="profile-title-row">
+                      <h1>Rishit Das</h1>
+                      <img src="public/bonsai.png" alt="Bonsai accent" class="bonsai-icon">
+                    </div>
+                    <div class="profile-links">
+                      <a href="https://www.linkedin.com/in/rishitdas/" target="_blank" aria-label="LinkedIn">
+                        <i class="fab fa-linkedin fa-lg"></i>
+                      </a>
+                      <a href="mailto:rdas@ucdavis.edu" aria-label="Email">
+                        <i class="fas fa-envelope fa-lg"></i>
+                      </a>
+                      <a href="https://github.com/ppinkfreudd" target="_blank" aria-label="GitHub">
+                        <i class="fab fa-github fa-lg"></i>
+                      </a>
+                    </div>
                   </div>
                 </div>
-              </div>
-              <div class="bio">
-                <p class="bio-intro" style="margin-bottom: 0.5em;">Hey, I'm Rishit. Recently graduated from UC Davis, where I majored in cognitive science and computation. Currently focused on:</p>
-                <ul class="bio-intro" style="list-style-type: disc; margin-left: 1.5em; margin-bottom: 0;">
-                  <li>Learning to build better systems with AI</li>
-                  <li>Interested in multimodality in LLMs</li>
-                  <li>Cool new papers (about anything!)</li>
-                </ul>
-                <p class="bio-intro" style="margin-top: 0.5em;">I'm based in Melbourne, Australia. Grew up in India, Hong Kong, and Abu Dhabi</p>
-              </div>
-            
-            <!-- <div class="expanded-section" id="expandedSection">
-              <h3>Bio</h3>
-              <p>—</p>
-              <p>I think I'm going to keep this as a most-up-to-date work section.</p>
-              <p>—</p>
-              <p>Nov 30, 2024</p>
-              <p>I started this website about a year back (this is the 3rd iteration). The hope for it was to always serve as some archive of my work, but I also wanted a way to write. So I added a blogs section (in the works) too.</p>
-              <p>Beyond this, my other current projects/startup projects are:</p>
-              <ul>
-                <li><strong><a href="https://gardeai.com/" target="_blank" style="color: #ff6f61;">Garde 🤺</a></strong>: A voice-assisted AI fencing coach, powered with computer vision analysis.</li>
-                <li><strong>Rhythmoji 🎼</strong>: Converts your music listening data into a custom LEGO figure with an animalistic head.</li>
-                <li><strong><a href="https://echocare.club/" target="_blank" style="color: #ff6f61;">Echocare 🎤</a></strong>: A San Francisco food-bank voice assistant project that started at CalHacks 2024.</li>
-              </ul>
-              <p>All of these projects have their own stories and you can talk with my chatbot to learn more. </p>
-            </div> -->
+                <div class="bio">
+                  <p class="bio-intro" style="margin-bottom: 0.5em;">Hey, I'm Rishit. Recently graduated from UC Davis, where I majored in cognitive science and computation. Currently focused on:</p>
+                  <ul class="bio-intro" style="list-style-type: disc; margin-left: 1.5em; margin-bottom: 0;">
+                    <li>Learning to build better systems with AI</li>
+                    <li>Interested in multimodality in LLMs</li>
+                    <li>Cool new papers (about anything!)</li>
+                  </ul>
+                  <p class="bio-intro" style="margin-top: 0.5em;">I'm based in Melbourne, Australia. Grew up in India, Hong Kong, and Abu Dhabi</p>
+                </div>
 
+                <!-- <div class="expanded-section" id="expandedSection">
+                  <h3>Bio</h3>
+                  <p>—</p>
+                  <p>I think I'm going to keep this as a most-up-to-date work section.</p>
+                  <p>—</p>
+                  <p>Nov 30, 2024</p>
+                  <p>I started this website about a year back (this is the 3rd iteration). The hope for it was to always serve as some archive of my work, but I also wanted a way to write. So I added a blogs section (in the works) too.</p>
+                  <p>Beyond this, my other current projects/startup projects are:</p>
+                  <ul>
+                    <li><strong><a href="https://gardeai.com/" target="_blank" style="color: #ff6f61;">Garde 🤺</a></strong>: A voice-assisted AI fencing coach, powered with computer vision analysis.</li>
+                    <li><strong>Rhythmoji 🎼</strong>: Converts your music listening data into a custom LEGO figure with an animalistic head.</li>
+                    <li><strong><a href="https://echocare.club/" target="_blank" style="color: #ff6f61;">Echocare 🎤</a></strong>: A San Francisco food-bank voice assistant project that started at CalHacks 2024.</li>
+                  </ul>
+                  <p>All of these projects have their own stories and you can talk with my chatbot to learn more. </p>
+                </div> -->
+              </div>
+            </div>
           </div>
-          
+
           <div id="blog" class="section px-4 py-5 sm:p-6 hidden">
             <h2 class="blog-title text-2xl sm:text-3xl font-bold mb-4 text-center" style="color: #e6645a;">Blog</h2>
             <div class="blog-card">
@@ -586,142 +629,144 @@
           </div>
           
           <div id="resume" class="section px-4 py-5 sm:p-6">
-            <!-- Resume content -->
-            <main>
-              <div class="mb-10"> <!-- Removed blog-card styling -->
-                <!-- Introductory text -->
-                <div class="projects-intro">
-                  <img src="public/Rishit_Rhythmoji.png" alt="Rhythmoji">
-                  <div class="projects-copy">
-                    <h2>Projects</h2>
-                    <p>One of my first projects was Rhythmoji (mine’s on the right!), where GPT-3.5 converts your Spotify data into a JSON prompt for DALL·E image generation. Since then, I’ve worked on:</p>
+            <div class="section-inner">
+              <!-- Resume content -->
+              <main class="resume-main">
+                <div class="mb-10"> <!-- Removed blog-card styling -->
+                  <!-- Introductory text -->
+                  <div class="projects-intro">
+                    <img src="public/Rishit_Rhythmoji.png" alt="Rhythmoji">
+                    <div class="projects-copy">
+                      <h2>Projects</h2>
+                      <p>One of my first projects was Rhythmoji (mine’s on the right!), where GPT-3.5 converts your Spotify data into a JSON prompt for DALL·E image generation. Since then, I’ve worked on:</p>
+                    </div>
+                  </div>
+
+                  <!-- Project slideshow -->
+                  <div class="projects-slideshow relative w-full max-w-4xl">
+                    <div class="slideshow-container">
+                      <div id="slide-container" class="flex transition-transform duration-300">
+                        <div class="slide">
+                          <figure class="slideshow-figure">
+                            <img src="public/Garde.png" alt="Garde" class="slideshow-image">
+                            <figcaption class="slide-caption">
+                              <strong>Garde:</strong> an video AI tool for fencing, with TensorFlow.js pose estimation and optical flow to assist with performance tracking.
+                            </figcaption>
+                          </figure>
+                        </div>
+                        <div class="slide">
+                          <figure class="slideshow-figure">
+                            <img src="public/Wavelength.png" alt="Wavelength" class="slideshow-image">
+                            <figcaption class="slide-caption">
+                              <strong>Wavelength:</strong> a dating app with compatability metrics based on users' Spotify listening habits.
+                            </figcaption>
+                          </figure>
+                        </div>
+                        <div class="slide">
+                          <figure class="slideshow-figure">
+                            <img src="public/PsychPoster_Das.jpg" alt="Psych Poster" class="slideshow-image">
+                            <figcaption class="slide-caption">
+                              <strong>Research:</strong> virtual reality study that tracked eye-tracking (x, y, z) in a virtual IKEA for study on perception and memory with audiovisual stimuli.  
+                            </figcaption>
+                          </figure>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="flex justify-center space-x-4 mt-4">
+                      <button id="prev-slide" class="slideshow-button">&lt;</button>
+                      <button id="next-slide" class="slideshow-button">&gt;</button>
+                    </div>
                   </div>
                 </div>
 
-                <!-- Project slideshow -->
-                <div class="projects-slideshow relative w-full max-w-4xl mx-auto">
-                  <div class="slideshow-container">
-                    <div id="slide-container" class="flex transition-transform duration-300">
-                      <div class="slide">
-                        <figure class="slideshow-figure">
-                          <img src="public/Garde.png" alt="Garde" class="slideshow-image">
-                          <figcaption class="slide-caption">
-                            <strong>Garde:</strong> an video AI tool for fencing, with TensorFlow.js pose estimation and optical flow to assist with performance tracking.
-                          </figcaption>
-                        </figure>
+                <!-- Grid layout for content -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                  <div> <!-- Removed blog-card styling -->
+                    <!-- Education and Experience -->
+                    <h3 class="text-2xl font-bold mb-6" style="color: #111827;">Education</h3>
+                    <div class="content space-y-4">
+                      <div>
+                        <p class="font-bold">University of California, Davis</p>
+                        <p class="text-sm text-gray-600">B.S. Computational Cognitive Science | GPA: 3.7</p>
+                        <p class="text-sm text-gray-600">09/22 - 09/25</p>
                       </div>
-                      <div class="slide">
-                        <figure class="slideshow-figure">
-                          <img src="public/Wavelength.png" alt="Wavelength" class="slideshow-image">
-                          <figcaption class="slide-caption">
-                            <strong>Wavelength:</strong> a dating app with compatability metrics based on users' Spotify listening habits.
-                          </figcaption>
-                        </figure>
+                      <div>
+                        <p class="font-bold">Stanford Online High School</p>
+                        <p class="text-sm text-gray-600">09/18 - 06/22</p>
                       </div>
-                      <div class="slide">
-                        <figure class="slideshow-figure">
-                          <img src="public/PsychPoster_Das.jpg" alt="Psych Poster" class="slideshow-image">
-                          <figcaption class="slide-caption">
-                            <strong>Research:</strong> virtual reality study that tracked eye-tracking (x, y, z) in a virtual IKEA for study on perception and memory with audiovisual stimuli.  
-                          </figcaption>
-                        </figure>
+                    </div>
+
+                    <h3 class="text-2xl font-bold my-6" style="color: #111827;">Experience</h3>
+                    <div class="content space-y-6">
+                      <div>
+                        <p class="font-bold"><a href="https://nrture.ai/" style="color: #3c3c3c;">nrtureAI</a> \ Product Engineering Intern</p>
+                        <p class="text-sm text-gray-600">10/25 - Present</p>
+                        <p class="mt-1">- Building frontend and agent experiences at nrtureAI by tRetail Labs, a reputation intelligence platform serving hospitality businesses in Victoria.</p>
+                      </div>
+                      <div>
+                        <p class="font-bold">GARDE \ Co-founder, Product Lead</p>
+                        <p class="text-sm text-gray-600">03/24 - 11/25</p>
+                        <p class="mt-1">- Engineered a fencing AI coach using TensorFlow.js BlazePose and custom React components, delivering a real-time feedback mechanism that enhanced user training sessions for over 120 athletes.</p>
+                      </div>
+                      <div>
+                        <p class="font-bold"><a href="https://genglab.ucdavis.edu/" style="color: #3c3c3c;">Integrated Attention VR Lab</a> \ Research Assistant</p>
+                        <p class="text-sm text-gray-600">09/23 - Present</p>
+                        <p class="mt-1">- Created a data pipeline for a NIMH-grant study on visual attention in VR. Collaborating with University of Adelaide to build a new experiment with React and WebGazer.js.</p>
+                      </div>
+                      <div>
+                        <p class="font-bold">Wavelength \ Tech Lead</p>
+                        <p class="text-sm text-gray-600">03/24 - 07/24</p>
+                        <p class="mt-1">- Launched a demo of a Spotify dating app using Flask, D3.js, and AWS. Overcame the 25-user Spotify API limit, enabling an event with 70+ participants.</p>
                       </div>
                     </div>
                   </div>
 
-                  <div class="flex justify-center space-x-4 mt-4">
-                    <button id="prev-slide" class="slideshow-button">&lt;</button>
-                    <button id="next-slide" class="slideshow-button">&gt;</button>
+                  <div> <!-- Removed blog-card styling -->
+                    <!-- Honors and Projects -->
+                    <h3 class="text-2xl font-bold mb-6" style="color: #111827;">Honors & Awards</h3>
+                    <div class="content space-y-3">
+                       <p>- 1st Place, UC Davis Sports Analytics Club Competition '24</p>
+                       <p>- $5,000 Mentor's Choice Award, UC Davis PLASMA Accelerator</p>
+                       <p>- $800 Award for Social Impact, CalHacks 2024 from <a href="https://vapi.ai/" style="color: #069c33;">Vapi.ai</a></p>
+                      <p>- 2023 <a href="https://complit.ucdavis.edu/amy-lee-memorial-essay-prize-winners" style="color: #069c33;">Amy Lee Memorial Essay Prize</a> from UC Davis' Comparative Literature department</p>
+                       <p>- Finalist, EBSA Spring '23 Case Competition w/ River City Bank</p>
+                    </div>
+
+                    <h3 class="text-2xl font-bold my-6" style="color: #111827;">Projects</h3>
+                    <div class="content space-y-4">
+                      <div>
+                        <p class="font-bold">Echocare \ Oct 2024</p>
+                        <p class="mt-1">- Designed a platform to aid homelessness in SF with a voice-activated service locator. Built with Next.js, Vapi.ai, and Google Maps API.</p>
+                      </div>
+                      <div>
+                        <p class="font-bold">Rhythmoji \ Sep 2023 - Present</p>
+                        <p class="mt-1">- Converts Spotify listening data to a Lego character using Spotipy, OpenAI, and Node.js. Led frontend development and AWS server setup.</p>
+                      </div>
+                      <div>
+                        <p class="font-bold">ML on Schizophrenia Neural Correlates \ 2021 - 2022</p>
+                        <p class="mt-1">- Analyzed neuroimaging data from 59 patients at McLean Hospital. Presented at Harvard Undergraduate Research Opportunities (HUROS).</p>
+                      </div>
+                      <div>
+                          <p class="font-bold">Subliminal Stimuli and Emotion \ 2020</p>
+                          <p class="mt-1">- Explored the relationship between subliminal stimuli and emotion using eye-tracking and NLTK. Presented at The Science of Consciousness (TSC 2020).</p>
+                      </div>
+                    </div>
                   </div>
                 </div>
+              </main>
+
+              <div class="mt-10 flex justify-center">
+                <canvas id="wireframeCubeCanvas" class="w-20 h-20 mt-2 rounded-lg" width="80" height="80"></canvas>
               </div>
 
-              <!-- Grid layout for content -->
-              <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <div> <!-- Removed blog-card styling -->
-                  <!-- Education and Experience -->
-                  <h3 class="text-2xl font-bold mb-6" style="color: #111827;">Education</h3>
-                  <div class="content space-y-4">
-                    <div>
-                      <p class="font-bold">University of California, Davis</p>
-                      <p class="text-sm text-gray-600">B.S. Computational Cognitive Science | GPA: 3.7</p>
-                      <p class="text-sm text-gray-600">09/22–09/25</p>
-                    </div>
-                    <div>
-                      <p class="font-bold">Stanford Online High School</p>
-                      <p class="text-sm text-gray-600">09/18–06/22</p>
-                    </div>
-                  </div>
-
-                  <h3 class="text-2xl font-bold my-6" style="color: #111827;">Experience</h3>
-                  <div class="content space-y-6">
-                    <div>
-                      <p class="font-bold"><a href="https://nrture.ai/" style="color: #3c3c3c;">nrtureAI</a> \ Product Engineering Intern</p>
-                      <p class="text-sm text-gray-600">10/25–Present</p>
-                      <p class="mt-1">- Building frontend and agent experiences at nrtureAI by tRetail Labs, a reputation intelligence platform serving hospitality businesses in Victoria.</p>
-                    </div>
-                    <div>
-                      <p class="font-bold"><a href="https://gardeai.com/" style="color: #3c3c3c;">GARDE</a> \ Co-founder, Product Lead</p>
-                      <p class="text-sm text-gray-600">03/24 - 11/25</p>
-                      <p class="mt-1">- Engineered a fencing AI coach using TensorFlow.js BlazePose and custom React components, delivering a real-time feedback mechanism that enhanced user training sessions for over 120 athletes.</p>
-                    </div>
-                    <div>
-                      <p class="font-bold"><a href="https://genglab.ucdavis.edu/" style="color: #3c3c3c;">Integrated Attention VR Lab</a> \ Research Assistant</p>
-                      <p class="text-sm text-gray-600">09/23–Present</p>
-                      <p class="mt-1">- Created a data pipeline for a NIMH-grant study on visual attention in VR. Collaborating with University of Adelaide to build a new experiment with React and WebGazer.js.</p>
-                    </div>
-                    <div>
-                      <p class="font-bold"><a href="https://github.com/nmaffly/Wavelength" style="color: #3c3c3c;">Wavelength</a> \ Tech Lead</p>
-                      <p class="text-sm text-gray-600">03/24–07/24</p>
-                      <p class="mt-1">- Launched a demo of a Spotify dating app using Flask, D3.js, and AWS. Overcame the 25-user Spotify API limit, enabling an event with 70+ participants.</p>
-                    </div>
-                  </div>
-                </div>
-
-                <div> <!-- Removed blog-card styling -->
-                  <!-- Honors and Projects -->
-                  <h3 class="text-2xl font-bold mb-6" style="color: #111827;">Honors & Awards</h3>
-                  <div class="content space-y-3">
-                     <p>- 1st Place, UC Davis Sports Analytics Club Competition '24</p>
-                     <p>- $5,000 Mentor's Choice Award, UC Davis PLASMA Accelerator</p>
-                     <p>- $800 Vapi.ai Award for Social Impact, CalHacks 2024</p>
-                    <p>- 2022 Amy Lee Memorial Essay Prize for outstanding writing</p>
-                     <p>- Finalist, EBSA Spring '23 Case Competition w/ River City Bank</p>
-                  </div>
-
-                  <h3 class="text-2xl font-bold my-6" style="color: #111827;">Projects</h3>
-                  <div class="content space-y-4">
-                    <div>
-                      <p class="font-bold"><a href="https://github.com/ppinkfreudd/echocare" style="color: #3c3c3c;">Echocare</a> \ Oct 2024</p>
-                      <p class="mt-1">- Designed a platform to aid homelessness in SF with a voice-activated service locator. Built with Next.js, Vapi.ai, and Google Maps API.</p>
-                    </div>
-                    <div>
-                      <p class="font-bold"><a href="https://www.rhythmoji.me/" style="color: #3c3c3c;">Rhythmoji</a> \ Sep 2023–Present</p>
-                      <p class="mt-1">- Converts Spotify listening data to a Lego character using Spotipy, OpenAI, and Node.js. Led frontend development and AWS server setup.</p>
-                    </div>
-                    <div>
-                      <p class="font-bold">ML on Schizophrenia Neural Correlates \ 2021–2022</p>
-                      <p class="mt-1">- Analyzed neuroimaging data from 59 patients at McLean Hospital. Presented at Harvard Undergraduate Research Opportunities (HUROS).</p>
-                    </div>
-                    <div>
-                        <p class="font-bold">Subliminal Stimuli and Emotion \ 2020</p>
-                        <p class="mt-1">- Explored the relationship between subliminal stimuli and emotion using eye-tracking and NLTK. Presented at The Science of Consciousness (TSC 2020).</p>
-                    </div>
-                  </div>
-                </div>
+              <div class="mt-6 text-center footer-copy">
+                <p>© Rishit Das 2025</p>
+                <p>All Rights Reserved</p>
               </div>
-            </main>
-
-            <div class="mt-10 flex justify-center">
-              <canvas id="wireframeCubeCanvas" class="w-20 h-20 mt-2 rounded-lg" width="80" height="80"></canvas>
-            </div>
-
-            <div class="mt-6 text-center footer-copy">
-              <p>© Rishit Das 2025</p>
-              <p>All Rights Reserved</p>
             </div>
           </div>
-          
+
           <!-- Chatbot Interface -->
           <div class="chatbot-container">
             <div class="chatbot-header">
