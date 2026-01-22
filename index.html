@@ -3,11 +3,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Rishit Das's Portfolio</title>
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=DotGothic16&display=swap" rel="stylesheet">
+  <link href="https://fonts.cdnfonts.com/css/satoshi" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
   <style>
     body {
-      font-family: 'Iowan Old Style', 'Iowan', 'Hoefler Text', Georgia, serif;
+      font-family: 'Satoshi', 'Segoe UI', system-ui, -apple-system, sans-serif;
       background-color: #ffffff;
       color: #2d2d2d; /* Dark Gray */
     }
@@ -201,9 +201,11 @@
     }
 
     .footer-copy {
-      font-family: 'DotGothic16', sans-serif;
+      font-family: 'Satoshi', sans-serif;
       letter-spacing: 0.05em;
+      color: #4b5563;
     }
+
 
     .projects-slideshow {
       margin-top: 2.5rem;
@@ -468,6 +470,22 @@
       object-fit: contain; /* Ensure images fit within the container */
     }
 
+    .slideshow-figure {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.65rem;
+      padding: 0 0.5rem;
+      text-align: center;
+    }
+
+    .slide-caption {
+      font-size: 0.95rem;
+      color: #4b5563;
+      line-height: 1.45;
+      max-width: 420px;
+    }
+
     .slideshow-button {
       background-color: rgba(0, 0, 0, 0.5);
       color: #fff;
@@ -526,10 +544,14 @@
                 </div>
               </div>
               <div class="bio">
-                <p class="bio-intro">Hey, I'm Rishit. I build voice-driven tools and like to learn about new things. I'm focused on new coding tools, multimodality in LLMs, and cool new papers (about anything!).</p>
-                <p class="bio-intro">Recent UC Davis Cognitive Science grad, based in Melbourne, Australia.</p>
+                <p class="bio-intro" style="margin-bottom: 0.5em;">Hey, I'm Rishit. Recently graduated from UC Davis, where I majored in cognitive science and computation. Currently focused on:</p>
+                <ul class="bio-intro" style="list-style-type: disc; margin-left: 1.5em; margin-bottom: 0;">
+                  <li>Learning to build better systems with AI</li>
+                  <li>Interested in multimodality in LLMs</li>
+                  <li>Cool new papers (about anything!)</li>
+                </ul>
+                <p class="bio-intro" style="margin-top: 0.5em;">I'm based in Melbourne, Australia. Grew up in India, Hong Kong, and Abu Dhabi</p>
               </div>
-            </div>
             
             <!-- <div class="expanded-section" id="expandedSection">
               <h3>Bio</h3>
@@ -581,13 +603,28 @@
                   <div class="slideshow-container">
                     <div id="slide-container" class="flex transition-transform duration-300">
                       <div class="slide">
-                        <img src="public/Garde.png" alt="Garde" class="slideshow-image">
+                        <figure class="slideshow-figure">
+                          <img src="public/Garde.png" alt="Garde" class="slideshow-image">
+                          <figcaption class="slide-caption">
+                            <strong>Garde:</strong> an video AI tool for fencing, with TensorFlow.js pose estimation and optical flow to assist with performance tracking.
+                          </figcaption>
+                        </figure>
                       </div>
                       <div class="slide">
-                        <img src="public/Wavelength.png" alt="Wavelength" class="slideshow-image">
+                        <figure class="slideshow-figure">
+                          <img src="public/Wavelength.png" alt="Wavelength" class="slideshow-image">
+                          <figcaption class="slide-caption">
+                            <strong>Wavelength:</strong> a dating app with compatability metrics based on users' Spotify listening habits.
+                          </figcaption>
+                        </figure>
                       </div>
                       <div class="slide">
-                        <img src="public/PsychPoster_Das.jpg" alt="Psych Poster" class="slideshow-image">
+                        <figure class="slideshow-figure">
+                          <img src="public/PsychPoster_Das.jpg" alt="Psych Poster" class="slideshow-image">
+                          <figcaption class="slide-caption">
+                            <strong>Research:</strong> virtual reality study that tracked eye-tracking (x, y, z) in a virtual IKEA for study on perception and memory with audiovisual stimuli.  
+                          </figcaption>
+                        </figure>
                       </div>
                     </div>
                   </div>
@@ -619,15 +656,23 @@
                   <h3 class="text-2xl font-bold my-6" style="color: #111827;">Experience</h3>
                   <div class="content space-y-6">
                     <div>
-                      <p class="font-bold"><a href="https://gardeai.com/" style="color: #3c3c3c;">GARDE</a> \ Co-founder, CPO \ 03/24–Present</p>
+                      <p class="font-bold"><a href="https://nrture.ai/" style="color: #3c3c3c;">nrtureAI</a> \ Product Engineering Intern</p>
+                      <p class="text-sm text-gray-600">10/25–Present</p>
+                      <p class="mt-1">- Building frontend and agent experiences at nrtureAI by tRetail Labs, a reputation intelligence platform serving hospitality businesses in Victoria.</p>
+                    </div>
+                    <div>
+                      <p class="font-bold"><a href="https://gardeai.com/" style="color: #3c3c3c;">GARDE</a> \ Co-founder, Product Lead</p>
+                      <p class="text-sm text-gray-600">03/24 - 11/25</p>
                       <p class="mt-1">- Engineered a fencing AI coach using TensorFlow.js BlazePose and custom React components, delivering a real-time feedback mechanism that enhanced user training sessions for over 120 athletes.</p>
                     </div>
                     <div>
-                      <p class="font-bold"><a href="https://genglab.ucdavis.edu/" style="color: #3c3c3c;">Integrated Attention VR Lab</a> \ Research Assistant \ 09/23–Present</p>
+                      <p class="font-bold"><a href="https://genglab.ucdavis.edu/" style="color: #3c3c3c;">Integrated Attention VR Lab</a> \ Research Assistant</p>
+                      <p class="text-sm text-gray-600">09/23–Present</p>
                       <p class="mt-1">- Created a data pipeline for a NIMH-grant study on visual attention in VR. Collaborating with University of Adelaide to build a new experiment with React and WebGazer.js.</p>
                     </div>
                     <div>
-                      <p class="font-bold"><a href="https://github.com/nmaffly/Wavelength" style="color: #3c3c3c;">Wavelength</a> \ Tech Lead \ 03/24–07/24</p>
+                      <p class="font-bold"><a href="https://github.com/nmaffly/Wavelength" style="color: #3c3c3c;">Wavelength</a> \ Tech Lead</p>
+                      <p class="text-sm text-gray-600">03/24–07/24</p>
                       <p class="mt-1">- Launched a demo of a Spotify dating app using Flask, D3.js, and AWS. Overcame the 25-user Spotify API limit, enabling an event with 70+ participants.</p>
                     </div>
                   </div>

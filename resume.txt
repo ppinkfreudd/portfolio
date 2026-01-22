@@ -5,19 +5,28 @@ Education
 University of California – Davis								                      Davis, CA 
 B.S. Computational Cognitive Science|Graduation: 09/25|GPA: 3.7 
 Experience
-  
+ 
+nrtureAI | https://nrture.ai/									        Melbourne, Victoria, Australia
+Product Engineering Intern · tRetail Labs (Part-time)
+10/25 – Present
+Building frontend and working on agents at nrtureAI by tRetail Labs, a reputation intelligence platform for hospitality businesses in Victoria.
+
 GARDE | https://gardeai.com/									         Davis, CA
-Co-founder, Chief Product Officer 						             	 	             03/24  – Present
+Co-founder, Chief Product Officer
+03/24  – Present
 Engineered a fencing AI coach utilizing TensorFlow.js BlazePose and custom React components, delivering a real-time feedback mechanism that enhanced user training sessions for over 120 athletes, optimizing performance tracking.
 Created a video LLM with motion understanding for fencers, acting as a speech-to-speech coach for local training. 
 Presently working with 2 Olympic coaches to better product fit and partnered with Davis Fencing Academy.    
 Awarded 1st place in UC Davis Sports Analytics Club from a panel of Nvidia, EY, and Intel judges out of 14 teams.
 Integrated Attention Virtual Reality Lab | genglab.ucdavis.edu	               Center for Mind and Brain, UC Davis
-Paid Research Assistant 						    		       	 	              09/23 – Present
+Paid Research Assistant
+09/23 – Present
 Created a data pipeline using Pandas, Matplotlib, Seaborn, and NumPy to handle virtual reality data for over 200 participants in a NIMH-grant study on visual attention and navigation in VR via Vizard/Unity and HP Omnicept.
 Currently in collaboration with University of Adelaide to create JsPsych experiment on GitLab using React and webcam eye-tracking using WebGazer.js, aimed at understanding/modelling human visual and attention properties. 
 Investigated how audiovisual stimuli influence the navigation of participants in VR using positional data; presented as poster at Undergraduate Research and the Psychology Conferences, and received 3rd place for best presentation. 
-Wavelength | https://github.com/nmaffly/Wavelength  			        Student Startup Center, UC Davis Tech Lead 		 							     	                             03/24 – 07/24
+Wavelength | https://github.com/nmaffly/Wavelength  			        Student Startup Center, UC Davis
+Tech Lead
+03/24 – 07/24
 Launched a demo of a Spotify dating app using Flask, D3.js, Spotipy, AWS EC2, Route53, MySQL, and HTML/CSS. 
 Created an algorithm to overcome the 25-user limit for the Spotify API, helping us have an event where 70 people came together to try Wavelength at a local Davis art house, The Secret Spot, helping us gain important user feedback.
 Received $5,000 from the UC Davis Startup accelerator, PLASMA, through the Mentor's Choice Award. 
